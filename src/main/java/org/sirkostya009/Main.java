@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
 
-    public List<Integer> filterNegativesOut(List<Integer> integers) {
+    public static List<Integer> filterNegativesOut(List<Integer> integers) {
         return integers.stream().filter(integer -> integer >= 0).toList();
     }
 
@@ -13,7 +13,7 @@ public class Main {
      * @param strings a list of strings with numerous #hashtags
      * @return a list of top 5 most popular tags sorted in ascending order
      */
-    public List<Map.Entry<String, Integer>> top5Hashtags(List<String> strings) {
+    public static List<Map.Entry<String, Integer>> top5Hashtags(List<String> strings) {
         var total = new HashMap<String, Integer>();
 
         strings.forEach(string -> {
@@ -37,7 +37,7 @@ public class Main {
                 .toList();
     }
 
-    public <T extends Shape> List<T> sortShapes(List<T> shapes) {
+    public static <T extends Shape> List<T> sortShapes(List<T> shapes) {
         return shapes.stream()
                 .sorted()
                 .toList();

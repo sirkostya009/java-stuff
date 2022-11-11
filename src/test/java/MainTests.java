@@ -10,17 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTests {
 
-    private final Main main = new Main();
-
     @Test
     void testNegativesOut() {
         var given = List.of(-1, 2, -3, 4, -5, 6, -7, 8, -9, 10);
 
-        var result = main.filterNegativesOut(given);
+        var result = Main.filterNegativesOut(given);
 
-        var expected = List.of(2, 4, 6, 8, 10);
-
-        assertEquals(expected, result);
+        assertEquals(List.of(2, 4, 6, 8, 10), result);
     }
 
     @Test
@@ -40,24 +36,24 @@ public class MainTests {
                 "#tag5 ".repeat(15)
         );
 
-        var result = main.top5Hashtags(given);
+        var result = Main.top5Hashtags(given);
 
-        assertEquals(result.size(), 5);
+        assertEquals(5, result.size());
 
-        assertEquals(result.get(0).getKey(), "#tag5");
-        assertEquals(result.get(0).getValue(), 1);
+        assertEquals("#tag5", result.get(0).getKey());
+        assertEquals(1, result.get(0).getValue());
 
-        assertEquals(result.get(1).getKey(), "#tag1");
-        assertEquals(result.get(1).getValue(), 2);
+        assertEquals("#tag1", result.get(1).getKey());
+        assertEquals(2, result.get(1).getValue());
 
-        assertEquals(result.get(2).getKey(), "#tag4");
-        assertEquals(result.get(2).getValue(), 3);
+        assertEquals("#tag4", result.get(2).getKey());
+        assertEquals(3, result.get(2).getValue());
 
-        assertEquals(result.get(3).getKey(), "#tag3");
-        assertEquals(result.get(3).getValue(), 3);
+        assertEquals("#tag3", result.get(3).getKey());
+        assertEquals(3, result.get(3).getValue());
 
-        assertEquals(result.get(4).getKey(), "#tag2");
-        assertEquals(result.get(4).getValue(), 5);
+        assertEquals("#tag2", result.get(4).getKey());
+        assertEquals(5, result.get(4).getValue());
     }
 
     @Test
@@ -71,14 +67,14 @@ public class MainTests {
                 new Cylinder(10, 5)
         );
 
-        var result = main.sortShapes(given);
+        var result = Main.sortShapes(given);
 
-        assertEquals(((Cube) result.get(0)).getSide(), .1);
-        assertEquals(((Cube) result.get(1)).getSide(), .5);
-        assertEquals(((Sphere) result.get(2)).getRadius(), 5);
-        assertEquals(((Cylinder) result.get(3)).getRadius(), 4);
-        assertEquals(((Cylinder) result.get(4)).getRadius(), 10);
-        assertEquals(((Sphere) result.get(5)).getRadius(), 15);
+        assertEquals(.1, ((Cube) result.get(0)).getSide());
+        assertEquals(.5, ((Cube) result.get(1)).getSide());
+        assertEquals(5, ((Sphere) result.get(2)).getRadius());
+        assertEquals(4, ((Cylinder) result.get(3)).getRadius());
+        assertEquals(10, ((Cylinder) result.get(4)).getRadius());
+        assertEquals(15, ((Sphere) result.get(5)).getRadius());
     }
 
 }
