@@ -1,21 +1,12 @@
 package org.sirkostya009.shapes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.sirkostya009.Shape;
 
-public class Sphere implements Shape {
+@AllArgsConstructor
+public @Data class Sphere implements Shape {
     private double radius;
-
-    public Sphere(double radius) {
-        this.radius = radius;
-    }
-
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
 
     @Override
     public double getVolume() {

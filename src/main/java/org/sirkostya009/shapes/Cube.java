@@ -1,21 +1,12 @@
 package org.sirkostya009.shapes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.sirkostya009.Shape;
 
-public class Cube implements Shape {
+@AllArgsConstructor
+public @Data class Cube implements Shape {
     private double side;
-
-    public Cube(double side) {
-        this.side = side;
-    }
-
-    public double getSide() {
-        return side;
-    }
-
-    public void setSide(double side) {
-        this.side = side;
-    }
 
     @Override
     public double getVolume() {
