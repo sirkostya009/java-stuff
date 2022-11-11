@@ -6,6 +6,8 @@ import org.sirkostya009.shapes.Sphere;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class MainTests {
 
     private final Main main = new Main();
@@ -18,7 +20,7 @@ public class MainTests {
 
         var expected = List.of(2, 4, 6, 8, 10);
 
-        assert result.equals(expected);
+        assertEquals(expected, result);
     }
 
     @Test
@@ -40,22 +42,22 @@ public class MainTests {
 
         var result = main.top5Hashtags(given);
 
-        assert result.size() == 5;
+        assertEquals(result.size(), 5);
 
-        assert result.get(0).getKey().equals("#tag5");
-        assert result.get(0).getValue().equals(1);
+        assertEquals(result.get(0).getKey(), "#tag5");
+        assertEquals(result.get(0).getValue(), 1);
 
-        assert result.get(1).getKey().equals("#tag1");
-        assert result.get(1).getValue().equals(2);
+        assertEquals(result.get(1).getKey(), "#tag1");
+        assertEquals(result.get(1).getValue(), 2);
 
-        assert result.get(2).getKey().equals("#tag4");
-        assert result.get(2).getValue().equals(3);
+        assertEquals(result.get(2).getKey(), "#tag4");
+        assertEquals(result.get(2).getValue(), 3);
 
-        assert result.get(3).getKey().equals("#tag3");
-        assert result.get(3).getValue().equals(3);
+        assertEquals(result.get(3).getKey(), "#tag3");
+        assertEquals(result.get(3).getValue(), 3);
 
-        assert result.get(4).getKey().equals("#tag2");
-        assert result.get(4).getValue().equals(5);
+        assertEquals(result.get(4).getKey(), "#tag2");
+        assertEquals(result.get(4).getValue(), 5);
     }
 
     @Test
@@ -71,12 +73,12 @@ public class MainTests {
 
         var result = main.sortShapes(given);
 
-        assert ((Cube) result.get(0)).side() == .1;
-        assert ((Cube) result.get(1)).side() == 5;
-        assert ((Sphere) result.get(2)).radius() == 5;
-        assert ((Cylinder) result.get(3)).radius() == 4;
-        assert ((Cylinder) result.get(4)).radius() == 10;
-        assert ((Sphere) result.get(5)).radius() == 15;
+        assertEquals(((Cube) result.get(0)).getSide(), .1);
+        assertEquals(((Cube) result.get(1)).getSide(), .5);
+        assertEquals(((Sphere) result.get(2)).getRadius(), 5);
+        assertEquals(((Cylinder) result.get(3)).getRadius(), 4);
+        assertEquals(((Cylinder) result.get(4)).getRadius(), 10);
+        assertEquals(((Sphere) result.get(5)).getRadius(), 15);
     }
 
 }
