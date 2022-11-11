@@ -39,16 +39,15 @@ public class MainTests {
 
         var result = Main.top5Hashtags(given);
 
-        assertThat(result)
-            .isEqualTo(
+        assertThat(result).isEqualTo(
                 Map.of(
-                    "#tag2", 5,
-                    "#tag3", 3,
-                    "#tag4", 3,
-                    "#tag1", 2,
-                    "#tag5", 1
+                        "#tag2", 5,
+                        "#tag3", 3,
+                        "#tag4", 3,
+                        "#tag1", 2,
+                        "#tag5", 1
                 )
-            );
+        );
     }
 
     @Test
@@ -64,17 +63,7 @@ public class MainTests {
 
         var result = Main.sortShapes(shapes);
 
-        assertThat(result)
-            .isEqualTo(
-                List.of(
-                        cube2,
-                        cube1,
-                        sphere2,
-                        cylinder1,
-                        cylinder2,
-                        sphere1
-                )
-            );
+        assertThat(result).isEqualTo(List.of(cube2, cube1, sphere2, cylinder1, cylinder2, sphere1));
     }
 
 }
