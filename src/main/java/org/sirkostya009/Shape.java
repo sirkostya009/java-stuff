@@ -5,6 +5,6 @@ public interface Shape extends Comparable<Shape> {
 
     @Override
     default int compareTo(Shape o) {
-        return (int) (getVolume() - o.getVolume());
+        return Double.compare(getVolume(), o.getVolume());
     }
 }
