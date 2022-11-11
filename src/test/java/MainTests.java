@@ -53,23 +53,28 @@ public class MainTests {
 
     @Test
     void testSortShapes() {
-        var given = List.of(
-                new Cube(5),
-                new Cylinder(4, 10),
-                new Sphere(15),
-                new Cube(.1),
-                new Sphere(5),
-                new Cylinder(10, 5)
+        var cube1 = new Cube(5);
+        var cylinder1 = new Cylinder(4, 10);
+        var sphere1 = new Sphere(15);
+        var cube2 = new Cube(.1);
+        var sphere2 = new Sphere(5);
+        var cylinder2 = new Cylinder(10, 5);
+
+        var shapes = List.of(cube1, cylinder1, sphere1, cube2, sphere2, cylinder2);
+
+        var result = Main.sortShapes(shapes);
+
+        assertEquals(
+                List.of(
+                        cube2,
+                        cube1,
+                        sphere2,
+                        cylinder1,
+                        cylinder2,
+                        sphere1
+                ),
+                result
         );
-
-        var result = Main.sortShapes(given);
-
-        assertEquals(.1, ((Cube) result.get(0)).getSide());
-        assertEquals(5, ((Cube) result.get(1)).getSide());
-        assertEquals(5, ((Sphere) result.get(2)).getRadius());
-        assertEquals(4, ((Cylinder) result.get(3)).getRadius());
-        assertEquals(10, ((Cylinder) result.get(4)).getRadius());
-        assertEquals(15, ((Sphere) result.get(5)).getRadius());
     }
 
 }
