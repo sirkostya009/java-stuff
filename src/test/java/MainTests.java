@@ -70,7 +70,7 @@ public class MainTests {
         var result = Main.sortShapes(given);
 
         assertEquals(.1, ((Cube) result.get(0)).getSide());
-        assertEquals(.5, ((Cube) result.get(1)).getSide());
+        assertEquals(5, ((Cube) result.get(1)).getSide());
         assertEquals(5, ((Sphere) result.get(2)).getRadius());
         assertEquals(4, ((Cylinder) result.get(3)).getRadius());
         assertEquals(10, ((Cylinder) result.get(4)).getRadius());
