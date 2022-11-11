@@ -7,7 +7,7 @@ import org.sirkostya009.shapes.Sphere;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainTests {
 
@@ -17,7 +17,7 @@ public class MainTests {
 
         var result = Main.filterNegativesOut(given);
 
-        assertEquals(List.of(2, 4, 6, 8, 10), result);
+        assertThat(result).isEqualTo(List.of(2, 4, 6, 8, 10));
     }
 
     @Test
@@ -39,16 +39,16 @@ public class MainTests {
 
         var result = Main.top5Hashtags(given);
 
-        assertEquals(
+        assertThat(result)
+            .isEqualTo(
                 Map.of(
-                        "#tag2", 5,
-                        "#tag3", 3,
-                        "#tag4", 3,
-                        "#tag1", 2,
-                        "#tag5", 1
-                ),
-                result
-        );
+                    "#tag2", 5,
+                    "#tag3", 3,
+                    "#tag4", 3,
+                    "#tag1", 2,
+                    "#tag5", 1
+                )
+            );
     }
 
     @Test
@@ -64,7 +64,8 @@ public class MainTests {
 
         var result = Main.sortShapes(shapes);
 
-        assertEquals(
+        assertThat(result)
+            .isEqualTo(
                 List.of(
                         cube2,
                         cube1,
@@ -72,9 +73,8 @@ public class MainTests {
                         cylinder1,
                         cylinder2,
                         sphere1
-                ),
-                result
-        );
+                )
+            );
     }
 
 }
