@@ -5,6 +5,7 @@ import org.sirkostya009.shapes.Cylinder;
 import org.sirkostya009.shapes.Sphere;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -38,22 +39,16 @@ public class MainTests {
 
         var result = Main.top5Hashtags(given);
 
-        assertEquals(5, result.size());
-
-        assertEquals("#tag5", result.get(0).getKey());
-        assertEquals(1, result.get(0).getValue());
-
-        assertEquals("#tag1", result.get(1).getKey());
-        assertEquals(2, result.get(1).getValue());
-
-        assertEquals("#tag4", result.get(2).getKey());
-        assertEquals(3, result.get(2).getValue());
-
-        assertEquals("#tag3", result.get(3).getKey());
-        assertEquals(3, result.get(3).getValue());
-
-        assertEquals("#tag2", result.get(4).getKey());
-        assertEquals(5, result.get(4).getValue());
+        assertEquals(
+                Map.of(
+                        "#tag2", 5,
+                        "#tag3", 3,
+                        "#tag4", 3,
+                        "#tag1", 2,
+                        "#tag5", 1
+                ),
+                result
+        );
     }
 
     @Test

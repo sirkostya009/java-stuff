@@ -1,6 +1,10 @@
 package org.sirkostya009;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -9,12 +13,11 @@ public class Main {
     }
 
     /**
-     *
      * @param strings a list of strings with numerous #hashtags
      * @return a list of top 5 most popular tags sorted in ascending order
      */
-    public static List<Map.Entry<String, Integer>> top5Hashtags(List<String> strings) {
-        var total = new HashMap<String, Integer>();
+    public static Map<String, Integer> top5Hashtags(List<String> strings) {
+        var result = new HashMap<String, Integer>();
 
         strings.forEach(string -> {
              var parsed = List.of(string.split(" "));
@@ -25,16 +28,17 @@ public class Main {
              });
 
              tags.forEach(tag -> {
-                 total.putIfAbsent(tag, 0);
-                 total.put(tag, total.get(tag) + 1);
+                 result.putIfAbsent(tag, 0);
+                 result.put(tag, result.get(tag) + 1);
              });
         });
 
-        return total.entrySet()
+        return result
+                .entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue())
+                .sorted((c1, c2) -> Integer.compare(c2.getValue(), c1.getValue()))
                 .limit(5)
-                .toList();
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     public static <T extends Shape> List<T> sortShapes(List<T> shapes) {
