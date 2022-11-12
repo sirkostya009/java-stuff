@@ -39,13 +39,12 @@ public class MainTests {
 
         var result = Main.top5Hashtags(given);
 
-        assertThat(result).isEqualTo(
-                Map.of(
-                        "#tag2", 5,
-                        "#tag3", 3,
-                        "#tag4", 3,
-                        "#tag1", 2,
-                        "#tag5", 1
+        assertThat(result).isEqualTo(Map.of(
+                "#tag2", 5,
+                "#tag3", 3,
+                "#tag4", 3,
+                "#tag1", 2,
+                "#tag5", 1
                 )
         );
     }

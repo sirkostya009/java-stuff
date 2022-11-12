@@ -8,13 +8,17 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+    /**
+     * @param integers a list of integers, null-insecure
+     * @return a list without negative integers
+     */
     public static List<Integer> filterNegativesOut(List<Integer> integers) {
         return integers.stream().filter(integer -> integer >= 0).toList();
     }
 
     /**
      * @param strings a list of strings with numerous #hashtags
-     * @return a list of top 5 most popular tags sorted in ascending order
+     * @return a list of 5 most popular tags
      */
     public static Map<String, Integer> top5Hashtags(List<String> strings) {
         var result = new HashMap<String, Integer>();
@@ -41,6 +45,11 @@ public class Main {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    /**
+     * @param shapes a list of shapes
+     * @return sorted list of shapes
+     * @param <T> any class that implements Shape interface
+     */
     public static <T extends Shape> List<T> sortShapes(List<T> shapes) {
         return shapes.stream()
                 .sorted()
