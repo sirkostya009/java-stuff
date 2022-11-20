@@ -51,9 +51,8 @@ public class Main {
     /**
      * @param shapes a list of shapes
      * @return sorted list of shapes
-     * @param <T> any class that implements Shape interface
      */
-    public static <T extends Shape> List<T> sortShapes(List<T> shapes) {
+    public static List<Shape> sortShapes(List<Shape> shapes) {
         return shapes.stream()
                 .sorted()
                 .toList();
