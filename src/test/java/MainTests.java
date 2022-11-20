@@ -13,7 +13,7 @@ public class MainTests {
 
     @Test
     void testNegativesOut() {
-        var given = List.of(-1, 2, -3, 4, -5, 6, -7, 8, -9, 10);
+        var given = new Integer[]{-1, 2, -3, 4, -5, 6, -7, 8, -9, 10};
 
         var result = Main.filterNegativesOut(given);
 
@@ -62,7 +62,7 @@ public class MainTests {
 
         var result = Main.sortShapes(shapes);
 
-        assertThat(result).isEqualTo(List.of(cube2, cube1, sphere2, cylinder1, cylinder2, sphere1));
+        assertThat(result).isEqualTo(List.of(cube2, cube1, cylinder1, sphere2, cylinder2, sphere1));
     }
 
 }

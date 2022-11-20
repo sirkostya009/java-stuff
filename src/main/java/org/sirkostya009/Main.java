@@ -1,19 +1,22 @@
 package org.sirkostya009;
 
+import org.sirkostya009.shapes.Shape;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
     /**
      * @param integers a list of integers, null-insecure
-     * @return a list without negative integers
+     * @return a sorted list without negative integers
      */
-    public static List<Integer> filterNegativesOut(List<Integer> integers) {
-        return integers.stream().filter(integer -> integer >= 0).toList();
+    public static List<Integer> filterNegativesOut(Integer[] integers) {
+        return Stream.of(integers).filter(integer -> integer >= 0).sorted().toList();
     }
 
     /**
@@ -24,17 +27,17 @@ public class Main {
         var result = new HashMap<String, Integer>();
 
         strings.forEach(string -> {
-             var parsed = List.of(string.split(" "));
+            var parsed = List.of(string.split(" "));
 
-             var tags = new HashSet<String>();
-             parsed.forEach(word -> {
-                 if (word.startsWith("#")) tags.add(word.toLowerCase());
-             });
+            var tags = new HashSet<String>();
+            parsed.forEach(word -> {
+                if (word.startsWith("#")) tags.add(word.toLowerCase());
+            });
 
-             tags.forEach(tag -> {
-                 result.putIfAbsent(tag, 0);
-                 result.put(tag, result.get(tag) + 1);
-             });
+            tags.forEach(tag -> {
+                result.putIfAbsent(tag, 0);
+                result.put(tag, result.get(tag) + 1);
+            });
         });
 
         return result

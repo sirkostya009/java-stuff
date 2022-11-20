@@ -2,7 +2,6 @@ package org.sirkostya009.shapes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.sirkostya009.Shape;
 
 @AllArgsConstructor
 public @Data class Sphere implements Shape {
@@ -10,6 +9,6 @@ public @Data class Sphere implements Shape {
 
     @Override
     public double getVolume() {
-        return 4 * Math.PI * radius * radius;
+        return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
     }
 }

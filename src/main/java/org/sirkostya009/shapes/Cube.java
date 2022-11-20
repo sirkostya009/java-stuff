@@ -2,7 +2,6 @@ package org.sirkostya009.shapes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.sirkostya009.Shape;
 
 @AllArgsConstructor
 public @Data class Cube implements Shape {
@@ -10,6 +9,6 @@ public @Data class Cube implements Shape {
 
     @Override
     public double getVolume() {
-        return 6 * side * side;
+        return Math.pow(side, 3);
     }
 }
