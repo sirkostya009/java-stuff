@@ -25,7 +25,7 @@ public class AwesomeXMLParser {
             var firstPart = parts[0];
             var secondPart = parts[1].split(surname)[1];
 
-            // substring(1) will remove an unnecessary =
+            // substring(1) will remove =
             line = firstPart + secondPart.substring(1).trim();
         }
 
@@ -37,7 +37,7 @@ public class AwesomeXMLParser {
 
             firstPart += APPEND;
 
-            // pops equals and surname strings
+            // pops = and surname strings
             if (secondPart.size() > 1)
                 firstPart += secondPart.remove(0) + '"';
             if (secondPart.size() == 1)
@@ -60,13 +60,12 @@ public class AwesomeXMLParser {
                 if (line.contains(ELIMINATE)) {
                     var surname = extractSurname(line);
 
-                    for (var i = lines.size() - 1; i >= 0; --i)
-                        lines.set(i, modifyLine(lines.get(i), surname));
+                    lines.replaceAll(s -> modifyLine(s, surname));
                 }
 
+                // if line contains a closing tag, it means we're at the end of the object/file
+                // dump everything from array to the output buffer
                 if (line.contains(">")) {
-                    // if line contains a closing tag, it means we're onto end of the object/file
-                    // dump everything from array to the output buffer
                     lines.forEach(s -> {
                         try {
                             out.write((s + '\n').getBytes());
