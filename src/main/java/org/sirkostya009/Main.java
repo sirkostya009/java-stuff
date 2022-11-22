@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 public class Main {
 
@@ -15,8 +15,8 @@ public class Main {
      * @param integers a list of integers, null-insecure
      * @return a sorted list without negative integers
      */
-    public static List<Integer> filterNegativesOut(Integer[] integers) {
-        return Stream.of(integers).filter(integer -> integer >= 0).sorted().toList();
+    public static List<Integer> filterNegativesOut(int[] integers) {
+        return Arrays.stream(integers).filter(integer -> integer >= 0).sorted().boxed().toList();
     }
 
     /**
