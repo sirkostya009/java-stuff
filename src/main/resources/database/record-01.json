@@ -1,0 +1,30 @@
+[
+  {
+    "date_time": "2020-05-05 15:39:03",
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "type": "SPEEDING",
+    "fine_amount": 340.00
+  },
+  {
+    "date_time": "2020-05-05 15:39:03",
+    "first_name": "dfb",
+    "last_name": "fnxg",
+    "type": "SPEEDING",
+    "fine_amount": 100.00
+  },
+  {
+    "date_time": "2020-05-05 15:39:03",
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "type": "SOME_OTHER_TYPE_I_AM_NOT_EDUCATED_ON_THIS_KIND_OF_STUFF",
+    "fine_amount": 400.00
+  },
+  {
+    "date_time": "2020-05-05 15:39:03",
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "type": "SPEEDING",
+    "fine_amount": 390.00
+  }
+]

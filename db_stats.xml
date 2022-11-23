@@ -1,0 +1,20 @@
+<Statistics>
+  <item>
+    <type>SOME_OTHER_TYPE_I_AM_NOT_EDUCATED_ON_THIS_KIND_OF_STUFF</type>
+    <fines>
+      <fine>890.0</fine>
+      <fine>600.0</fine>
+      <fine>450.0</fine>
+      <fine>400.0</fine>
+    </fines>
+  </item>
+  <item>
+    <type>SPEEDING</type>
+    <fines>
+      <fine>400.0</fine>
+      <fine>390.0</fine>
+      <fine>340.0</fine>
+      <fine>100.0</fine>
+    </fines>
+  </item>
+</Statistics>
