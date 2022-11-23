@@ -13,7 +13,7 @@ public class MainTests {
 
     @Test
     void testNegativesOut() {
-        var given = new Integer[]{-1, 2, -3, 4, -5, 6, -7, 8, -9, 10};
+        var given = new int[]{-1, -3, -5, -8, 10, 2, 8, -6, 6, 4};
 
         var result = Main.filterNegativesOut(given);
 
