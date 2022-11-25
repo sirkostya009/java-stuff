@@ -9,7 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @JacksonXmlRootElement(localName = "database")
-public class Database { // naming's kinda bad
+public class StatisticWrapper {
     @JacksonXmlElementWrapper(localName = "statistics")
     @JacksonXmlProperty(localName = "statistic")
     List<Statistic> statistics;

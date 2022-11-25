@@ -64,14 +64,10 @@ public class AwesomeXMLParser {
                 }
 
                 // if line contains a closing tag, it means we're at the end of the object/file
-                // dump everything from array to the output buffer
+                // dump everything from array to the output buffer, and flush it, too
                 if (line.contains(">")) {
-                    lines.forEach(s -> {
-                        try {
-                            out.write((s + '\n').getBytes());
-                        } catch (IOException ignored) {
-                        }
-                    });
+                    for (var s : lines)
+                        out.write((s + '\n').getBytes());
 
                     lines.clear();
                     out.flush();

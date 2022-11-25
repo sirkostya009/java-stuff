@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
                 new FileOutputStream("./people.xml")
         );
 
-        new DatabaseManager(Main.class.getResource("/database/").toURI()).collectStats(new File("./db_stats.xml"));
+        new DatabaseManager(Path.of(Main.class.getResource("/database/").toURI())).collectStats(new File("./db_stats.xml"));
     }
 
 }
