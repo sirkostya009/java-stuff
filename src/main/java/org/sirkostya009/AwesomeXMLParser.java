@@ -40,7 +40,7 @@ public class AwesomeXMLParser {
             // pops = and surname strings
             if (secondPart.size() > 1)
                 firstPart += secondPart.remove(0) + '"';
-            if (secondPart.size() == 1)
+            if (secondPart.size() >= 1)
                 firstPart += (secondPart.remove(0) + ' ' + surname + '"');
 
             line = firstPart + String.join("\"", secondPart);
