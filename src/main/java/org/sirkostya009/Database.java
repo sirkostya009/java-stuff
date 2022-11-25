@@ -8,11 +8,9 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
-@JacksonXmlRootElement(localName = "statistic")
-public class Statistic {
-    @JacksonXmlProperty(localName = "type")
-    private String type;
-    @JacksonXmlElementWrapper(localName = "fines")
-    @JacksonXmlProperty(localName = "fine")
-    private List<Double> allFines;
+@JacksonXmlRootElement(localName = "database")
+public class Database { // naming's kinda bad
+    @JacksonXmlElementWrapper(localName = "statistics")
+    @JacksonXmlProperty(localName = "statistic")
+    List<Statistic> statistics;
 }

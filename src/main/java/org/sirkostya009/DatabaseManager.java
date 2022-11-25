@@ -2,34 +2,22 @@ package org.sirkostya009;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
-import org.simpleframework.xml.ElementMap;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 
 @RequiredArgsConstructor
 public class DatabaseManager {
 
     private final URI uri;
-
-    @ElementMap(entry = "type", value = "fines", inline = true, attribute = true)
     private final Map<String, List<Double>> violations = new HashMap<>();
-
-    private Statistic[] toStatistics() {
-        var result = new Statistic[violations.size()];
-        var i = new AtomicInteger(0);
-
-        violations.forEach((type, fines) -> result[i.getAndIncrement()] = new Statistic(type, fines));
-
-        return result;
-    }
 
     public void collectStats(File out) throws IOException {
         for (var file : Path.of(uri).toFile().listFiles())
@@ -53,11 +41,15 @@ public class DatabaseManager {
 
         var mapper = new XmlMapper();
 
-        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        mapper.enable(INDENT_OUTPUT);
 
-        // we don't use stream api toArray() or toList() only
-        // because we want root element to be named Statistics
-        mapper.writeValue(out, toStatistics());
+        mapper.writeValue(
+                out,
+                new Database(
+                        violations.entrySet().stream()
+                                .map(entry -> new Statistic(entry.getKey(), entry.getValue())).toList()
+                )
+        );
     }
 
 }
