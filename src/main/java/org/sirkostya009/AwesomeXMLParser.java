@@ -1,6 +1,9 @@
 package org.sirkostya009;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,10 +39,8 @@ public class AwesomeXMLParser {
             var secondPart = new ArrayList<>(List.of(parts[1].split("\"")));
 
             // pops = and surname strings
-            if (secondPart.size() > 1)
-                firstPart += secondPart.remove(0) + '"';
-            if (secondPart.size() >= 1)
-                firstPart += secondPart.remove(0) + ' ' + surname + '"';
+            firstPart += secondPart.remove(0) + '"';
+            firstPart += secondPart.remove(0) + ' ' + surname + '"';
 
             line = firstPart + String.join("\"", secondPart);
         }
