@@ -2,6 +2,7 @@ package org.sirkostya009;
 
 import org.sirkostya009.shapes.Shape;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Main {
         return result
                 .entrySet()
                 .stream()
-                .sorted((c1, c2) -> Integer.compare(c2.getValue(), c1.getValue()))
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .limit(5)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
