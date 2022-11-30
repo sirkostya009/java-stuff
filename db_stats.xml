@@ -1,22 +1,6 @@
 <database>
-  <statistics>
-    <statistic>
-      <type>SOME_OTHER_TYPE_I_AM_NOT_EDUCATED_ON_THIS_KIND_OF_STUFF</type>
-      <fines>
-        <fine>890.0</fine>
-        <fine>600.0</fine>
-        <fine>450.0</fine>
-        <fine>400.0</fine>
-      </fines>
-    </statistic>
-    <statistic>
-      <type>SPEEDING</type>
-      <fines>
-        <fine>400.0</fine>
-        <fine>390.0</fine>
-        <fine>340.0</fine>
-        <fine>100.0</fine>
-      </fines>
-    </statistic>
-  </statistics>
+  <fines>
+    <fine type="SOME_OTHER_TYPE_I_AM_NOT_EDUCATED_ON_THIS_KIND_OF_STUFF" sum="2340.0"/>
+    <fine type="SPEEDING" sum="1230.0"/>
+  </fines>
 </database>

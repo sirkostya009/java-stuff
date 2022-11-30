@@ -36,15 +36,16 @@ public class DatabaseManager {
                 }
             }
 
-        violations.values().forEach(list -> list.sort(Comparator.reverseOrder()));
+        var result = new HashMap<String, Double>(violations.size());
+        violations.forEach((name, fines) -> result.put(name, fines.stream().reduce(Double::sum).orElseThrow()));
 
         var mapper = new XmlMapper();
         mapper.enable(INDENT_OUTPUT);
 
         mapper.writeValue(
                 out,
-                new StatisticWrapper(violations.entrySet().stream()
-                        .map(entry -> new Statistic(entry.getKey(), entry.getValue())).toList())
+                new FinesWrapper(result.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(Fine::new).toList())
         );
 
         violations.clear();

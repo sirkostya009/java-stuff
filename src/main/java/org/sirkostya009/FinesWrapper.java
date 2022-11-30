@@ -9,8 +9,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @JacksonXmlRootElement(localName = "database")
-public class StatisticWrapper {
-    @JacksonXmlElementWrapper(localName = "statistics")
-    @JacksonXmlProperty(localName = "statistic")
-    List<Statistic> statistics;
+public class FinesWrapper {
+    @JacksonXmlElementWrapper(localName = "fines")
+    @JacksonXmlProperty(localName = "fine")
+    List<Fine> fines;
 }
