@@ -8,7 +8,11 @@ import lombok.RequiredArgsConstructor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 
@@ -16,39 +20,52 @@ import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 public class DatabaseManager {
 
     private final Path databaseDirectory;
-    private final Map<String, List<Double>> violations = new HashMap<>();
+    private final Map<String, AtomicReference<Double>> violations = new ConcurrentHashMap<>();
 
-    public void collectStats(File out) throws IOException {
-        for (var file : databaseDirectory.toFile().listFiles())
-            try (var parser = new JsonFactory().createParser(file)) {
-                var lastType = "";
+    private void parseFile(File file) throws IOException {
+        try (var parser = new JsonFactory().createParser(file)) {
+            var lastType = "";
 
-                while (parser.nextToken() != JsonToken.END_ARRAY) {
-                    if ("type".equals(parser.getCurrentName())) {
-                        parser.nextToken();
-                        lastType = parser.getValueAsString();
-                        violations.putIfAbsent(lastType, new ArrayList<>());
-                    }
-                    if ("fine_amount".equals(parser.getCurrentName())) {
-                        parser.nextToken();
-                        violations.get(lastType).add(parser.getDoubleValue());
-                    }
+            while (parser.nextToken() != JsonToken.END_ARRAY) {
+                if ("type".equals(parser.getCurrentName())) {
+                    parser.nextToken();
+                    lastType = parser.getValueAsString();
+                    violations.putIfAbsent(lastType, new AtomicReference<>(.0));
+                }
+                if ("fine_amount".equals(parser.getCurrentName())) {
+                    parser.nextToken();
+                    violations.get(lastType).getAndAccumulate(parser.getDoubleValue(), Double::sum);
                 }
             }
+        }
+    }
 
-        var result = new HashMap<String, Double>(violations.size());
-        violations.forEach((name, fines) -> result.put(name, fines.stream().reduce(Double::sum).orElseThrow()));
+    public void collectFinesMultithreaded(File out) throws IOException {
+        var executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        for (var file : databaseDirectory.toFile().listFiles())
+            CompletableFuture.supplyAsync(() -> {
+                try {
+                    parseFile(file);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                return true;
+            }, executor);
 
         var mapper = new XmlMapper();
         mapper.enable(INDENT_OUTPUT);
 
         mapper.writeValue(
                 out,
-                new FinesWrapper(result.entrySet().stream()
-                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(Fine::new).toList())
+                new FinesWrapper(violations.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue((ref1, ref2) -> Double.compare(ref2.get(), ref1.get())))
+                        .map(Fine::new).toList())
         );
 
         violations.clear();
+        executor.shutdown();
     }
 
 }

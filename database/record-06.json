@@ -1,0 +1,2227 @@
+[ {
+  "first_name" : "Ivan",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-10-30T23:25:21.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 744.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Davis",
+  "date_time" : "2023-03-19T23:10:48.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 890.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Johnson",
+  "date_time" : "2023-04-21T10:04:28.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 784.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Davies",
+  "date_time" : "2023-02-21T00:09:56.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 682.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-02-25T05:44:53.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 866.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Roberts",
+  "date_time" : "2023-01-04T13:04:32.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 578.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Archer",
+  "date_time" : "2023-05-14T16:04:11.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 960.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Smith",
+  "date_time" : "2023-06-19T01:27:14.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 981.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "O'Connor",
+  "date_time" : "2022-12-26T20:31:05.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 875.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Smith",
+  "date_time" : "2023-08-03T16:22:10.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 885.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Wilson",
+  "date_time" : "2023-09-21T00:20:56.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 644.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-26T05:49:10.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 666.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Robinson",
+  "date_time" : "2023-03-22T03:25:51.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 717.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "White",
+  "date_time" : "2023-09-03T20:54:19.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 619.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Robinson",
+  "date_time" : "2023-05-09T21:55:49.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 902.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "White",
+  "date_time" : "2023-10-01T15:30:21.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 817.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-11-19T12:57:33.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 855.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Johnson",
+  "date_time" : "2023-11-21T13:45:19.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 599.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Peterson",
+  "date_time" : "2022-12-19T02:50:56.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 694.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Blake",
+  "date_time" : "2022-12-08T17:34:57.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 856.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "White",
+  "date_time" : "2023-06-25T14:04:51.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 994.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Roberts",
+  "date_time" : "2023-10-16T12:44:08.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 895.0
+}, {
+  "first_name" : "George",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-01-23T16:42:36.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 735.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Roberts",
+  "date_time" : "2023-10-10T22:20:58.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 677.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Blake",
+  "date_time" : "2022-12-09T13:48:55.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 986.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Davis",
+  "date_time" : "2023-07-09T15:13:36.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 674.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Evans",
+  "date_time" : "2023-08-25T02:57:15.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 935.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Smith",
+  "date_time" : "2023-02-02T07:41:36.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 800.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "O'Neill",
+  "date_time" : "2022-12-29T12:42:54.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 643.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Smith",
+  "date_time" : "2023-09-18T13:45:29.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 794.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "Evans",
+  "date_time" : "2022-12-05T10:43:40.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 700.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Roberts",
+  "date_time" : "2023-11-12T15:28:24.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 714.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Jackson",
+  "date_time" : "2023-11-20T07:54:12.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 560.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-06-21T00:24:47.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 506.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Smith",
+  "date_time" : "2023-04-26T15:12:35.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 840.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Brown",
+  "date_time" : "2023-02-24T09:08:21.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 977.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Brown",
+  "date_time" : "2023-01-29T12:27:15.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 697.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Blake",
+  "date_time" : "2023-05-08T01:36:00.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 703.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-02-01T02:43:03.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 925.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Peterson",
+  "date_time" : "2022-12-19T11:14:39.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 885.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Brown",
+  "date_time" : "2023-05-04T13:55:21.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 662.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Jackson",
+  "date_time" : "2023-09-02T23:20:30.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 816.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Davis",
+  "date_time" : "2023-06-05T20:26:44.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 553.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Evans",
+  "date_time" : "2023-09-05T21:33:10.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 946.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Wilson",
+  "date_time" : "2022-12-11T05:02:59.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 863.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Brown",
+  "date_time" : "2023-07-20T07:10:23.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 577.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Blake",
+  "date_time" : "2023-05-19T05:10:14.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 720.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Peterson",
+  "date_time" : "2023-05-10T20:34:11.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 514.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Evans",
+  "date_time" : "2022-12-07T20:55:10.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 761.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Wilson",
+  "date_time" : "2023-06-14T10:29:04.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 643.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Brown",
+  "date_time" : "2022-12-23T08:28:26.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 568.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Peterson",
+  "date_time" : "2023-05-15T12:02:26.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 760.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-05-05T21:37:10.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 978.0
+}, {
+  "first_name" : "James",
+  "last_name" : "White",
+  "date_time" : "2023-05-23T03:45:20.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 982.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Taylor",
+  "date_time" : "2023-04-11T06:24:53.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 756.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Davis",
+  "date_time" : "2023-09-11T23:40:41.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 721.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Archer",
+  "date_time" : "2023-01-13T13:31:16.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 914.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Smith",
+  "date_time" : "2023-03-05T05:19:52.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 876.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Smith",
+  "date_time" : "2023-05-15T19:48:38.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 562.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-02-11T02:45:31.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 687.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Brown",
+  "date_time" : "2023-05-18T00:30:16.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 937.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Archer",
+  "date_time" : "2023-07-20T19:54:37.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 543.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-05-12T14:14:44.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 938.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Brown",
+  "date_time" : "2023-09-29T09:37:47.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 751.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-03-19T00:26:12.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 932.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-06-30T22:40:52.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 779.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-04-11T08:49:17.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 567.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "White",
+  "date_time" : "2023-04-03T15:47:07.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 901.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Davis",
+  "date_time" : "2023-10-10T02:32:45.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 705.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Wilson",
+  "date_time" : "2023-05-01T04:34:43.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 711.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-04-29T12:25:26.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 689.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Smith",
+  "date_time" : "2023-04-18T06:55:09.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 724.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Roberts",
+  "date_time" : "2022-12-24T03:25:53.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 504.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Evans",
+  "date_time" : "2023-10-31T07:41:28.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 818.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Robinson",
+  "date_time" : "2023-07-10T02:31:23.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 559.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Jackson",
+  "date_time" : "2023-09-04T14:46:15.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 756.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Blake",
+  "date_time" : "2023-04-06T18:21:39.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 632.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Davies",
+  "date_time" : "2023-01-13T13:37:28.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 892.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-08-02T16:57:37.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 850.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Smith",
+  "date_time" : "2023-03-01T17:33:40.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 987.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Robinson",
+  "date_time" : "2023-07-05T02:03:38.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 811.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-30T19:11:40.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 716.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Brown",
+  "date_time" : "2023-04-23T08:12:37.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 724.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Davis",
+  "date_time" : "2023-09-10T22:41:22.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 975.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Black",
+  "date_time" : "2023-11-13T18:41:28.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 534.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Wilson",
+  "date_time" : "2023-10-03T23:09:55.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 797.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "O'Connor",
+  "date_time" : "2022-12-23T00:43:39.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 607.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-04-14T22:54:22.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 930.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Archer",
+  "date_time" : "2023-04-13T18:48:30.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 630.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Johnson",
+  "date_time" : "2023-08-07T09:06:49.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 876.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Brown",
+  "date_time" : "2023-04-13T07:08:33.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 645.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Johnson",
+  "date_time" : "2022-12-06T05:44:03.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 697.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Evans",
+  "date_time" : "2023-03-27T22:57:42.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 717.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Archer",
+  "date_time" : "2023-10-11T09:04:47.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 819.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Black",
+  "date_time" : "2023-02-22T09:12:32.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 561.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Peterson",
+  "date_time" : "2023-03-24T06:48:16.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 601.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "O'Connor",
+  "date_time" : "2022-12-07T08:01:36.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 743.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-04-02T23:48:50.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 900.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Jackson",
+  "date_time" : "2023-03-28T10:41:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 535.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Davis",
+  "date_time" : "2023-08-16T06:33:38.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 729.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Robinson",
+  "date_time" : "2023-05-04T00:07:22.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 521.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Davis",
+  "date_time" : "2023-02-13T15:41:34.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 591.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Evans",
+  "date_time" : "2023-08-01T22:28:42.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 572.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Roberts",
+  "date_time" : "2023-09-14T12:15:02.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 605.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-09-16T23:52:53.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 732.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Blake",
+  "date_time" : "2023-05-26T23:06:12.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 620.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Evans",
+  "date_time" : "2023-07-08T16:54:43.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 997.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Johnson",
+  "date_time" : "2023-01-18T19:02:32.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 785.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-02-23T01:14:37.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 934.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Black",
+  "date_time" : "2022-12-30T11:08:12.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 509.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Archer",
+  "date_time" : "2023-06-14T00:20:01.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 566.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-11-27T09:27:46.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 601.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Blake",
+  "date_time" : "2023-04-28T17:55:04.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 866.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Smith",
+  "date_time" : "2023-06-22T07:57:30.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 940.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Peterson",
+  "date_time" : "2023-05-08T06:10:59.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 866.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Roberts",
+  "date_time" : "2023-01-04T09:10:49.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 704.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Roberts",
+  "date_time" : "2023-02-18T12:15:58.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 590.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Davies",
+  "date_time" : "2023-02-21T22:56:52.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 622.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-07-28T00:13:45.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 687.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-09-09T23:11:36.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 518.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Peterson",
+  "date_time" : "2023-02-14T02:14:04.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 681.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Robinson",
+  "date_time" : "2023-10-20T06:46:57.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 735.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-09-10T16:01:35.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 834.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-07-27T18:26:22.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 946.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Archer",
+  "date_time" : "2023-09-09T02:30:07.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 807.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Archer",
+  "date_time" : "2023-04-27T01:03:55.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 611.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Davis",
+  "date_time" : "2023-04-27T01:02:52.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 551.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Davies",
+  "date_time" : "2022-12-22T18:26:45.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 715.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-01T07:25:36.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 619.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-03-28T14:57:01.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 596.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Davis",
+  "date_time" : "2023-05-14T08:50:46.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 786.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Wilson",
+  "date_time" : "2023-06-28T17:09:40.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 918.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "White",
+  "date_time" : "2023-10-19T05:23:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 519.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Roberts",
+  "date_time" : "2023-06-15T00:20:33.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 961.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-04-02T01:47:54.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 666.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Brown",
+  "date_time" : "2023-11-19T00:30:45.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 567.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Davis",
+  "date_time" : "2023-05-07T06:44:32.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 676.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Wilson",
+  "date_time" : "2023-01-09T08:39:45.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 999.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-06-27T01:07:15.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 815.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Peterson",
+  "date_time" : "2023-01-17T15:59:13.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 788.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Blake",
+  "date_time" : "2023-08-06T22:57:12.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 795.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Smith",
+  "date_time" : "2023-03-16T15:37:51.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 999.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Peterson",
+  "date_time" : "2023-09-02T11:16:34.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 749.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-06-20T03:30:10.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 736.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Peterson",
+  "date_time" : "2023-03-26T00:22:49.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 899.0
+}, {
+  "first_name" : "John",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-10-15T13:45:19.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 713.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Evans",
+  "date_time" : "2023-07-06T05:29:36.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 674.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Davis",
+  "date_time" : "2023-03-04T11:16:41.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 683.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-08-17T19:34:51.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 519.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Jackson",
+  "date_time" : "2022-12-09T09:52:32.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 833.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Blake",
+  "date_time" : "2023-07-15T22:33:27.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 563.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Roberts",
+  "date_time" : "2023-01-28T02:03:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 587.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Smith",
+  "date_time" : "2023-01-03T21:02:48.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 707.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-10-23T23:42:48.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 870.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-06-04T01:52:20.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 861.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-02-14T03:40:56.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 614.0
+}, {
+  "first_name" : "John",
+  "last_name" : "White",
+  "date_time" : "2023-11-26T23:51:53.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 734.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Brown",
+  "date_time" : "2023-05-12T04:23:51.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 714.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Smith",
+  "date_time" : "2023-05-13T23:21:30.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 503.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Blake",
+  "date_time" : "2023-09-02T11:49:37.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 723.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Black",
+  "date_time" : "2023-05-13T18:48:28.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 709.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "O'Neill",
+  "date_time" : "2022-12-01T18:58:03.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 528.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Davis",
+  "date_time" : "2023-10-29T14:22:44.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 666.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Taylor",
+  "date_time" : "2023-02-04T03:43:48.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 654.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Roberts",
+  "date_time" : "2023-02-24T00:31:45.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 766.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Smith",
+  "date_time" : "2023-05-01T13:01:29.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 528.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Davis",
+  "date_time" : "2023-01-12T13:08:01.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 786.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Davis",
+  "date_time" : "2023-09-05T06:58:27.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 922.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Black",
+  "date_time" : "2023-10-14T05:34:37.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 554.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Evans",
+  "date_time" : "2023-08-23T19:24:08.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 686.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Jackson",
+  "date_time" : "2023-01-05T01:02:53.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 991.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "Taylor",
+  "date_time" : "2023-07-03T23:56:28.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 842.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Archer",
+  "date_time" : "2023-10-06T06:01:56.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 590.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Brown",
+  "date_time" : "2023-08-10T00:54:34.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 526.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-08-31T00:03:24.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 729.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Roberts",
+  "date_time" : "2023-03-03T18:26:19.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 636.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Davis",
+  "date_time" : "2023-05-06T07:23:12.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 997.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Jackson",
+  "date_time" : "2023-07-19T14:28:52.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 877.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Robinson",
+  "date_time" : "2023-04-02T03:53:25.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 869.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Evans",
+  "date_time" : "2023-11-07T03:25:54.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 806.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Taylor",
+  "date_time" : "2023-06-02T16:03:38.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 647.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-07-02T07:48:22.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 981.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Archer",
+  "date_time" : "2022-12-26T07:05:08.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 563.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Blake",
+  "date_time" : "2023-06-16T22:45:16.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 557.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-08-11T15:46:49.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 614.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Archer",
+  "date_time" : "2023-10-17T16:08:22.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 985.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "Taylor",
+  "date_time" : "2023-11-17T14:19:50.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 546.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Evans",
+  "date_time" : "2023-05-12T00:10:29.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 900.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Brown",
+  "date_time" : "2023-05-05T01:49:49.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 522.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Brown",
+  "date_time" : "2023-09-26T10:45:41.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 554.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Wilson",
+  "date_time" : "2023-10-27T11:55:43.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 984.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Smith",
+  "date_time" : "2023-05-30T18:28:10.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 688.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-11-24T05:55:36.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 643.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Blake",
+  "date_time" : "2023-05-25T15:37:48.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 935.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Wilson",
+  "date_time" : "2022-12-09T00:11:41.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 914.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-11-13T06:07:22.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 809.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Evans",
+  "date_time" : "2023-08-21T03:42:18.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 978.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Archer",
+  "date_time" : "2022-12-25T14:32:43.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 815.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Blake",
+  "date_time" : "2023-08-22T06:13:12.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 533.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Taylor",
+  "date_time" : "2023-01-22T07:40:12.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 546.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-04-29T02:00:10.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 502.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-09-27T04:54:54.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 713.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Roberts",
+  "date_time" : "2023-05-30T13:48:36.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 609.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Brown",
+  "date_time" : "2023-08-09T05:20:46.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 522.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Smith",
+  "date_time" : "2023-04-12T09:09:52.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 650.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Roberts",
+  "date_time" : "2023-11-01T07:32:51.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 952.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "Johnson",
+  "date_time" : "2023-04-22T11:16:50.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 928.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Brown",
+  "date_time" : "2023-04-22T13:53:51.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 738.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Smith",
+  "date_time" : "2023-06-04T09:20:44.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 904.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Wilson",
+  "date_time" : "2023-04-03T11:27:31.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 819.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Archer",
+  "date_time" : "2023-05-07T00:09:52.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 812.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-06T02:17:17.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 966.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Johnson",
+  "date_time" : "2023-07-28T03:18:09.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 619.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Taylor",
+  "date_time" : "2023-03-25T05:35:18.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 882.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Roberts",
+  "date_time" : "2023-06-16T08:19:27.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 532.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "White",
+  "date_time" : "2023-10-25T00:28:18.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 616.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Brown",
+  "date_time" : "2023-04-02T20:54:57.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 867.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Blake",
+  "date_time" : "2023-05-30T03:07:20.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 570.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Roberts",
+  "date_time" : "2023-05-25T22:22:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 963.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-08-14T13:17:00.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 821.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "Archer",
+  "date_time" : "2023-03-20T02:06:16.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 977.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Roberts",
+  "date_time" : "2023-07-29T00:08:19.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 649.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Johnson",
+  "date_time" : "2023-02-24T14:22:32.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 810.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Jackson",
+  "date_time" : "2023-05-17T17:44:01.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 866.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Blake",
+  "date_time" : "2023-03-29T02:34:21.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 666.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Jackson",
+  "date_time" : "2023-05-05T05:14:18.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 722.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Blake",
+  "date_time" : "2023-07-26T23:01:17.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 684.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Taylor",
+  "date_time" : "2023-11-14T23:53:32.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 930.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Davies",
+  "date_time" : "2023-04-22T14:21:17.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 905.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Roberts",
+  "date_time" : "2023-01-25T03:03:52.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 672.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Smith",
+  "date_time" : "2023-09-18T00:05:45.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 924.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Robinson",
+  "date_time" : "2023-05-04T21:33:40.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 855.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Blake",
+  "date_time" : "2023-03-28T21:29:00.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 914.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "Johnson",
+  "date_time" : "2023-10-20T10:00:53.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 553.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Wilson",
+  "date_time" : "2023-03-09T21:03:45.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 710.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Archer",
+  "date_time" : "2023-11-12T21:31:42.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 737.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Johnson",
+  "date_time" : "2023-11-16T11:12:01.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 969.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Davis",
+  "date_time" : "2022-12-24T18:03:54.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 642.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Wilson",
+  "date_time" : "2022-12-05T04:00:00.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 506.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Brown",
+  "date_time" : "2022-12-01T22:26:25.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 955.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Brown",
+  "date_time" : "2023-07-06T17:49:50.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 502.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-04-12T14:26:55.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 709.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Archer",
+  "date_time" : "2023-06-03T01:15:56.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 738.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Black",
+  "date_time" : "2023-08-29T13:35:41.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 931.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Evans",
+  "date_time" : "2023-10-21T21:59:58.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 724.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-11-25T13:54:52.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 503.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Brown",
+  "date_time" : "2022-12-26T06:02:38.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 882.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Robinson",
+  "date_time" : "2023-06-01T13:47:14.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 972.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Robinson",
+  "date_time" : "2023-08-12T06:41:47.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 915.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Peterson",
+  "date_time" : "2023-06-03T15:01:08.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 737.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Black",
+  "date_time" : "2023-10-30T22:57:15.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 818.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "O'Brien",
+  "date_time" : "2022-12-02T16:56:45.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 787.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Smith",
+  "date_time" : "2023-03-27T10:55:25.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 883.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "Robinson",
+  "date_time" : "2023-03-08T01:20:16.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 822.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Archer",
+  "date_time" : "2023-11-10T08:03:40.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 786.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Johnson",
+  "date_time" : "2023-09-23T07:34:37.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 903.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Smith",
+  "date_time" : "2023-05-23T01:17:29.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 555.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "White",
+  "date_time" : "2023-02-24T15:26:49.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 544.0
+}, {
+  "first_name" : "George",
+  "last_name" : "Roberts",
+  "date_time" : "2023-10-14T21:52:44.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 582.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Archer",
+  "date_time" : "2023-06-29T05:39:55.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 806.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Archer",
+  "date_time" : "2023-10-15T06:36:44.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 513.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "Davis",
+  "date_time" : "2023-02-14T06:18:33.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 860.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Davies",
+  "date_time" : "2023-01-02T13:15:13.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 683.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-08-25T21:24:59.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 846.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Evans",
+  "date_time" : "2023-08-07T03:10:45.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 502.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Wilson",
+  "date_time" : "2023-01-31T12:47:22.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 903.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Roberts",
+  "date_time" : "2023-09-30T15:43:02.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 984.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Taylor",
+  "date_time" : "2023-05-29T04:11:52.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 800.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Wilson",
+  "date_time" : "2023-03-27T04:34:02.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 687.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Wilson",
+  "date_time" : "2023-08-11T10:49:05.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 622.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Davis",
+  "date_time" : "2023-07-21T14:06:05.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 888.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Robinson",
+  "date_time" : "2023-10-31T04:20:45.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 608.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Robinson",
+  "date_time" : "2023-10-26T03:26:36.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 516.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-02-27T10:02:58.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 578.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "Blake",
+  "date_time" : "2023-09-18T16:08:28.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 821.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Wilson",
+  "date_time" : "2023-04-17T03:49:34.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 972.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Brown",
+  "date_time" : "2023-06-03T08:42:01.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 539.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Jackson",
+  "date_time" : "2023-03-31T18:00:05.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 941.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Archer",
+  "date_time" : "2023-05-26T23:00:38.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 756.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Robinson",
+  "date_time" : "2023-06-05T20:16:41.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 844.0
+}, {
+  "first_name" : "Harry",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-09-02T01:53:51.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 727.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-07-24T19:47:11.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 535.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Peterson",
+  "date_time" : "2023-05-19T20:28:04.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 844.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-05-08T10:58:40.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 819.0
+}, {
+  "first_name" : "Louis",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-07-30T04:29:43.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 644.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Roberts",
+  "date_time" : "2023-03-13T11:28:17.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 565.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Smith",
+  "date_time" : "2023-11-12T19:37:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 808.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Blake",
+  "date_time" : "2023-10-10T14:01:53.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 850.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Johnson",
+  "date_time" : "2023-07-19T22:36:35.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 792.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Evans",
+  "date_time" : "2023-05-20T11:41:22.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 872.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "White",
+  "date_time" : "2023-10-07T00:36:53.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 991.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-05-15T03:54:20.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 579.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Taylor",
+  "date_time" : "2023-05-03T08:18:42.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 547.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Davies",
+  "date_time" : "2023-04-11T11:23:45.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 645.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-10-23T21:50:48.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 760.0
+}, {
+  "first_name" : "Jean",
+  "last_name" : "Peterson",
+  "date_time" : "2023-08-26T01:38:23.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 860.0
+}, {
+  "first_name" : "Mark",
+  "last_name" : "Robinson",
+  "date_time" : "2023-05-04T16:31:05.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 623.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Brown",
+  "date_time" : "2023-07-29T16:42:32.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 510.0
+}, {
+  "first_name" : "William",
+  "last_name" : "Taylor",
+  "date_time" : "2023-05-13T21:35:52.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 545.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "Evans",
+  "date_time" : "2023-06-08T19:53:34.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 662.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Peterson",
+  "date_time" : "2023-01-30T14:30:55.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 833.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Robinson",
+  "date_time" : "2023-01-10T05:43:29.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 906.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Evans",
+  "date_time" : "2023-05-26T06:31:31.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 573.0
+}, {
+  "first_name" : "Oscar",
+  "last_name" : "Davis",
+  "date_time" : "2022-12-08T07:20:22.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 809.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-05T10:50:41.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 702.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-02-20T10:35:46.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 650.0
+}, {
+  "first_name" : "Isla",
+  "last_name" : "Taylor",
+  "date_time" : "2023-02-12T03:24:27.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 717.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-04-27T01:25:05.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 693.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "Taylor",
+  "date_time" : "2023-06-14T19:57:27.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 919.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Davis",
+  "date_time" : "2023-10-12T02:20:04.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 595.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Smith",
+  "date_time" : "2023-11-19T17:26:33.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 742.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Roberts",
+  "date_time" : "2023-10-02T04:48:43.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 575.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-11-24T17:58:44.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 774.0
+}, {
+  "first_name" : "John",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-08-21T02:53:33.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 571.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-09-10T03:56:23.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 527.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-09-06T01:32:38.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 686.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Wilson",
+  "date_time" : "2023-02-09T20:16:11.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 842.0
+}, {
+  "first_name" : "Jack",
+  "last_name" : "O'Connor",
+  "date_time" : "2022-12-20T16:35:52.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 794.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Davis",
+  "date_time" : "2023-02-13T03:25:12.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 948.0
+}, {
+  "first_name" : "Zoe",
+  "last_name" : "White",
+  "date_time" : "2023-05-17T12:04:25.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 594.0
+}, {
+  "first_name" : "James",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-05-17T09:38:55.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 919.0
+}, {
+  "first_name" : "John",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-06-05T05:53:07.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 817.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "O'Connor",
+  "date_time" : "2022-12-03T13:36:08.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 554.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Jackson",
+  "date_time" : "2023-08-04T01:04:02.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 860.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Smith",
+  "date_time" : "2023-02-14T08:43:06.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 751.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-03-13T17:35:54.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 822.0
+}, {
+  "first_name" : "Thomas",
+  "last_name" : "Blake",
+  "date_time" : "2023-08-26T10:10:27.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 919.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Blake",
+  "date_time" : "2023-07-05T01:02:24.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 658.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Archer",
+  "date_time" : "2023-08-03T07:22:42.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 783.0
+}, {
+  "first_name" : "Emily",
+  "last_name" : "Taylor",
+  "date_time" : "2023-03-28T16:47:15.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 558.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Jackson",
+  "date_time" : "2023-05-21T12:42:41.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 520.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Davis",
+  "date_time" : "2023-01-04T03:48:51.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 881.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-07-20T13:05:00.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 985.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Johnson",
+  "date_time" : "2023-10-15T17:22:51.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 945.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Blake",
+  "date_time" : "2023-08-12T07:45:59.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 865.0
+}, {
+  "first_name" : "Isabella",
+  "last_name" : "Archer",
+  "date_time" : "2023-09-20T17:42:46.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 972.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Smith",
+  "date_time" : "2023-10-14T18:16:57.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 713.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "O'Kelly",
+  "date_time" : "2022-12-24T10:00:15.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 791.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Jackson",
+  "date_time" : "2023-06-05T23:58:02.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 812.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "Davies",
+  "date_time" : "2023-03-15T08:57:03.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 519.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Taylor",
+  "date_time" : "2023-02-03T00:05:06.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 619.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Peterson",
+  "date_time" : "2023-11-15T09:40:54.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 766.0
+}, {
+  "first_name" : "Daniela",
+  "last_name" : "Davies",
+  "date_time" : "2023-10-11T07:44:35.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 817.0
+}, {
+  "first_name" : "Maxwell",
+  "last_name" : "Blake",
+  "date_time" : "2023-02-14T17:27:27.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 682.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Davies",
+  "date_time" : "2023-09-19T19:44:29.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 902.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Davis",
+  "date_time" : "2023-11-21T04:23:53.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 923.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Evans",
+  "date_time" : "2023-03-07T11:01:00.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 706.0
+}, {
+  "first_name" : "Daniel",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-04-01T23:01:14.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 966.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Smith",
+  "date_time" : "2023-11-17T01:09:31.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 692.0
+}, {
+  "first_name" : "John",
+  "last_name" : "Johnson",
+  "date_time" : "2023-03-18T23:05:12.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 819.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Davis",
+  "date_time" : "2023-06-19T06:33:12.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 842.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-08-04T19:39:32.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 714.0
+}, {
+  "first_name" : "Arthur",
+  "last_name" : "Roberts",
+  "date_time" : "2023-06-30T13:40:47.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 626.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "O'Brien",
+  "date_time" : "2023-06-03T06:45:17.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 867.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Taylor",
+  "date_time" : "2023-04-30T20:23:10.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 554.0
+}, {
+  "first_name" : "Charles",
+  "last_name" : "Davis",
+  "date_time" : "2023-02-17T06:01:33.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 844.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "O'Connor",
+  "date_time" : "2023-10-10T05:25:38.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 663.0
+}, {
+  "first_name" : "Constantine",
+  "last_name" : "Smith",
+  "date_time" : "2023-04-20T01:36:52.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 823.0
+}, {
+  "first_name" : "Max",
+  "last_name" : "Archer",
+  "date_time" : "2023-03-13T20:06:36.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 560.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "Roberts",
+  "date_time" : "2023-02-10T10:46:14.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 664.0
+}, {
+  "first_name" : "Oliver",
+  "last_name" : "Blake",
+  "date_time" : "2023-03-24T21:39:37.687+00:00",
+  "type" : "YIELD_FAIL",
+  "fine_amount" : 921.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Wilson",
+  "date_time" : "2023-07-01T11:34:57.687+00:00",
+  "type" : "RECKLESS",
+  "fine_amount" : 980.0
+}, {
+  "first_name" : "Ivan",
+  "last_name" : "Johnson",
+  "date_time" : "2023-09-11T18:34:16.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 610.0
+}, {
+  "first_name" : "James",
+  "last_name" : "Evans",
+  "date_time" : "2023-01-11T12:49:33.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 724.0
+}, {
+  "first_name" : "Jacob",
+  "last_name" : "Evans",
+  "date_time" : "2023-10-10T14:00:42.687+00:00",
+  "type" : "INVALID_LICENSE",
+  "fine_amount" : 800.0
+}, {
+  "first_name" : "Amelia",
+  "last_name" : "Robinson",
+  "date_time" : "2023-06-25T15:07:05.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 760.0
+}, {
+  "first_name" : "Charlie",
+  "last_name" : "Brown",
+  "date_time" : "2023-04-08T16:25:32.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 976.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Evans",
+  "date_time" : "2023-01-20T05:56:27.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 530.0
+}, {
+  "first_name" : "Taylor",
+  "last_name" : "O'Neill",
+  "date_time" : "2023-02-22T16:04:02.687+00:00",
+  "type" : "FELONY",
+  "fine_amount" : 666.0
+}, {
+  "first_name" : "Joe",
+  "last_name" : "Davies",
+  "date_time" : "2022-12-30T20:06:52.687+00:00",
+  "type" : "UNDER_INFLUENCE",
+  "fine_amount" : 503.0
+}, {
+  "first_name" : "Jane",
+  "last_name" : "O'Kelly",
+  "date_time" : "2023-11-24T04:47:34.687+00:00",
+  "type" : "RED_LIGHT_RUN",
+  "fine_amount" : 512.0
+} ]

@@ -1,6 +1,10 @@
 <database>
   <fines>
-    <fine type="SOME_OTHER_TYPE_I_AM_NOT_EDUCATED_ON_THIS_KIND_OF_STUFF" sum="2340.0"/>
-    <fine type="SPEEDING" sum="1230.0"/>
+    <fine type="UNDER_INFLUENCE" sum="677468.0"/>
+    <fine type="FELONY" sum="646732.0"/>
+    <fine type="RED_LIGHT_RUN" sum="641058.0"/>
+    <fine type="INVALID_LICENSE" sum="639800.0"/>
+    <fine type="YIELD_FAIL" sum="634596.0"/>
+    <fine type="RECKLESS" sum="614264.0"/>
   </fines>
 </database>

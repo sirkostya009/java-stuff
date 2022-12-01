@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.AllArgsConstructor;
 
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 @AllArgsConstructor
 @JacksonXmlRootElement(localName = "fine")
@@ -14,8 +15,8 @@ public class Fine {
     @JacksonXmlProperty(localName = "sum", isAttribute = true)
     private Double sum;
 
-    public Fine(Map.Entry<String, Double> entry) {
+    public Fine(Map.Entry<String, AtomicReference<Double>> entry) {
         this.type = entry.getKey();
-        this.sum = entry.getValue();
+        this.sum = entry.getValue().get();
     }
 }
