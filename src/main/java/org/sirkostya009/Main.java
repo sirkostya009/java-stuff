@@ -3,17 +3,16 @@ package org.sirkostya009;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.time.Instant;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        var now = Instant.now();
-        new DatabaseManager(Path.of("./database/"))
-                .collectFinesMultithreaded(new File("./db_stats.xml"));
-        var alsoNow = Instant.now();
+    public static void main(String[] args) throws IOException, InterruptedException {
+        var db = new DatabaseManager(Path.of("./database/"));
+        var out = new File("./db_stats.xml");
 
-        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        db.collectFinesMultiThreaded(out);
+
+        db.collectStatsSingleThreaded(out);
     }
 
 }

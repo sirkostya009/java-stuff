@@ -8,11 +8,15 @@ import lombok.RequiredArgsConstructor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 
@@ -20,9 +24,8 @@ import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 public class DatabaseManager {
 
     private final Path databaseDirectory;
-    private final Map<String, AtomicReference<Double>> violations = new ConcurrentHashMap<>();
 
-    private void parseFile(File file) throws IOException {
+    private void parseFile(File file, Map<String, AtomicReference<Double>> violations) throws IOException {
         try (var parser = new JsonFactory().createParser(file)) {
             var lastType = "";
 
@@ -40,19 +43,27 @@ public class DatabaseManager {
         }
     }
 
-    public void collectFinesMultithreaded(File out) throws IOException {
+    public void collectFinesMultiThreaded(File out) throws IOException, InterruptedException {
         var executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        var violations = new ConcurrentHashMap<String, AtomicReference<Double>>();
 
-        for (var file : databaseDirectory.toFile().listFiles())
-            CompletableFuture.supplyAsync(() -> {
-                try {
-                    parseFile(file);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        var callables = Stream.of(databaseDirectory.toFile().listFiles())
+                .map(file -> (Callable<Boolean>) () -> {
+                    try {
+                        parseFile(file, violations);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    return null;
+                }).toList();
 
-                return true;
-            }, executor);
+        System.out.print("Multi-threaded run: ");
+        var now = Instant.now();
+
+        executor.invokeAll(callables);
+
+        var alsoNow = Instant.now();
+        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
 
         var mapper = new XmlMapper();
         mapper.enable(INDENT_OUTPUT);
@@ -64,8 +75,44 @@ public class DatabaseManager {
                         .map(Fine::new).toList())
         );
 
-        violations.clear();
         executor.shutdown();
+    }
+
+    public void collectStatsSingleThreaded(File out) throws IOException {
+        var violations = new HashMap<String, Double>();
+
+        System.out.print("Single-threaded run: ");
+        var now = Instant.now();
+
+        for (var file : databaseDirectory.toFile().listFiles())
+            try (var parser = new JsonFactory().createParser(file)) {
+                var lastType = "";
+
+                while (parser.nextToken() != JsonToken.END_ARRAY) {
+                    if ("type".equals(parser.getCurrentName())) {
+                        parser.nextToken();
+                        lastType = parser.getValueAsString();
+                        violations.putIfAbsent(lastType, .0);
+                    }
+                    if ("fine_amount".equals(parser.getCurrentName())) {
+                        parser.nextToken();
+                        violations.put(lastType, violations.get(lastType) + parser.getDoubleValue());
+                    }
+                }
+            }
+
+        var alsoNow = Instant.now();
+        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+
+        var mapper = new XmlMapper();
+        mapper.enable(INDENT_OUTPUT);
+
+        mapper.writeValue(
+                out,
+                new FinesWrapper(violations.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                        .map(entry -> new Fine(entry.getKey(), entry.getValue())).toList())
+        );
     }
 
 }
