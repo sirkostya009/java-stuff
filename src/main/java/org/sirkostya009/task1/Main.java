@@ -1,4 +1,4 @@
-package org.sirkostya009;
+package org.sirkostya009.task1;
 
 import java.io.File;
 import java.io.IOException;

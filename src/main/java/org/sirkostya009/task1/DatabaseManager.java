@@ -1,4 +1,4 @@
-package org.sirkostya009;
+package org.sirkostya009.task1;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonToken;
