@@ -11,11 +11,17 @@ public class Main {
         var db = new DatabaseManager(Path.of("./database/"));
         var out = new File("./db_stats.xml");
 
+        // the reason we are calling -SingleThreaded two times
+        // is because, for some reason, first run (of no matter
+        // what method) takes the longest to run on my machine.
+        // Although the Executor one usually runs slightly faster.
+        db.collectStatsSingleThreaded(out);
+
+        db.collectStatsSingleThreaded(out);
+
         db.collectFinesWithFutures(out);
 
         db.collectFinesWithExecutorService(out);
-
-        db.collectStatsSingleThreaded(out);
     }
 
 }

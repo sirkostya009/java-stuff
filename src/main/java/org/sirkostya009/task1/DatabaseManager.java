@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import lombok.RequiredArgsConstructor;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,10 +19,14 @@ import java.util.stream.Stream;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 
-@RequiredArgsConstructor
 public class DatabaseManager {
 
-    private final Path databaseDirectory;
+    private final File[] allFiles;
+
+    public DatabaseManager(Path pathToDatabase) {
+        this.allFiles = pathToDatabase.toFile().listFiles();
+    }
+
     private final ObjectMapper mapper = new XmlMapper();
 
     {
@@ -85,10 +88,10 @@ public class DatabaseManager {
     public void collectFinesWithFutures(File out) throws ExecutionException, InterruptedException, IOException {
         var future = CompletableFuture.completedFuture(new HashMap<String, Double>());
 
-//        System.out.print("Futures run: ");
-//        var now = Instant.now();
+        System.out.print("Futures run: ");
+        var now = Instant.now();
 
-        for (var file : databaseDirectory.toFile().listFiles())
+        for (var file : allFiles)
             future = future.thenCombineAsync(
                     CompletableFuture.supplyAsync(() -> parseFile(file)), (hashMap, result) -> {
                         result.forEach((string, aDouble) -> {
@@ -98,9 +101,9 @@ public class DatabaseManager {
                         return hashMap;
                     });
 
-//        future.get();
-//        var alsoNow = Instant.now();
-//        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        future.get();
+        var alsoNow = Instant.now();
+        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
 
         mapper.writeValue(out, wrap(future.get()));
     }
@@ -109,7 +112,7 @@ public class DatabaseManager {
         var executor = Executors.newFixedThreadPool(8);
         var violations = new ConcurrentHashMap<String, AtomicReference<Double>>();
 
-        var callables = Stream.of(databaseDirectory.toFile().listFiles())
+        var callables = Stream.of(allFiles)
                 .map(file -> (Callable<Boolean>) () -> {
                     try {
                         parseFile(file, violations);
@@ -119,13 +122,13 @@ public class DatabaseManager {
                     return null;
                 }).toList();
 
-//        System.out.print("Executor run: ");
-//        var now = Instant.now();
+        System.out.print("Executor run: ");
+        var now = Instant.now();
 
         executor.invokeAll(callables);
 
-//        var alsoNow = Instant.now();
-//        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        var alsoNow = Instant.now();
+        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
 
         mapper.writeValue(
                 out,
@@ -140,16 +143,16 @@ public class DatabaseManager {
     public void collectStatsSingleThreaded(File out) throws IOException {
         var violations = new HashMap<String, Double>();
 
-//        System.out.print("Single-threaded run: ");
-//        var now = Instant.now();
+        System.out.print("Single-threaded run: ");
+        var now = Instant.now();
 
-        for (var file : databaseDirectory.toFile().listFiles())
+        for (var file : allFiles)
             try (var parser = new JsonFactory().createParser(file)) {
                 iterateParser(violations, parser);
             }
 
-//        var alsoNow = Instant.now();
-//        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        var alsoNow = Instant.now();
+        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
 
         mapper.writeValue(out, wrap(violations));
     }
