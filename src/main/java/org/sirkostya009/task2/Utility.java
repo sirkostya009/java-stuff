@@ -10,6 +10,8 @@ import java.util.Properties;
 
 public class Utility {
     private static Object parseObject(Class<?> fieldClass, String value, Property propertyAnnotation) {
+        if (value == null) return null;
+
         if (Instant.class.equals(fieldClass))
             return LocalDateTime.parse(
                     value,
@@ -38,9 +40,10 @@ public class Utility {
             var property = properties.getProperty( // should I crash when property is null, or should I just go on?
                     annotation == null || annotation.name().isBlank() ? field.getName() : annotation.name()
             );
+            var object = parseObject(field.getType(), property, annotation);
 
             field.setAccessible(true);
-            field.set(instance, parseObject(field.getType(), property, annotation));
+            if (object != null) field.set(instance, object);
         }
 
         return instance;
