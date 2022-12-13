@@ -95,7 +95,7 @@ public class DatabaseManager {
                     CompletableFuture.supplyAsync(() -> parseFile(file)), (hashMap, result) -> {
                         result.forEach((string, aDouble) -> {
                             hashMap.putIfAbsent(string, .0);
-                            hashMap.put(string, hashMap.get(string) + result.get(string));
+                            hashMap.put(string, hashMap.get(string) + aDouble);
                         });
                         return hashMap;
                     });
