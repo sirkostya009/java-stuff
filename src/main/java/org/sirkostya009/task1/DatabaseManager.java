@@ -88,11 +88,10 @@ public class DatabaseManager {
     public void collectFinesWithFutures(File out) throws ExecutionException, InterruptedException, IOException {
         var future = CompletableFuture.completedFuture(new HashMap<String, Double>());
 
-        System.out.print("Futures run: ");
-        var now = Instant.now();
+        var start = Instant.now();
 
         for (var file : allFiles)
-            future = future.thenCombineAsync(
+            future = future.thenCombineAsync( // creating lambda is a performance penalty
                     CompletableFuture.supplyAsync(() -> parseFile(file)), (hashMap, result) -> {
                         result.forEach((string, aDouble) -> {
                             hashMap.putIfAbsent(string, .0);
@@ -102,8 +101,8 @@ public class DatabaseManager {
                     });
 
         future.get();
-        var alsoNow = Instant.now();
-        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        var stop = Instant.now();
+        System.out.println("Futures run: " + (stop.toEpochMilli() - start.toEpochMilli()));
 
         mapper.writeValue(out, wrap(future.get()));
     }
@@ -112,23 +111,26 @@ public class DatabaseManager {
         var executor = Executors.newFixedThreadPool(8);
         var violations = new ConcurrentHashMap<String, AtomicReference<Double>>();
 
-        var callables = Stream.of(allFiles)
-                .map(file -> (Callable<Boolean>) () -> {
-                    try {
-                        parseFile(file, violations);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    return null;
-                }).toList();
+        var start = Instant.now();
 
-        System.out.print("Executor run: ");
-        var now = Instant.now();
+        // just like with the futures, stream api operations is a performance penalty
+        // yet invokeAll still manages to perform much faster than futures sometimes.
+        // It must have implemented some good performance optimizations under the hood
+        executor.invokeAll(
+                Stream.of(allFiles)
+                        .map(file -> (Callable<Object>) () -> {
+                            try {
+                                parseFile(file, violations);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            return null;
+                        })
+                        .toList()
+        );
 
-        executor.invokeAll(callables);
-
-        var alsoNow = Instant.now();
-        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        var stop = Instant.now();
+        System.out.println("Executor run: " + (stop.toEpochMilli() - start.toEpochMilli()));
 
         mapper.writeValue(
                 out,
@@ -143,16 +145,15 @@ public class DatabaseManager {
     public void collectStatsSingleThreaded(File out) throws IOException {
         var violations = new HashMap<String, Double>();
 
-        System.out.print("Single-threaded run: ");
-        var now = Instant.now();
+        var start = Instant.now();
 
         for (var file : allFiles)
             try (var parser = new JsonFactory().createParser(file)) {
                 iterateParser(violations, parser);
             }
 
-        var alsoNow = Instant.now();
-        System.out.println(alsoNow.toEpochMilli() - now.toEpochMilli());
+        var stop = Instant.now();
+        System.out.println("Single-threaded run: " + (stop.toEpochMilli() - start.toEpochMilli()));
 
         mapper.writeValue(out, wrap(violations));
     }
