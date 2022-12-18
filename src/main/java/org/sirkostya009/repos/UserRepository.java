@@ -25,15 +25,4 @@ public class UserRepository {
                 .filter(user -> user.getUsername().equals(username))
                 .findFirst();
     }
-
-    public Optional<User> save(User user) {
-        if (user == null)
-            return Optional.empty();
-        else if (findByUsername(user.getUsername()).isPresent())
-            return Optional.empty();
-
-        USERS.add(user);
-
-        return Optional.of(user);
-    }
 }

@@ -10,9 +10,12 @@
 
 <ul class="nav justify-content-end">
   <li class="nav-item">
+    <a class="nav-link" href="all_users.jsp">All users</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="authenticate">Log
-      <c:if test="${sessionScope.get('token') != null}"> out</c:if>
-      <c:if test="${sessionScope.get('token') == null}"> in</c:if>
+      <c:if test="${sessionScope.get('user') != null}"> out</c:if>
+      <c:if test="${sessionScope.get('user') == null}"> in</c:if>
     </a>
   </li>
 </ul>

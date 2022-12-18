@@ -1,3 +1,1 @@
-<%@ include file="head.jsp" %>
-
-<%@ include file="menu.jsp" %>
+<%@include file="login.jsp"%>

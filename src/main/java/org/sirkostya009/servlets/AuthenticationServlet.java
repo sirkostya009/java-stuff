@@ -22,17 +22,17 @@ public class AuthenticationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        var token = service.authenticate(
+        var user = service.authenticate(
                 request.getParameter("username"),
                 request.getParameter("password")
         );
 
-        if (token == null) {
+        if (user == null) {
             redirect(response, request, "/login.jsp?retry=1");
             return;
         }
 
-        request.getSession().setAttribute("token", token);
+        request.getSession().setAttribute("user", user);
 
         redirect(response, request, "/profile");
     }
