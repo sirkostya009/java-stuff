@@ -16,7 +16,6 @@
         </tr>
         </thead>
         <tbody>
-            <%--gotta make this shit work--%>
         <c:forEach var="user" items="${sessionScope.get('users')}">
             <tr>
                 <td>${user.name}</td>
