@@ -1,7 +1,8 @@
 package org.sirkostya009.filters;
 
 import org.sirkostya009.models.User;
-import org.sirkostya009.service.AuthenticationService;
+import org.sirkostya009.service.UserService;
+import org.sirkostya009.service.UserServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -12,7 +13,7 @@ import java.io.IOException;
 @WebFilter({"/profile", "/profile.jsp", "/all_users.jsp"})
 public class AuthenticationFilter implements Filter {
 
-    private final AuthenticationService service = new AuthenticationService();
+    private final UserService service = new UserServiceImpl();
 
     @Override
     public void doFilter(ServletRequest servletRequest,

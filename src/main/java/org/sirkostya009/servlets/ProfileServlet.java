@@ -1,6 +1,7 @@
 package org.sirkostya009.servlets;
 
-import org.sirkostya009.repos.UserRepository;
+import org.sirkostya009.service.UserService;
+import org.sirkostya009.service.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +12,11 @@ import java.io.IOException;
 @WebServlet(name = "ProfileServlet", value = "/profile")
 public class ProfileServlet extends HttpServlet {
 
-    private final UserRepository repository = new UserRepository();
+    private final UserService service = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().setAttribute("users", repository.findAll());
+        request.getSession().setAttribute("users", service.findAll());
 
         response.sendRedirect(request.getContextPath() + "/profile.jsp");
     }

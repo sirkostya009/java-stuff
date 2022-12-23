@@ -1,6 +1,7 @@
 package org.sirkostya009.servlets;
 
-import org.sirkostya009.service.AuthenticationService;
+import org.sirkostya009.service.UserService;
+import org.sirkostya009.service.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "AuthenticationServlet", value = "/authenticate")
 public class AuthenticationServlet extends HttpServlet {
 
-    private final AuthenticationService service = new AuthenticationService();
+    private final UserService service = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
