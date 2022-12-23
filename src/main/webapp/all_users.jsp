@@ -7,6 +7,8 @@
 --%>
 <%@include file="menu.jsp"%>
 
+<title>Users</title>
+
 <c:if test="${sessionScope.get('user') != null}">
     <table class="table table-hover w-50">
         <thead>
