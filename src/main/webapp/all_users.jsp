@@ -9,21 +9,19 @@
 
 <title>Users</title>
 
-<c:if test="${sessionScope.get('user') != null}">
-    <table class="table table-hover w-50">
-        <thead>
+<table class="table table-hover w-50">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="user" items="${applicationScope.get('users')}">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Username</th>
+            <td>${user.name}</td>
+            <td>${user.username}</td>
         </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="user" items="${sessionScope.get('users')}">
-            <tr>
-                <td>${user.name}</td>
-                <td>${user.username}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</c:if>
+    </c:forEach>
+    </tbody>
+</table>

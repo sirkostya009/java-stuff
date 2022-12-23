@@ -16,7 +16,7 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().setAttribute("users", service.findAll());
+        getServletContext().setAttribute("users", service.findAll());
 
         response.sendRedirect(request.getContextPath() + "/profile.jsp");
     }
