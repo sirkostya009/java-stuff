@@ -5,6 +5,6 @@
         <c:redirect url="/authenticate"/>
     </c:when>
     <c:otherwise>
-        <c:redirect url="/profile"/>
+        <c:redirect url="/profile.jsp"/>
     </c:otherwise>
 </c:choose>

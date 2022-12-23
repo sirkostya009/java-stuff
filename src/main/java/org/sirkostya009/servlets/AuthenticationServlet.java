@@ -35,7 +35,10 @@ public class AuthenticationServlet extends HttpServlet {
 
         request.getSession().setAttribute("user", user);
 
-        redirect(response, request, "/profile");
+        // update users whenever someone new logs in
+        getServletContext().setAttribute("users", service.findAll());
+
+        redirect(response, request, "/profile.jsp");
     }
 
     private void redirect(HttpServletResponse response, HttpServletRequest request, String url) throws IOException {

@@ -10,7 +10,7 @@
 
 <c:set var="firstMenuItemLink">
   <c:if test='<%=request.getRequestURI().endsWith("all_users.jsp")%>'>
-    <%=request.getContextPath() + "/profile"%>
+    <%=request.getContextPath() + "/profile.jsp"%>
   </c:if>
   <c:if test='<%=request.getRequestURI().endsWith("profile.jsp")%>'>
     <%=request.getContextPath() + "/all_users.jsp"%>
@@ -21,7 +21,7 @@
   <li class="nav-item">
     <a class="nav-link" href="${firstMenuItemLink}">
       <c:if test="${firstMenuItemLink.endsWith('/all_users.jsp')}">All users</c:if>
-      <c:if test="${firstMenuItemLink.endsWith('/profile')}">Profile</c:if>
+      <c:if test="${firstMenuItemLink.endsWith('/profile.jsp')}">Profile</c:if>
     </a>
   </li>
   <li class="nav-item">
