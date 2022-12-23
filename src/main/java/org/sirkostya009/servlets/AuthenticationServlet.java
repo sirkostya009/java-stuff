@@ -1,7 +1,7 @@
 package org.sirkostya009.servlets;
 
-import org.sirkostya009.service.UserService;
-import org.sirkostya009.service.UserServiceImpl;
+import org.sirkostya009.services.UserService;
+import org.sirkostya009.services.UserServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

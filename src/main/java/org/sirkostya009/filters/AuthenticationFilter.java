@@ -1,8 +1,8 @@
 package org.sirkostya009.filters;
 
 import org.sirkostya009.models.User;
-import org.sirkostya009.service.UserService;
-import org.sirkostya009.service.UserServiceImpl;
+import org.sirkostya009.services.UserService;
+import org.sirkostya009.services.UserServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

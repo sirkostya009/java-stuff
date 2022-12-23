@@ -1,4 +1,4 @@
-package org.sirkostya009.service;
+package org.sirkostya009.services;
 
 import org.sirkostya009.models.User;
 
