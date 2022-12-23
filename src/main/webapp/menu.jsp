@@ -8,9 +8,21 @@
 
 <%@ include file="head.jsp"%>
 
+<c:set var="firstMenuItemLink">
+  <c:if test='<%=request.getRequestURI().endsWith("all_users.jsp")%>'>
+    <%=request.getContextPath() + "/profile"%>
+  </c:if>
+  <c:if test='<%=request.getRequestURI().endsWith("profile.jsp")%>'>
+    <%=request.getContextPath() + "/all_users.jsp"%>
+  </c:if>
+</c:set>
+
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link" href="all_users.jsp">All users</a>
+    <a class="nav-link" href="${firstMenuItemLink}">
+      <c:if test="${firstMenuItemLink.endsWith('/all_users.jsp')}">All users</c:if>
+      <c:if test="${firstMenuItemLink.endsWith('/profile')}">Profile</c:if>
+    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="authenticate">Log
