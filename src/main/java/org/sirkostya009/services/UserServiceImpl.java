@@ -24,14 +24,14 @@ public class UserServiceImpl implements UserService {
         return USERS.stream()
                 .filter(user -> user.getUsername().equals(username))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("user with username " + username + " could not be found"));
+                .orElse(null);
     }
 
     @Override
     public User authenticate(String username, String password) {
         var user = findByUsername(username);
 
-        return user.getPassword().equals(password) ? user : null;
+        return (user != null && user.getPassword().equals(password)) ? user : null;
     }
 
     @Override
