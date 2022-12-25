@@ -31,7 +31,7 @@
     <c:if test="${param.get('retry') == '1'}">
         Username or password incorrect. Try again.
     </c:if>
-    <form method="post" action="authenticate" class="form">
+    <form method="post" action="login" class="form">
         <label for="username">
             <input type="text" name="username" id="username" placeholder="username" required>
         </label>

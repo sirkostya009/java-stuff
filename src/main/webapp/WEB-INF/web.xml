@@ -8,4 +8,9 @@
         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>Java Stuff</display-name>
+
+    <context-param>
+        <param-name>jspPath</param-name>
+        <param-value>/WEB-INF/jsp/</param-value>
+    </context-param>
 </web-app>

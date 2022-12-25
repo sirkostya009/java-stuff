@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter({"/profile", "/profile.jsp", "/all_users.jsp"})
+@WebFilter({"/profile", "/all-users"})
 public class AuthenticationFilter implements Filter {
 
     private final UserService service = new UserServiceImpl();
@@ -25,7 +25,7 @@ public class AuthenticationFilter implements Filter {
         var user = (User) request.getSession().getAttribute("user");
 
         if (service.userExists(user)) chain.doFilter(request, response);
-        else response.sendRedirect(request.getContextPath() + "/authenticate");
+        else response.sendRedirect(request.getContextPath() + "/login");
     }
 
 }
