@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    boolean userExists(String username);
+    boolean userExists(User user);
 
     Optional<User> findByUsername(String username);
 

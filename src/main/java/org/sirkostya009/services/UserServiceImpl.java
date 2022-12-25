@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
     ));
 
     @Override
-    public boolean userExists(String username) {
-        return USERS.stream().anyMatch(user -> user.getUsername().equals(username));
+    public boolean userExists(User user) {
+        return USERS.contains(user);
     }
 
     @Override
