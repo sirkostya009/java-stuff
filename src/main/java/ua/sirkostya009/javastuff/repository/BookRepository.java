@@ -13,7 +13,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("select b from Book b where b.genre = :genre")
     List<Book> findByGenre(Genre genre);
 
-
     @Query("""
             select b from Book b
             where (:author is not null and upper(b.author) like upper(concat('%', :author, '%')))

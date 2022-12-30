@@ -55,14 +55,19 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book update(Long id, BookInfo info) {
-        var found = get(id);
-        found.setAuthor(info.getAuthor());
-        found.setGenre(genreService.get(info.getGenreId()));
-        return found;
+        var book = get(id);
+        if (info.getAuthor() != null && !info.getAuthor().isBlank()) book.setAuthor(info.getAuthor());
+        if (info.getGenreId() != null) book.setGenre(genreService.get(info.getGenreId()));
+        if (info.getTitle() != null && !info.getTitle().isBlank()) book.setTitle(info.getTitle());
+        return bookRepository.save(book);
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
-        bookRepository.delete(get(id));
+        var book = get(id);
+        book.getGenre().getBooks().remove(book);
+        book.setGenre(null);
+        bookRepository.delete(book);
     }
 }

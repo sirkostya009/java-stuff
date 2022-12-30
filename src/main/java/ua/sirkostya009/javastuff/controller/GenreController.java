@@ -7,6 +7,7 @@ import ua.sirkostya009.javastuff.dto.GenreInfo;
 import ua.sirkostya009.javastuff.service.GenreService;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -16,16 +17,20 @@ public class GenreController {
     private final GenreService service;
 
     @GetMapping
-    public List<GenreInfo> categories() {
-        return service.all().stream().map(this::toInfo).toList();
+    public List<GenreInfo> all() {
+        return toInfo(service.all());
     }
 
     @PostMapping
-    public GenreInfo post(@RequestBody GenreInfo info) {
+    public GenreInfo post(@Valid @RequestBody GenreInfo info) {
         return toInfo(service.add(info));
     }
 
     private @Valid GenreInfo toInfo(Genre genre) {
         return new GenreInfo(genre.getId(), genre.getName());
+    }
+
+    private List<@Valid GenreInfo> toInfo(Collection<Genre> genres) {
+        return genres.stream().map(this::toInfo).toList();
     }
 }

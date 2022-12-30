@@ -29,7 +29,7 @@ public class BookController {
         return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalPages());
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/genre/{id}")
     public List<BookInfo> byGenre(@PathVariable Long id) {
         return toInfo(bookService.byGenre(genreService.get(id)));
     }
@@ -46,7 +46,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public BookInfo update(@PathVariable Long id, @Valid @RequestBody BookInfo info) {
+    public BookInfo update(@PathVariable Long id, @RequestBody BookInfo info) {
         return toInfo(bookService.update(id, info));
     }
 

@@ -18,6 +18,6 @@ public class Genre {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Book> books;
 }
