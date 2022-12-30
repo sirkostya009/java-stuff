@@ -1,7 +1,10 @@
 package ua.sirkostya009.javastuff.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.BookInfo;
@@ -16,24 +19,32 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final GenreService genreService;
 
+    private final static int BOOKS_PER_PAGE = 10;
+
     @Override
-    public List<Book> all() {
-        return bookRepository.findAll();
+    public Page<Book> find(String author, String title, int page) {
+        return bookRepository.findByAuthorOrTitle(author, title, PageRequest.of(page, BOOKS_PER_PAGE));
     }
 
     @Override
-    public List<Book> byCategory(Genre genre) {
-        return bookRepository.findByCategory(genre);
+    public List<Book> byGenre(Genre genre) {
+        return bookRepository.findByGenre(genre);
     }
 
     @Override
+    @Transactional
     public Book add(BookInfo info) {
-        return bookRepository.save(new Book(
+        var book = bookRepository.save(new Book(
                 null,
                 info.getTitle(),
                 info.getAuthor(),
-                info.getCategoryId() != null ? genreService.get(info.getCategoryId()) : null
+                info.getGenreId() != null ? genreService.get(info.getGenreId()) : null
         ));
+
+        if (info.getGenreId() != null)
+            genreService.get(info.getGenreId()).getBooks().add(book);
+
+        return book;
     }
 
     @Override
@@ -46,7 +57,7 @@ public class BookServiceImpl implements BookService {
     public Book update(Long id, BookInfo info) {
         var found = get(id);
         found.setAuthor(info.getAuthor());
-        found.setGenre(genreService.get(info.getCategoryId()));
+        found.setGenre(genreService.get(info.getGenreId()));
         return found;
     }
 

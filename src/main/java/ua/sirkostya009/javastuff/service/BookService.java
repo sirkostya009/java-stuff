@@ -1,5 +1,6 @@
 package ua.sirkostya009.javastuff.service;
 
+import org.springframework.data.domain.Page;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.BookInfo;
@@ -7,9 +8,9 @@ import ua.sirkostya009.javastuff.dto.BookInfo;
 import java.util.List;
 
 public interface BookService {
-    List<Book> all();
+    Page<Book> find(String author, String title, int page);
 
-    List<Book> byCategory(Genre genre);
+    List<Book> byGenre(Genre genre);
 
     Book add(BookInfo info);
 

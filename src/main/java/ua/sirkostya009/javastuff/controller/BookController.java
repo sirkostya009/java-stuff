@@ -1,6 +1,8 @@
 package ua.sirkostya009.javastuff.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.sirkostya009.javastuff.dao.Book;
@@ -9,7 +11,6 @@ import ua.sirkostya009.javastuff.service.BookService;
 import ua.sirkostya009.javastuff.service.GenreService;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,13 +22,16 @@ public class BookController {
     private final GenreService genreService;
 
     @GetMapping
-    public List<BookInfo> books() {
-        return toInfo(bookService.all());
+    public Page<BookInfo> books(@RequestParam(value = "page", defaultValue = "0") int page,
+                                @RequestParam(value = "author", required = false) String author,
+                                @RequestParam(value = "title", required = false) String title) {
+        var p = bookService.find(author, title, page);
+        return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalPages());
     }
 
     @GetMapping("/category/{id}")
-    public List<BookInfo> byCategory(@PathVariable Long id) {
-        return toInfo(bookService.byCategory(genreService.get(id)));
+    public List<BookInfo> byGenre(@PathVariable Long id) {
+        return toInfo(bookService.byGenre(genreService.get(id)));
     }
 
     @PostMapping
@@ -50,12 +54,6 @@ public class BookController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         bookService.delete(id);
-    }
-
-    @GetMapping("")
-    public BookInfo search(@PathParam("author") String author,
-                           @PathParam("title") String title) {
-        return toInfo(bookService.get(1L));
     }
 
     private @Valid BookInfo toInfo(Book book) {

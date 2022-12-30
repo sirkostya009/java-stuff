@@ -17,5 +17,5 @@ public @Data class BookInfo {
     private String author;
 
     @NotNull
-    private Long categoryId;
+    private Long genreId;
 }
