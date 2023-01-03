@@ -9,6 +9,8 @@
 
 <title>Profile</title>
 
-<c:if test="${sessionScope.get('user') != null}">
-  <h1>Henlo, ${sessionScope.get('user').name}</h1>
+<jsp:useBean id="user" scope="session" type="org.sirkostya009.models.User"/>
+
+<c:if test="${not empty user}">
+  <h1>Henlo, ${user.name}</h1>
 </c:if>

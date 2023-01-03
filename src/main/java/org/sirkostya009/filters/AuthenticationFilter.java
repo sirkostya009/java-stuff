@@ -24,8 +24,11 @@ public class AuthenticationFilter implements Filter {
 
         var user = (User) request.getSession().getAttribute("user");
 
-        if (service.userExists(user)) chain.doFilter(request, response);
-        else response.sendRedirect(request.getContextPath() + "/login");
+        if (service.userExists(user)) {
+            chain.doFilter(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
     }
 
 }
