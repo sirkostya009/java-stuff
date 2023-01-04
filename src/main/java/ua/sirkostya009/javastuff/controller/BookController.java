@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dto.BookInfo;
 import ua.sirkostya009.javastuff.service.BookService;
-import ua.sirkostya009.javastuff.service.GenreService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -19,35 +18,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
-    private final GenreService genreService;
 
     @GetMapping
     public Page<BookInfo> books(@RequestParam(value = "page", defaultValue = "0") int page,
                                 @RequestParam(value = "author", required = false) String author,
                                 @RequestParam(value = "title", required = false) String title) {
-        var p = bookService.find(author, title, page);
-        return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalPages());
+        var p = bookService.findBy(author, title, page);
+        return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalElements());
     }
 
-    @GetMapping("/genre/{id}")
+    @GetMapping("/genre-{id}")
     public List<BookInfo> byGenre(@PathVariable Long id) {
-        return toInfo(bookService.byGenre(genreService.get(id)));
+        return toInfo(bookService.byGenre(id));
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public BookInfo post(@RequestBody @Valid BookInfo info) {
-        return toInfo(bookService.add(info));
+        return BookInfo.of(bookService.add(info));
     }
 
     @GetMapping("/{id}")
     public BookInfo get(@PathVariable Long id) {
-        return toInfo(bookService.get(id));
+        return BookInfo.of(bookService.findBy(id));
     }
 
     @PutMapping("/{id}")
     public BookInfo update(@PathVariable Long id, @RequestBody BookInfo info) {
-        return toInfo(bookService.update(id, info));
+        return BookInfo.of(bookService.update(id, info));
     }
 
     @DeleteMapping("/{id}")
@@ -56,11 +54,7 @@ public class BookController {
         bookService.delete(id);
     }
 
-    private @Valid BookInfo toInfo(Book book) {
-        return new BookInfo(book.getId(), book.getTitle(), book.getAuthor(), book.getGenre().getId());
-    }
-
     private List<@Valid BookInfo> toInfo(Collection<Book> books) {
-        return books.stream().map(this::toInfo).toList();
+        return books.stream().map(BookInfo::of).toList();
     }
 }

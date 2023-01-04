@@ -6,9 +6,9 @@ import ua.sirkostya009.javastuff.dto.GenreInfo;
 import java.util.List;
 
 public interface GenreService {
-    List<Genre> all();
+    List<Genre> findAll();
 
     Genre add(GenreInfo info);
 
-    Genre get(Long id);
+    Genre findBy(Long id);
 }

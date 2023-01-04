@@ -18,19 +18,15 @@ public class GenreController {
 
     @GetMapping
     public List<GenreInfo> all() {
-        return toInfo(service.all());
+        return toInfo(service.findAll());
     }
 
     @PostMapping
     public GenreInfo post(@Valid @RequestBody GenreInfo info) {
-        return toInfo(service.add(info));
-    }
-
-    private @Valid GenreInfo toInfo(Genre genre) {
-        return new GenreInfo(genre.getId(), genre.getName());
+        return GenreInfo.of(service.add(info));
     }
 
     private List<@Valid GenreInfo> toInfo(Collection<Genre> genres) {
-        return genres.stream().map(this::toInfo).toList();
+        return genres.stream().map(GenreInfo::of).toList();
     }
 }
