@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dto.BookInfo;
 import ua.sirkostya009.javastuff.exception.NotFoundException;
+import ua.sirkostya009.javastuff.mapper.BookMapper;
 import ua.sirkostya009.javastuff.repository.BookRepository;
 
 import javax.transaction.Transactional;
@@ -17,6 +18,7 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
     private final BookRepository repository;
     private final GenreService genreService;
+    private final BookMapper bookMapper;
 
     private final static int BOOKS_PER_PAGE = 10;
 
@@ -48,18 +50,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public Book update(Long id, BookInfo info) {
-        if (info.getGenreId() != null)
-            try { repository.updateBookGenre(id, genreService.findBy(id)); }
-            catch (Exception ignored) {}
-
-        if (info.getAuthor() != null && !info.getAuthor().isBlank())
-            repository.updateBookAuthor(id, info.getAuthor().trim());
-
-        if (info.getTitle() != null && !info.getTitle().isBlank())
-            repository.updateBookTitle(id, info.getTitle().trim());
-
-        return findBy(id);
+    public Book update(Long id, BookInfo bookInfo) {
+        Book book = bookMapper.mapToBook(bookInfo);
+        return repository.save(book);
     }
 
     @Override
