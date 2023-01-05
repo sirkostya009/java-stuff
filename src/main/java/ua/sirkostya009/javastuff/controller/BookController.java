@@ -27,7 +27,7 @@ public class BookController {
         return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalElements());
     }
 
-    @GetMapping("/genre-{id}")
+    @GetMapping("/genre/{id}") // use @PathVariable as another path in url
     public List<BookInfo> byGenre(@PathVariable Long id) {
         return toInfo(bookService.byGenre(id));
     }
@@ -45,7 +45,8 @@ public class BookController {
 
     @PutMapping("/{id}")
     public BookInfo update(@PathVariable Long id, @RequestBody BookInfo info) {
-        return BookInfo.of(bookService.update(id, info));
+        Book persisted = bookService.update(id, info);
+        return BookInfo.of(persisted);
     }
 
     @DeleteMapping("/{id}")
@@ -54,7 +55,7 @@ public class BookController {
         bookService.delete(id);
     }
 
-    private List<@Valid BookInfo> toInfo(Collection<Book> books) {
+    private List<BookInfo> toInfo(Collection<Book> books) {
         return books.stream().map(BookInfo::of).toList();
     }
 }

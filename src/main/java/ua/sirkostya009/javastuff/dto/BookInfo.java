@@ -12,16 +12,19 @@ import javax.validation.constraints.NotNull;
 public @Data class BookInfo {
     private Long id;
 
-    @NotBlank @NotNull
+    @NotBlank
+    @NotNull
     private String title;
 
-    @NotBlank @NotNull
+    @NotBlank
+    @NotNull
     private String author;
 
     @NotNull
     private Long genreId;
 
-    public static @Valid BookInfo of(Book book) {
+    @Valid
+    public static BookInfo of(Book book) {
         return new BookInfo(
                 book.getId(),
                 book.getTitle(),
@@ -29,4 +32,5 @@ public @Data class BookInfo {
                 book.getGenre().getId()
         );
     }
+
 }
