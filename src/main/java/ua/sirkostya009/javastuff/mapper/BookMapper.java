@@ -1,19 +1,24 @@
 package ua.sirkostya009.javastuff.mapper;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dto.BookInfo;
+import ua.sirkostya009.javastuff.service.GenreService;
 
 @Service
+@RequiredArgsConstructor
 public class BookMapper {
 
-    public Book mapToBook(BookInfo bookInfo) {
-        Book book = new Book();
-        book.setId(bookInfo.getId());
-        book.setAuthor(bookInfo.getAuthor());
-//        book.setGenre(bookInfo.getGenreId()); - this is another question:)
-        bookInfo.setTitle(bookInfo.getTitle());
-        return book;
+    private final GenreService service;
+
+    public Book mapToBook(BookInfo info) {
+        return new Book(
+                info.getId(),
+                info.getAuthor().trim(),
+                info.getTitle().trim(),
+                service.findBy(info.getGenreId())
+        );
     }
 
 }

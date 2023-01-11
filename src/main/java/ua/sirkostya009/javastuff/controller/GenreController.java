@@ -26,7 +26,7 @@ public class GenreController {
         return GenreInfo.of(service.add(info));
     }
 
-    private List<@Valid GenreInfo> toInfo(Collection<Genre> genres) {
+    private List<GenreInfo> toInfo(Collection<Genre> genres) {
         return genres.stream().map(GenreInfo::of).toList();
     }
 }

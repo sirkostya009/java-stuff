@@ -12,10 +12,12 @@ import javax.validation.constraints.NotNull;
 public @Data class GenreInfo {
     private Long id;
 
-    @NotBlank @NotNull
+    @NotNull
+    @NotBlank
     private String name;
 
-    public static @Valid GenreInfo of(Genre genre) {
+    @Valid
+    public static GenreInfo of(Genre genre) {
         return new GenreInfo(
                 genre.getId(),
                 genre.getName()

@@ -29,7 +29,7 @@ public class BookController {
 
     @GetMapping("/genre/{id}") // use @PathVariable as another path in url
     public List<BookInfo> byGenre(@PathVariable Long id) {
-        return toInfo(bookService.byGenre(id));
+        return toInfo(bookService.findByGenreId(id));
     }
 
     @PostMapping
@@ -44,7 +44,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public BookInfo update(@PathVariable Long id, @RequestBody BookInfo info) {
+    public BookInfo update(@PathVariable Long id, @RequestBody @Valid BookInfo info) {
         Book persisted = bookService.update(id, info);
         return BookInfo.of(persisted);
     }

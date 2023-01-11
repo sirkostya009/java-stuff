@@ -9,7 +9,7 @@ import java.util.List;
 public interface BookService {
     Page<Book> findBy(String author, String title, int page);
 
-    List<Book> byGenre(Long id);
+    List<Book> findByGenreId(Long id);
 
     Book add(BookInfo info);
 

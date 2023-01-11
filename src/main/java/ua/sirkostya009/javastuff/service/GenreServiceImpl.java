@@ -22,7 +22,7 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public Genre add(GenreInfo info) {
-        return repository.save(new Genre(null, info.getName(), Set.of()));
+        return repository.save(new Genre(null, info.getName().trim(), Set.of()));
     }
 
     @Override

@@ -17,8 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
     private final BookRepository repository;
-    private final GenreService genreService;
-    private final BookMapper bookMapper;
+    private final BookMapper mapper;
 
     private final static int BOOKS_PER_PAGE = 10;
 
@@ -28,18 +27,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> byGenre(Long id) {
-        return repository.findByGenre(id);
+    public List<Book> findByGenreId(Long id) {
+        return repository.findByGenreId(id);
     }
 
     @Override
     public Book add(BookInfo info) {
-        return repository.save(new Book(
-                null,
-                info.getTitle(),
-                info.getAuthor(),
-                info.getGenreId() != null ? genreService.findBy(info.getGenreId()) : null
-        ));
+        return repository.save(mapper.mapToBook(info));
     }
 
     @Override
@@ -50,9 +44,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public Book update(Long id, BookInfo bookInfo) {
-        Book book = bookMapper.mapToBook(bookInfo);
-        return repository.save(book);
+    public Book update(Long id, BookInfo info) {
+        info.setId(id); // purposefully ignore info's provided id
+        return repository.save(mapper.mapToBook(info));
     }
 
     @Override
