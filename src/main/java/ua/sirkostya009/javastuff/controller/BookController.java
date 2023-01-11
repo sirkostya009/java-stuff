@@ -27,7 +27,7 @@ public class BookController {
         return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalElements());
     }
 
-    @GetMapping("/genre/{id}") // use @PathVariable as another path in url
+    @GetMapping("/genre/{id}")
     public List<BookInfo> byGenre(@PathVariable Long id) {
         return toInfo(bookService.findByGenreId(id));
     }
