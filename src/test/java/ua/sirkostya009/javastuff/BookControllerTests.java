@@ -2,15 +2,13 @@ package ua.sirkostya009.javastuff;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Book;
@@ -25,7 +23,6 @@ import java.util.Set;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
         classes = Main.class
@@ -45,7 +42,7 @@ public class BookControllerTests {
     @Autowired
     private ObjectMapper mapper;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         var uncategorized = genreRepository.save(new Genre(null, "Uncategorized", Set.of()));
         var sciFi = genreRepository.save(new Genre(null, "Sci-Fi", Set.of()));
@@ -53,7 +50,7 @@ public class BookControllerTests {
         bookRepository.save(new Book(null, "Science fiction book", "Author 2", sciFi));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         bookRepository.deleteAll();
         genreRepository.deleteAll();
@@ -72,13 +69,13 @@ public class BookControllerTests {
                 .getResponse()
                 .getContentAsString();
 
-        var actualBooks = parseObject(
-                response.substring(response.indexOf('['), response.indexOf(']')),
+        var returnedInfos = parseObject(
+                response.substring(response.indexOf('['), response.indexOf(']') + 1),
                 BookInfo[].class
         );
-        var expectedBooks = bookRepository.findAll().stream().map(BookInfo::of).toList();
+        var persistedInfos = bookRepository.findAll().stream().map(BookInfo::of).toList();
 
-        assertThat(Arrays.asList(actualBooks)).isEqualTo(expectedBooks);
+        assertThat(Arrays.asList(returnedInfos)).isEqualTo(persistedInfos);
     }
 
     @Test
@@ -86,25 +83,25 @@ public class BookControllerTests {
         var info = new BookInfo(null, "Another sci-fi book", "Author 3", 2L);
 
         var request = MockMvcRequestBuilders
-                .post("/api/v1/books")
+                .post("/api/v1/books/")
                 .accept(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(info))
                 .contentType(MediaType.APPLICATION_JSON);
 
-        var json = mvc
+        var response = mvc
                 .perform(request)
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
-        var actualBook = parseObject(json, BookInfo.class);
-        var expectedBook = bookRepository.findById(3L).get();
+        var returnedInfo = parseObject(response, BookInfo.class);
+        var persistedBook = bookRepository.findById(3L).get();
 
-        assertThat(actualBook.getId()).isEqualTo(expectedBook.getId());
-        assertThat(actualBook.getTitle()).isEqualTo(expectedBook.getTitle());
-        assertThat(actualBook.getAuthor()).isEqualTo(expectedBook.getAuthor());
-        assertThat(actualBook.getGenreId()).isEqualTo(expectedBook.getGenre().getId());
+        assertThat(returnedInfo.getId()).isEqualTo(persistedBook.getId());
+        assertThat(returnedInfo.getTitle()).isEqualTo(persistedBook.getTitle());
+        assertThat(returnedInfo.getAuthor()).isEqualTo(persistedBook.getAuthor());
+        assertThat(returnedInfo.getGenreId()).isEqualTo(persistedBook.getGenre().getId());
     }
 
     @Test
@@ -113,20 +110,21 @@ public class BookControllerTests {
                 .get("/api/v1/books/1")
                 .accept(MediaType.APPLICATION_JSON);
 
-        var json = mvc
+        System.out.println(bookRepository.findAll());
+        var response = mvc
                 .perform(request)
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
-        var actualBook = parseObject(json, BookInfo.class);
-        var expectedBook = bookRepository.findById(1L).get();
+        var returnedInfo = parseObject(response, BookInfo.class);
+        var persistedBook = bookRepository.findById(1L).get();
 
-        assertThat(actualBook.getId()).isEqualTo(expectedBook.getId());
-        assertThat(actualBook.getTitle()).isEqualTo(expectedBook.getTitle());
-        assertThat(actualBook.getAuthor()).isEqualTo(expectedBook.getAuthor());
-        assertThat(actualBook.getGenreId()).isEqualTo(expectedBook.getGenre().getId());
+        assertThat(returnedInfo.getId()).isEqualTo(persistedBook.getId());
+        assertThat(returnedInfo.getTitle()).isEqualTo(persistedBook.getTitle());
+        assertThat(returnedInfo.getAuthor()).isEqualTo(persistedBook.getAuthor());
+        assertThat(returnedInfo.getGenreId()).isEqualTo(persistedBook.getGenre().getId());
     }
 
     @Test
@@ -139,17 +137,17 @@ public class BookControllerTests {
                 .content(mapper.writeValueAsString(info))
                 .contentType(MediaType.APPLICATION_JSON);
 
-        var json = mvc
+        var response = mvc
                 .perform(request)
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
-        var actualBook = parseObject(json, BookInfo.class);
-        var expectedBook = bookRepository.findById(1L).get();
+        var returnedInfo = parseObject(response, BookInfo.class);
+        var persistedBook = bookRepository.findById(1L).get();
 
-        assertThat(actualBook).isEqualTo(expectedBook);
+        assertThat(returnedInfo).isEqualTo(persistedBook);
     }
 
     @Test
