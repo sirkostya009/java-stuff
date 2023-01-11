@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Book;
@@ -21,6 +20,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(
@@ -60,7 +60,7 @@ public class BookControllerTests {
     public void testGetAllBooks() throws Exception {
         var request = MockMvcRequestBuilders
                 .get("/api/v1/books")
-                .accept(MediaType.APPLICATION_JSON);
+                .accept(APPLICATION_JSON);
 
         var response = mvc
                 .perform(request)
@@ -83,10 +83,10 @@ public class BookControllerTests {
         var info = new BookInfo(null, "Another sci-fi book", "Author 3", 2L);
 
         var request = MockMvcRequestBuilders
-                .post("/api/v1/books/")
-                .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(info))
-                .contentType(MediaType.APPLICATION_JSON);
+                .post("/api/v1/books")
+                .content(mapper.writeValueAsBytes(info))
+                .accept(APPLICATION_JSON)
+                .contentType(APPLICATION_JSON);
 
         var response = mvc
                 .perform(request)
@@ -95,20 +95,17 @@ public class BookControllerTests {
                 .getResponse()
                 .getContentAsString();
 
-        var returnedInfo = parseObject(response, BookInfo.class);
-        var persistedBook = bookRepository.findById(3L).get();
-
-        assertThat(returnedInfo.getId()).isEqualTo(persistedBook.getId());
-        assertThat(returnedInfo.getTitle()).isEqualTo(persistedBook.getTitle());
-        assertThat(returnedInfo.getAuthor()).isEqualTo(persistedBook.getAuthor());
-        assertThat(returnedInfo.getGenreId()).isEqualTo(persistedBook.getGenre().getId());
+        assertEquality(
+                parseObject(response, BookInfo.class),
+                bookRepository.findById(3L).orElseThrow()
+        );
     }
 
     @Test
     public void testGetBookById() throws Exception {
         var request = MockMvcRequestBuilders
                 .get("/api/v1/books/1")
-                .accept(MediaType.APPLICATION_JSON);
+                .accept(APPLICATION_JSON);
 
         System.out.println(bookRepository.findAll());
         var response = mvc
@@ -118,13 +115,10 @@ public class BookControllerTests {
                 .getResponse()
                 .getContentAsString();
 
-        var returnedInfo = parseObject(response, BookInfo.class);
-        var persistedBook = bookRepository.findById(1L).get();
-
-        assertThat(returnedInfo.getId()).isEqualTo(persistedBook.getId());
-        assertThat(returnedInfo.getTitle()).isEqualTo(persistedBook.getTitle());
-        assertThat(returnedInfo.getAuthor()).isEqualTo(persistedBook.getAuthor());
-        assertThat(returnedInfo.getGenreId()).isEqualTo(persistedBook.getGenre().getId());
+        assertEquality(
+                parseObject(response, BookInfo.class),
+                bookRepository.findById(1L).orElseThrow()
+        );
     }
 
     @Test
@@ -133,9 +127,9 @@ public class BookControllerTests {
 
         var request = MockMvcRequestBuilders
                 .put("/api/v1/books/1")
-                .accept(MediaType.APPLICATION_JSON)
+                .accept(APPLICATION_JSON)
                 .content(mapper.writeValueAsString(info))
-                .contentType(MediaType.APPLICATION_JSON);
+                .contentType(APPLICATION_JSON);
 
         var response = mvc
                 .perform(request)
@@ -144,26 +138,27 @@ public class BookControllerTests {
                 .getResponse()
                 .getContentAsString();
 
-        var returnedInfo = parseObject(response, BookInfo.class);
-        var persistedBook = bookRepository.findById(1L).get();
-
-        assertThat(returnedInfo).isEqualTo(persistedBook);
+        assertEquality(
+                parseObject(response, BookInfo.class),
+                bookRepository.findById(1L).orElseThrow()
+        );
     }
 
     @Test
     public void testDeleteBook() throws Exception {
         var request = MockMvcRequestBuilders
                 .delete("/api/v1/books/1")
-                .accept(MediaType.APPLICATION_JSON);
+                .accept(APPLICATION_JSON);
 
-        mvc.perform(request)
-                .andExpect(status().isNoContent())
-                .andReturn();
-
+        mvc.perform(request).andExpect(status().isNoContent());
         assertThat(bookRepository.existsById(1L)).isFalse();
     }
 
     private <T> T parseObject(String json, Class<T> clazz) throws JsonProcessingException {
         return mapper.readValue(json, clazz);
+    }
+
+    private void assertEquality(BookInfo info, Book book) {
+        assertThat(info).isEqualTo(BookInfo.of(book));
     }
 }
