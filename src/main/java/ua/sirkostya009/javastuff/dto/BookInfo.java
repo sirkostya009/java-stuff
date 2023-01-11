@@ -23,8 +23,7 @@ public @Data class BookInfo {
     @NotNull
     private Long genreId;
 
-    @Valid
-    public static BookInfo of(Book book) {
+    public static @Valid BookInfo of(Book book) {
         return new BookInfo(
                 book.getId(),
                 book.getTitle(),

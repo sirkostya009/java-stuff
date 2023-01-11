@@ -16,8 +16,7 @@ public @Data class GenreInfo {
     @NotBlank
     private String name;
 
-    @Valid
-    public static GenreInfo of(Genre genre) {
+    public static @Valid GenreInfo of(Genre genre) {
         return new GenreInfo(
                 genre.getId(),
                 genre.getName()
