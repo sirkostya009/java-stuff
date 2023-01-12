@@ -11,6 +11,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class Genre {
     private String name;
 
     @OneToMany(orphanRemoval = true)
+    @ToString.Exclude
     private Set<Book> books;
 
     @Override

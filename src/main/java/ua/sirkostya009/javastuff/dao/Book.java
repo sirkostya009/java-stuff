@@ -1,9 +1,6 @@
 package ua.sirkostya009.javastuff.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,6 +10,7 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
