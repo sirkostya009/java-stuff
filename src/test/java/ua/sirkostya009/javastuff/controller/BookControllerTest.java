@@ -2,12 +2,12 @@ package ua.sirkostya009.javastuff.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Book;
@@ -21,7 +21,8 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -50,19 +51,10 @@ public class BookControllerTest {
         bookRepository.save(new Book(null, "Science fiction book", "Author 2", sciFi));
     }
 
-    @AfterEach
-    public void tearDown() {
-    }
-
     @Test
     public void testGetAllBooks() throws Exception {
-        var request = MockMvcRequestBuilders
-                .get(BASE_URL)
-                .accept(APPLICATION_JSON);
-
         var response = mvc
-                .perform(request)
-                .andDo(print())
+                .perform(get(BASE_URL))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -73,6 +65,31 @@ public class BookControllerTest {
                 BookInfo[].class
         );
         var persistedInfos = bookRepository.findAll().stream().map(BookInfo::of).toList();
+
+        assertThat(Arrays.asList(returnedInfos)).isEqualTo(persistedInfos);
+    }
+
+    // this is more of a unit test but done through controller and service layers
+    @Test
+    public void testGetBookWithAuthor() throws Exception {
+        var author = "Author 2";
+
+        var response = mvc
+                .perform(get(BASE_URL)
+                        .param("author", author))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        var returnedInfos = parseObject(
+                response.substring(response.indexOf('['), response.indexOf(']') + 1),
+                BookInfo[].class
+        );
+        var persistedInfos = bookRepository.findByAuthorAndTitle(author, null, PageRequest.of(0, 10))
+                .stream()
+                .map(BookInfo::of)
+                .toList();
 
         assertThat(Arrays.asList(returnedInfos)).isEqualTo(persistedInfos);
     }
@@ -103,12 +120,8 @@ public class BookControllerTest {
 
     @Test
     public void testGetBookById() throws Exception {
-        var request = MockMvcRequestBuilders
-                .get(BASE_URL + "/1")
-                .accept(APPLICATION_JSON);
-
         var response = mvc
-                .perform(request)
+                .perform(get(BASE_URL + "/1"))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -157,9 +170,7 @@ public class BookControllerTest {
 
     @Test
     public void testDeleteBook() throws Exception {
-        var request = MockMvcRequestBuilders.delete(BASE_URL + "/1");
-
-        mvc.perform(request).andExpect(status().isNoContent());
+        mvc.perform(delete(BASE_URL + "/1")).andExpect(status().isNoContent());
 
         assertThat(bookRepository.existsById(1L)).isFalse();
     }

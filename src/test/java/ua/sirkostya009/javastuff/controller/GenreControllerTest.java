@@ -14,11 +14,11 @@ import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.GenreInfo;
 import ua.sirkostya009.javastuff.repository.GenreRepository;
 
-import java.util.Arrays;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -49,30 +49,25 @@ class GenreControllerTest {
 
     @Test
     void all() throws Exception {
-        var request = MockMvcRequestBuilders
-                .get(BASE_URL);
-
         var response = mvc
-                .perform(request)
+                .perform(get(BASE_URL))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
-        assertThat(Arrays.asList(parseObject(response, GenreInfo[].class)))
-                .isEqualTo(repository.findAll().stream().map(GenreInfo::of).toList());
+        assertThat(parseObject(response, GenreInfo[].class))
+                .isEqualTo(repository.findAll().stream().map(GenreInfo::of).toArray());
     }
 
     @Test
     void byId() throws Exception {
-        post(); // for some reason we can't query by id without this.
+        repository.save(new Genre(null, "sample", Set.of())); // for some reason we can't query by id without this.
 
         var lastId = repository.count();
-        var request = MockMvcRequestBuilders
-                .get(BASE_URL + "/" + lastId);
 
         var response = mvc
-                .perform(request)
+                .perform(get(BASE_URL + "/" + lastId))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -83,10 +78,7 @@ class GenreControllerTest {
 
     @Test
     void byIdFailed() throws Exception {
-        var request = MockMvcRequestBuilders
-                .get(BASE_URL + "/010101");
-
-        mvc.perform(request).andExpect(status().isNotFound());
+        mvc.perform(get(BASE_URL + "/010101")).andExpect(status().isNotFound());
     }
 
     @Test
