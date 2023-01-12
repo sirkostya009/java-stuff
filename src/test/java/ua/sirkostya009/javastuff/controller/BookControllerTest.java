@@ -1,4 +1,4 @@
-package ua.sirkostya009.javastuff;
+package ua.sirkostya009.javastuff.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,14 +21,14 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(
-        webEnvironment = SpringBootTest.WebEnvironment.MOCK,
-        classes = Main.class
-)
+@SpringBootTest
 @AutoConfigureMockMvc
-public class BookControllerTests {
+public class BookControllerTest {
+
+    private static final String BASE_URL = "/api/v1/books";
 
     @Autowired
     private MockMvc mvc;
@@ -52,18 +52,17 @@ public class BookControllerTests {
 
     @AfterEach
     public void tearDown() {
-        bookRepository.deleteAll();
-        genreRepository.deleteAll();
     }
 
     @Test
     public void testGetAllBooks() throws Exception {
         var request = MockMvcRequestBuilders
-                .get("/api/v1/books")
+                .get(BASE_URL)
                 .accept(APPLICATION_JSON);
 
         var response = mvc
                 .perform(request)
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -83,7 +82,7 @@ public class BookControllerTests {
         var info = new BookInfo(null, "Another sci-fi book", "Author 3", 2L);
 
         var request = MockMvcRequestBuilders
-                .post("/api/v1/books")
+                .post(BASE_URL)
                 .content(mapper.writeValueAsBytes(info))
                 .accept(APPLICATION_JSON)
                 .contentType(APPLICATION_JSON);
@@ -95,19 +94,19 @@ public class BookControllerTests {
                 .getResponse()
                 .getContentAsString();
 
+        var returned = parseObject(response, BookInfo.class);
         assertEquality(
-                parseObject(response, BookInfo.class),
-                bookRepository.findById(3L).orElseThrow()
+                returned,
+                bookRepository.findById(returned.getId()).orElseThrow()
         );
     }
 
     @Test
     public void testGetBookById() throws Exception {
         var request = MockMvcRequestBuilders
-                .get("/api/v1/books/1")
+                .get(BASE_URL + "/1")
                 .accept(APPLICATION_JSON);
 
-        System.out.println(bookRepository.findAll());
         var response = mvc
                 .perform(request)
                 .andExpect(status().isOk())
@@ -126,7 +125,7 @@ public class BookControllerTests {
         var info = new BookInfo(null, "Updated Title", "Updated Author", 2L);
 
         var request = MockMvcRequestBuilders
-                .put("/api/v1/books/1")
+                .put(BASE_URL + "/1")
                 .accept(APPLICATION_JSON)
                 .content(mapper.writeValueAsString(info))
                 .contentType(APPLICATION_JSON);
@@ -145,12 +144,23 @@ public class BookControllerTests {
     }
 
     @Test
-    public void testDeleteBook() throws Exception {
+    public void testBookValidation() throws Exception {
         var request = MockMvcRequestBuilders
-                .delete("/api/v1/books/1")
-                .accept(APPLICATION_JSON);
+//                .post(BASE_URL)
+                .put(BASE_URL + "/1")
+                .accept(APPLICATION_JSON)
+                .content(mapper.writeValueAsString("{}"))
+                .contentType(APPLICATION_JSON);
+
+        mvc.perform(request).andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testDeleteBook() throws Exception {
+        var request = MockMvcRequestBuilders.delete(BASE_URL + "/1");
 
         mvc.perform(request).andExpect(status().isNoContent());
+
         assertThat(bookRepository.existsById(1L)).isFalse();
     }
 
@@ -161,4 +171,5 @@ public class BookControllerTests {
     private void assertEquality(BookInfo info, Book book) {
         assertThat(info).isEqualTo(BookInfo.of(book));
     }
+
 }
