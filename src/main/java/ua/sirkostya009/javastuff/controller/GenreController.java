@@ -1,6 +1,7 @@
 package ua.sirkostya009.javastuff.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.GenreInfo;
@@ -21,7 +22,13 @@ public class GenreController {
         return toInfo(service.findAll());
     }
 
+    @GetMapping("{id}")
+    public GenreInfo byId(@PathVariable Long id) {
+        return GenreInfo.of(service.findBy(id));
+    }
+
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public GenreInfo post(@Valid @RequestBody GenreInfo info) {
         return GenreInfo.of(service.add(info));
     }
