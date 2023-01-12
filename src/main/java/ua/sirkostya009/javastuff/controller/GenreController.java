@@ -22,7 +22,7 @@ public class GenreController {
         return toInfo(service.findAll());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public GenreInfo byId(@PathVariable Long id) {
         return GenreInfo.of(service.findBy(id));
     }
