@@ -17,42 +17,41 @@ import java.util.List;
 @RequestMapping("/api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
-    private final BookService bookService;
+    private final BookService service;
 
     @GetMapping
     public Page<BookInfo> books(@RequestParam(value = "page", defaultValue = "0") int page,
                                 @RequestParam(value = "author", required = false) String author,
                                 @RequestParam(value = "title", required = false) String title) {
-        var p = bookService.findBy(author, title, page);
+        var p = service.findBy(author, title, page);
         return new PageImpl<>(toInfo(p.getContent()), p.getPageable(), p.getTotalElements());
     }
 
     @GetMapping("/genre/{id}")
     public List<BookInfo> byGenre(@PathVariable Long id) {
-        return toInfo(bookService.findByGenreId(id));
+        return toInfo(service.findByGenreId(id));
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public BookInfo post(@RequestBody @Valid BookInfo info) {
-        return BookInfo.of(bookService.add(info));
+        return BookInfo.of(service.add(info));
     }
 
     @GetMapping("/{id}")
     public BookInfo get(@PathVariable Long id) {
-        return BookInfo.of(bookService.findBy(id));
+        return BookInfo.of(service.findBy(id));
     }
 
     @PutMapping("/{id}")
     public BookInfo update(@PathVariable Long id, @RequestBody @Valid BookInfo info) {
-        Book persisted = bookService.update(id, info);
-        return BookInfo.of(persisted);
+        return BookInfo.of(service.update(id, info));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        bookService.delete(id);
+        service.delete(id);
     }
 
     private List<BookInfo> toInfo(Collection<Book> books) {
