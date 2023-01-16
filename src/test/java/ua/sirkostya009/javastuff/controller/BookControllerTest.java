@@ -2,7 +2,6 @@ package ua.sirkostya009.javastuff.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,7 +12,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dto.BookInfo;
 import ua.sirkostya009.javastuff.repository.BookRepository;
-import ua.sirkostya009.javastuff.repository.GenreRepository;
 
 import java.util.Arrays;
 
@@ -36,18 +34,7 @@ public class BookControllerTest {
     private BookRepository bookRepository;
 
     @Autowired
-    private GenreRepository genreRepository;
-
-    @Autowired
     private ObjectMapper mapper;
-
-    @BeforeEach
-    public void setUp() {
-        var uncategorized = genreRepository.findById(1L).orElseThrow();
-        var sciFi = genreRepository.findById(2L).orElseThrow();
-        bookRepository.save(new Book(null, "No category book", "Author 1", uncategorized));
-        bookRepository.save(new Book(null, "Science fiction book", "Author 2", sciFi));
-    }
 
     @Test
     public void testGetAllBooks() throws Exception {
