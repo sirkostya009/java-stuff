@@ -13,8 +13,6 @@ import ua.sirkostya009.javastuff.dao.Book;
 import ua.sirkostya009.javastuff.dto.BookInfo;
 import ua.sirkostya009.javastuff.repository.BookRepository;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -49,9 +47,9 @@ public class BookControllerTest {
                 response.substring(response.indexOf('['), response.indexOf(']') + 1),
                 BookInfo[].class
         );
-        var persistedInfos = bookRepository.findAll().stream().map(BookInfo::of).toList();
+        var persistedInfos = bookRepository.findAll().stream().map(BookInfo::of).toArray();
 
-        assertThat(Arrays.asList(returnedInfos)).isEqualTo(persistedInfos);
+        assertThat(returnedInfos).isEqualTo(persistedInfos);
     }
 
     // this is more of a unit test but done through controller and service layers
@@ -74,9 +72,9 @@ public class BookControllerTest {
         var persistedInfos = bookRepository.findByAuthorAndTitle(author, null, PageRequest.of(0, 10))
                 .stream()
                 .map(BookInfo::of)
-                .toList();
+                .toArray();
 
-        assertThat(Arrays.asList(returnedInfos)).isEqualTo(persistedInfos);
+        assertThat(returnedInfos).isEqualTo(persistedInfos);
     }
 
     @Test

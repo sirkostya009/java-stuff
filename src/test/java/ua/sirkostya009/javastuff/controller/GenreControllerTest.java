@@ -26,7 +26,7 @@ class GenreControllerTest {
     private final static String BASE_URL = "/api/v1/genres";
 
     @Autowired
-    private MockMvc  mvc;
+    private MockMvc mvc;
 
     @Autowired
     private GenreRepository repository;
