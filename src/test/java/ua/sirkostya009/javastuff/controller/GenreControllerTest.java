@@ -2,8 +2,6 @@ package ua.sirkostya009.javastuff.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -35,17 +33,6 @@ class GenreControllerTest {
 
     @Autowired
     private ObjectMapper mapper;
-
-    @BeforeEach
-    public void setUp() {
-        repository.save(new Genre(null, "uncategorized", Set.of()));
-        repository.save(new Genre(null, "sci-fi", Set.of()));
-    }
-
-    @AfterEach
-    public void tearDown() {
-        repository.deleteAll();
-    }
 
     @Test
     void all() throws Exception {

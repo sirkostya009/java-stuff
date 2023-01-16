@@ -11,13 +11,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Book;
-import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.BookInfo;
 import ua.sirkostya009.javastuff.repository.BookRepository;
 import ua.sirkostya009.javastuff.repository.GenreRepository;
 
 import java.util.Arrays;
-import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -45,8 +43,8 @@ public class BookControllerTest {
 
     @BeforeEach
     public void setUp() {
-        var uncategorized = genreRepository.save(new Genre(null, "Uncategorized", Set.of()));
-        var sciFi = genreRepository.save(new Genre(null, "Sci-Fi", Set.of()));
+        var uncategorized = genreRepository.findById(1L).get();
+        var sciFi = genreRepository.findById(2L).get();
         bookRepository.save(new Book(null, "No category book", "Author 1", uncategorized));
         bookRepository.save(new Book(null, "Science fiction book", "Author 2", sciFi));
     }
