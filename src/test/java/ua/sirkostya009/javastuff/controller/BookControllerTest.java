@@ -43,8 +43,8 @@ public class BookControllerTest {
 
     @BeforeEach
     public void setUp() {
-        var uncategorized = genreRepository.findById(1L).get();
-        var sciFi = genreRepository.findById(2L).get();
+        var uncategorized = genreRepository.findById(1L).orElseThrow();
+        var sciFi = genreRepository.findById(2L).orElseThrow();
         bookRepository.save(new Book(null, "No category book", "Author 1", uncategorized));
         bookRepository.save(new Book(null, "Science fiction book", "Author 2", sciFi));
     }

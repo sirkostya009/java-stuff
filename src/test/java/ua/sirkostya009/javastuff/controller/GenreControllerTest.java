@@ -89,7 +89,7 @@ class GenreControllerTest {
 
         assertThat(repository.existsById(returnedInfo.getId())).isTrue();
 
-        var persisted = GenreInfo.of(repository.findById(returnedInfo.getId()).get());
+        var persisted = GenreInfo.of(repository.findById(returnedInfo.getId()).orElseThrow());
 
         assertThat(returnedInfo).isEqualTo(persisted);
     }
