@@ -8,11 +8,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import ua.sirkostya009.javastuff.dao.Genre;
 import ua.sirkostya009.javastuff.dto.GenreInfo;
 import ua.sirkostya009.javastuff.repository.GenreRepository;
-
-import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -49,8 +46,6 @@ class GenreControllerTest {
 
     @Test
     void byId() throws Exception {
-        repository.save(new Genre(null, "sample", Set.of())); // for some reason we can't query by id without this.
-
         var lastId = repository.count();
 
         var response = mvc
