@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import History from "./History.jsx";
-import InputForm from "./InputForm.jsx";
+import InputArea from "./InputArea.jsx";
 import Numpad from "./Numpad.jsx";
 
 class Calculator extends Component {
@@ -8,61 +8,67 @@ class Calculator extends Component {
     super(props);
     this.state = {
       expressionValue: '',
-      values: []
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.onWrite = this.onWrite.bind(this);
+    this.onNumClick = this.onNumClick.bind(this);
+    this.onOperatorClick = this.onOperatorClick.bind(this);
   }
 
-  evaluate(a, operator, b) {
-    switch (operator) {
-      case '+': return parseInt(a) + parseInt(b);
-      case '-': return parseInt(a) - parseInt(b);
-      case '/': return parseInt(a) / parseInt(b);
-      case '*': return parseInt(a) * parseInt(b);
-      default:  return undefined;
+  onNumClick(event) {
+    const parsed = this.parseExpression()
+    const buttonNumber = event.target.outerText;
+    console.log(buttonNumber);
+
+    if (parsed.length === 0) {
+      parsed.push(buttonNumber);
+    } else if (parsed.length === 1) {
+      parsed[0] += buttonNumber;
+    } else if (parsed.length === 2) {
+      parsed.push(buttonNumber);
+    } else if (parsed.length === 3) {
+      parsed[2] += buttonNumber;
     }
+
+    console.log(parsed);
+    this.setState({
+      ...this.state,
+      expressionValue: parsed.join(' '),
+    })
   }
 
-  evaluateExpression(expression) {
-    const expressionArray = expression.split(' ').filter(element => element !== '');
-    console.log(expressionArray);
+  onOperatorClick(event) {
+    const parsed = this.parseExpression();
+    const buttonOperator = event.target.outerText;
+    console.log(buttonOperator);
 
-    const a = expressionArray[0];
-    const operator = expressionArray[1];
-    const b = expressionArray[2];
+    if (parsed.length === 1) {
+      parsed.push(buttonOperator);
+    } else if (parsed.length === 2 && buttonOperator !== '=') {
+      parsed[1] = buttonOperator;
+    } else if (parsed.length === 3) {
+      // solve
+    }
 
-    const result = this.evaluate(a, operator, b);
-
-    if (!result) return;
-
-    const representation = `${expressionArray.join(' ')} = ${result}`;
-
-    console.log(representation);
-
-    const newValues = [...this.state.values];
-    newValues.unshift(representation);
-    this.setState({values: newValues, expressionValue: result})
+    console.log(parsed);
+    this.setState({
+      ...this.state,
+      expressionValue: parsed.join(' '),
+    })
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target[0]);
-    this.evaluateExpression(event.target[0].value);
-  }
-
-  onWrite(event) {
-    console.log(event);
-    this.setState({expressionValue: event.target.value})
+  parseExpression() {
+    return this.state.expressionValue.split(' ')
+      .filter((element) => element !== '')
   }
 
   render() {
     return (
-      <div>
-        <InputForm value={this.state.expressionValue} handleSubmit={this.handleSubmit} onChange={this.onWrite} />
-        <History values={this.state.values} />
-        <Numpad />
+      <div style={{display: "flex", flexDirection: "row"}}>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <InputArea value={this.state.expressionValue} />
+          <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
+        </div>
+        <History />
       </div>
     );
   }

@@ -16,7 +16,7 @@ public class RandomController {
 
     private final EquationService service;
 
-    @GetMapping
+    @GetMapping // localhost:8080/math/example?count=5
     public List<String> getEquations(@RequestParam("count") int count) {
         return service.generateEquations(count);
     }
