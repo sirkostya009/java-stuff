@@ -74,5 +74,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.24" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.24" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>
