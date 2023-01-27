@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {evaluate} from "../store/calculatorReducer/actions";
 import {mapDispatchToProps, mapReduxStateToProps} from "../store/calculatorReducer/mappers";
 import {evaluateExpression} from "../store/calculatorReducer/helpers";
+import {Button} from "@material-ui/core";
+import {fetchExpressions} from "../store/calculatorReducer/actions";
 
 class Calculator extends Component {
   constructor(props) {
@@ -77,6 +79,9 @@ class Calculator extends Component {
           <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
         </div>
         <History />
+        <Button variant='outlined' onClick={() => this.props.dispatch(fetchExpressions(this.props.dispatch))}>
+          Download and calculate
+        </Button>
       </div>
     );
   }
