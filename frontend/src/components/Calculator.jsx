@@ -21,7 +21,6 @@ class Calculator extends Component {
   onNumClick(event) {
     const parsed = this.parseExpression()
     const buttonNumber = event.target.outerText;
-    console.log(buttonNumber);
 
     if (parsed.length === 0) {
       parsed.push(buttonNumber);
@@ -39,25 +38,26 @@ class Calculator extends Component {
   onOperatorClick(event) {
     let parsed = this.parseExpression();
     const buttonOperator = event.target.outerText;
-    console.log(buttonOperator);
 
     if (parsed.length === 1) {
       parsed.push(buttonOperator);
     } else if (parsed.length === 2 && buttonOperator !== '=') {
       parsed[1] = buttonOperator;
-    } else if (parsed.length === 3) {
+    } else if (parsed.length === 3) { // warning: approaching shitty code segment
       const expression = parsed.join(' ');
       this.props.dispatch(evaluate(expression));
-      console.log(this.props.history);
+
       const evaluated = evaluateExpression(expression);
       parsed = [this.parseExpression(evaluated)[4]];
+
+      if (buttonOperator !== '=')
+        parsed.push(buttonOperator);
     }
 
     this.updateState(parsed);
   }
 
   updateState(parsed) {
-    console.log(parsed);
     this.setState({
       ...this.state,
       expressionValue: parsed.join(' '),

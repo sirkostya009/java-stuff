@@ -9,13 +9,10 @@ export const evaluateExpression = (expression) => {
 
   if (!result) return undefined;
 
-  console.log(`${a} ${operator} ${b} = ${result}`);
-
   return `${a} ${operator} ${b} = ${result}`;
 
   function parseExpression(expression) {
     const expressionArray = expression.split(' ').filter(element => element !== '');
-    console.log(expressionArray);
 
     return { a: expressionArray[0], operator: expressionArray[1], b: expressionArray[2] };
   }
