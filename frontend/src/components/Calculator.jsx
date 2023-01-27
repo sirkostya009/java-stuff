@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import History from "./History.jsx";
 import InputArea from "./InputArea.jsx";
 import Numpad from "./Numpad.jsx";
+import {connect} from "react-redux";
+import {evaluate} from "../store/calculatorReducer/actions";
+import {mapDispatchToProps, mapReduxStateToProps} from "../store/calculatorReducer/mappers";
+import {evaluateExpression} from "../store/calculatorReducer/helpers";
 
 class Calculator extends Component {
   constructor(props) {
@@ -33,7 +37,7 @@ class Calculator extends Component {
   }
 
   onOperatorClick(event) {
-    const parsed = this.parseExpression();
+    let parsed = this.parseExpression();
     const buttonOperator = event.target.outerText;
     console.log(buttonOperator);
 
@@ -42,7 +46,11 @@ class Calculator extends Component {
     } else if (parsed.length === 2 && buttonOperator !== '=') {
       parsed[1] = buttonOperator;
     } else if (parsed.length === 3) {
-      // solve
+      const expression = parsed.join(' ');
+      this.props.dispatch(evaluate(expression));
+      console.log(this.props.history);
+      const evaluated = evaluateExpression(expression);
+      parsed = [this.parseExpression(evaluated)[4]];
     }
 
     this.updateState(parsed);
@@ -56,8 +64,8 @@ class Calculator extends Component {
     })
   }
 
-  parseExpression() {
-    return this.state.expressionValue.split(' ')
+  parseExpression(expression = this.state.expressionValue) {
+    return expression.split(' ')
       .filter((element) => element !== '')
   }
 
@@ -74,4 +82,4 @@ class Calculator extends Component {
   }
 }
 
-export default Calculator;
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Calculator);

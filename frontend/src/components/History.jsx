@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
+import {mapReduxStateToProps} from "../store/calculatorReducer/mappers";
 
 class History extends Component {
   constructor(props) {
@@ -18,12 +19,4 @@ class History extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-});
-
-const mapReduxStateToProps = (reduxState) => ({
-  history: reduxState.calculator.history,
-});
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(History);
+export default connect(mapReduxStateToProps)(History);
