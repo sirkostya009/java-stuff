@@ -7,13 +7,13 @@ class History extends Component {
   }
 
   render() {
-    console.log(this.props);
+    const copy = [...this.props.history];
 
     return (
-        <ul>{
-          this.props.history?.map(expression =>
-              <li>{expression}</li>)
-        }</ul>
+        <ul>
+          {copy[0] && <li key={0} style={{color: 'red'}}>{copy.shift()}</li>}
+          {copy.map((expression, index) => <li key={index + 1}>{expression}</li>)}
+        </ul>
     );
   }
 }
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapReduxStateToProps = (reduxState) => ({
-  history: reduxState.history,
+  history: reduxState.calculator.history,
 });
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(History);
