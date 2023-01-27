@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 @Service
 public class EquationServiceImpl implements EquationService {
 
-    private final static int ORIGIN = 1, BOUND = 100;
+    private final static int ORIGIN = 0, BOUND = 100;
 
     private final List<String> operators = List.of("+", "-", "*", "/");
 
