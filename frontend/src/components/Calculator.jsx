@@ -4,7 +4,7 @@ import InputArea from "./InputArea.jsx";
 import Numpad from "./Numpad.jsx";
 import {connect} from "react-redux";
 import {evaluate} from "../store/calculatorReducer/actions";
-import {mapDispatchToProps, mapReduxStateToProps} from "../store/calculatorReducer/mappers";
+import {mapDispatchToProps, mapReduxStateToProps} from "../store/mappers";
 import {evaluateExpression} from "../store/calculatorReducer/helpers";
 import {Button} from "@material-ui/core";
 import {fetchExpressions} from "../store/calculatorReducer/actions";
@@ -72,6 +72,10 @@ class Calculator extends Component {
   }
 
   render() {
+    const {
+      dispatch
+    } = this.props;
+
     return (
       <div style={{display: "flex", flexDirection: "row"}}>
         <div style={{display: "flex", flexDirection: "column"}}>
@@ -79,8 +83,8 @@ class Calculator extends Component {
           <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
         </div>
         <History />
-        <Button variant='outlined' onClick={() => this.props.dispatch(fetchExpressions(this.props.dispatch))}>
-          Download and calculate
+        <Button variant='outlined' onClick={() => dispatch(fetchExpressions(4))}>
+          QUERY THAT BE DOE
         </Button>
       </div>
     );

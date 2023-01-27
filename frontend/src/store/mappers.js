@@ -1,7 +1,7 @@
 export const mapReduxStateToProps = (reduxState) => ({
-  history: reduxState.calculator.history,
+  ...reduxState.calculator,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
+  dispatch,
 });

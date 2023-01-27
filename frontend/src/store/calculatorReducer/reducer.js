@@ -17,8 +17,9 @@ export const calculatorReducer = (state = initialState, { type, payload }) => {
     case FETCH_EXPRESSIONS: {
       const evaluatedExpressions = payload.map((expression) => evaluateExpression(expression));
       const newHistory = [...state.history];
-      newHistory.unshift(evaluatedExpressions);
+      newHistory.unshift(...evaluatedExpressions);
 
+      console.log(newHistory);
       return {
         ...state,
         history: newHistory

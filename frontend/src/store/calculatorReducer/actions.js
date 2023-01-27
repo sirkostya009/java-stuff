@@ -5,7 +5,17 @@ export const evaluate = (expression) => ({
   payload: expression
 })
 
-export const fetchExpressions = async (dispatch) => {
-  fetch(`${process.env.REACT_APP_MATH_EXAMPLE_URL}4`)
-    .then((array) => dispatch({ type: FETCH_EXPRESSIONS, payload: array }))
+const MathExamplesUrl = 'http://localhost:8080/math/example?count=';
+
+export const fetchExpressions = count => (dispatch, getState) => {
+  console.log("Fetching expressions...");
+  fetch(`${MathExamplesUrl}${count}`)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      dispatch({
+        type: FETCH_EXPRESSIONS,
+        payload: response
+      })
+    });
 }

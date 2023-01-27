@@ -1,12 +1,8 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import {mapReduxStateToProps} from "../store/calculatorReducer/mappers";
+import {mapReduxStateToProps} from "../store/mappers";
 
 class History extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const copy = [...this.props.history];
 
