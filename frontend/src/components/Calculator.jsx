@@ -29,11 +29,7 @@ class Calculator extends Component {
       parsed[2] += buttonNumber;
     }
 
-    console.log(parsed);
-    this.setState({
-      ...this.state,
-      expressionValue: parsed.join(' '),
-    })
+    this.updateState(parsed);
   }
 
   onOperatorClick(event) {
@@ -49,6 +45,10 @@ class Calculator extends Component {
       // solve
     }
 
+    this.updateState(parsed);
+  }
+
+  updateState(parsed) {
     console.log(parsed);
     this.setState({
       ...this.state,
