@@ -9,7 +9,6 @@ export const evaluateExpression = (expression) => {
 
   if (result === undefined) return undefined;
 
-  console.log(a, operator, b, result);
   return [a, operator, b, "=", result];
 
   function parseExpression(expression) {
@@ -25,7 +24,7 @@ export const evaluateExpression = (expression) => {
       case "-":
         return parseInt(a) - parseInt(b);
       case "/":
-        return b === 0 ? NaN : parseInt(a) / parseInt(b);
+        return parseInt(a) / parseInt(b);
       case "*":
         return parseInt(a) * parseInt(b);
       default:

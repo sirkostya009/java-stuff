@@ -84,7 +84,7 @@ class Calculator extends Component {
         </div>
         <History style={{width: 180}} />
         <Button variant="outlined" onClick={() => dispatch(fetchExpressions(5))} style={{width: 200, height: 100}}>
-          QUERY THAT BE DOE
+          FETCH THAT BE DOE
         </Button>
       </div>
     );
