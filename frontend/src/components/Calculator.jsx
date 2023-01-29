@@ -5,7 +5,7 @@ import Numpad from "./Numpad.jsx";
 import {connect} from "react-redux";
 import {evaluate} from "../store/calculatorReducer/actions";
 import {mapDispatchToProps, mapReduxStateToProps} from "../store/mappers";
-import {evaluateExpression} from "../store/calculatorReducer/helpers";
+import {evaluateExpression, join} from "../store/calculatorReducer/helpers";
 import {Button} from "@material-ui/core";
 import {fetchExpressions} from "../store/calculatorReducer/actions";
 
@@ -47,11 +47,12 @@ class Calculator extends Component {
       parsed[1] = buttonOperator;
     } else if (parsed.length === 3) {
       // warning: approaching shitty code segment
-      const expression = parsed.join(" ");
+      const expression = join(parsed);
       this.props.dispatch(evaluate(expression));
 
       const evaluatedArray = evaluateExpression(expression);
-      parsed = [this.resolveResult(evaluatedArray[4])];
+      const result = this.resolveResult(evaluatedArray[4]);
+      parsed = [result];
 
       if (buttonOperator !== "=" && result !== "") parsed.push(buttonOperator);
     }
@@ -64,7 +65,7 @@ class Calculator extends Component {
   updateState(parsed) {
     this.setState({
       ...this.state,
-      expressionValue: parsed.join(" "),
+      expressionValue: join(parsed),
     });
   }
 

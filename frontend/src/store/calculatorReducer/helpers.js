@@ -7,7 +7,7 @@ export const evaluateExpression = (expression) => {
 
   const result = evaluate(a, operator, b);
 
-  if (result !== 0 && !result) return undefined;
+  if (result === undefined) return undefined;
 
   console.log(a, operator, b, result);
   return [a, operator, b, "=", result];
