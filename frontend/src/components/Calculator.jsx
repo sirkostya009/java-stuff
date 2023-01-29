@@ -13,7 +13,7 @@ class Calculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expressionValue: '',
+      expressionValue: "",
     };
 
     this.onNumClick = this.onNumClick.bind(this);
@@ -21,7 +21,7 @@ class Calculator extends Component {
   }
 
   onNumClick(event) {
-    const parsed = this.parseExpression()
+    const parsed = this.parseExpression();
     const buttonNumber = event.target.outerText;
 
     if (parsed.length === 0) {
@@ -41,19 +41,19 @@ class Calculator extends Component {
     let parsed = this.parseExpression();
     const buttonOperator = event.target.outerText;
 
-    if (parsed.length === 1) {
+    if (parsed.length === 1 && buttonOperator !== "=") {
       parsed.push(buttonOperator);
-    } else if (parsed.length === 2 && buttonOperator !== '=') {
+    } else if (parsed.length === 2 && buttonOperator !== "=") {
       parsed[1] = buttonOperator;
-    } else if (parsed.length === 3) { // warning: approaching shitty code segment
-      const expression = parsed.join(' ');
+    } else if (parsed.length === 3) {
+      // warning: approaching shitty code segment
+      const expression = parsed.join(" ");
       this.props.dispatch(evaluate(expression));
 
       const evaluated = evaluateExpression(expression);
       parsed = [this.parseExpression(evaluated)[4]];
 
-      if (buttonOperator !== '=')
-        parsed.push(buttonOperator);
+      if (buttonOperator !== "=") parsed.push(buttonOperator);
     }
 
     this.updateState(parsed);
@@ -62,19 +62,16 @@ class Calculator extends Component {
   updateState(parsed) {
     this.setState({
       ...this.state,
-      expressionValue: parsed.join(' '),
-    })
+      expressionValue: parsed.join(" "),
+    });
   }
 
   parseExpression(expression = this.state.expressionValue) {
-    return expression.split(' ')
-      .filter((element) => element !== '')
+    return expression.split(" ").filter((element) => element !== "");
   }
 
   render() {
-    const {
-      dispatch
-    } = this.props;
+    const {dispatch} = this.props;
 
     return (
       <div style={{display: "flex", flexDirection: "row"}}>
@@ -83,7 +80,7 @@ class Calculator extends Component {
           <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
         </div>
         <History />
-        <Button variant='outlined' onClick={() => dispatch(fetchExpressions(4))}>
+        <Button variant="outlined" onClick={() => dispatch(fetchExpressions(5))}>
           QUERY THAT BE DOE
         </Button>
       </div>

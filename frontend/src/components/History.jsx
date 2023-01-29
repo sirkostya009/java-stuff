@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import {mapReduxStateToProps} from "../store/mappers";
 
 class History extends Component {
@@ -7,10 +7,16 @@ class History extends Component {
     const copy = [...this.props.history];
 
     return (
-        <ul>
-          {copy[0] && <li key={0} style={{color: 'red'}}>{copy.shift()}</li>}
-          {copy.map((expression, index) => <li key={index + 1}>{expression}</li>)}
-        </ul>
+      <ul>
+        {copy[0] && (
+          <li key={0} style={{color: "red"}}>
+            {copy.shift()}
+          </li>
+        )}
+        {copy.map((expression, index) => (
+          <li key={index + 1}>{expression}</li>
+        ))}
+      </ul>
     );
   }
 }

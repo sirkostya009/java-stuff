@@ -2,7 +2,7 @@ import {initialState} from "./helpers";
 import {CALCULATE_EXPRESSION, FETCH_EXPRESSIONS} from "./actionTypes";
 import {evaluateExpression} from "./helpers";
 
-export const calculatorReducer = (state = initialState, { type, payload }) => {
+export const calculatorReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case CALCULATE_EXPRESSION: {
       const result = evaluateExpression(payload);
@@ -11,7 +11,7 @@ export const calculatorReducer = (state = initialState, { type, payload }) => {
 
       return {
         ...state,
-        history: newHistory
+        history: newHistory,
       };
     }
     case FETCH_EXPRESSIONS: {
@@ -22,9 +22,10 @@ export const calculatorReducer = (state = initialState, { type, payload }) => {
       console.log(newHistory);
       return {
         ...state,
-        history: newHistory
-      }
+        history: newHistory,
+      };
     }
-    default: return state;
+    default:
+      return state;
   }
 };
