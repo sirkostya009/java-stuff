@@ -50,14 +50,16 @@ class Calculator extends Component {
       const expression = parsed.join(" ");
       this.props.dispatch(evaluate(expression));
 
-      const evaluated = evaluateExpression(expression);
-      parsed = [this.parseExpression(evaluated)[4]];
+      const evaluatedArray = evaluateExpression(expression);
+      parsed = [this.resolveResult(evaluatedArray[4])];
 
-      if (buttonOperator !== "=") parsed.push(buttonOperator);
+      if (buttonOperator !== "=" && result !== "") parsed.push(buttonOperator);
     }
 
     this.updateState(parsed);
   }
+
+  resolveResult = (result) => isFinite(result) ? result : "";
 
   updateState(parsed) {
     this.setState({
@@ -79,8 +81,8 @@ class Calculator extends Component {
           <InputArea value={this.state.expressionValue} />
           <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
         </div>
-        <History />
-        <Button variant="outlined" onClick={() => dispatch(fetchExpressions(5))}>
+        <History style={{width: 180}} />
+        <Button variant="outlined" onClick={() => dispatch(fetchExpressions(5))} style={{width: 200, height: 100}}>
           QUERY THAT BE DOE
         </Button>
       </div>

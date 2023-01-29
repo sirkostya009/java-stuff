@@ -7,7 +7,7 @@ class History extends Component {
     const copy = [...this.props.history];
 
     return (
-      <ul>
+      <ul style={this.props.style}>
         {copy[0] && (
           <li key={0} style={{color: "red"}}>
             {copy.shift()}

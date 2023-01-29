@@ -7,9 +7,10 @@ export const evaluateExpression = (expression) => {
 
   const result = evaluate(a, operator, b);
 
-  if (!result) return undefined;
+  if (result !== 0 && !result) return undefined;
 
-  return `${a} ${operator} ${b} = ${result}`;
+  console.log(a, operator, b, result);
+  return [a, operator, b, "=", result];
 
   function parseExpression(expression) {
     const expressionArray = expression.split(" ").filter((element) => element !== "");
@@ -32,3 +33,5 @@ export const evaluateExpression = (expression) => {
     }
   }
 };
+
+export const join = (expressionArray) => expressionArray?.join(" ");
