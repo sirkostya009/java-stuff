@@ -60,7 +60,9 @@ class Calculator extends Component {
     this.updateState(parsed);
   }
 
-  resolveResult = (result) => isFinite(result) ? result : "";
+  resolveResult(result) {
+    return isFinite(result) ? result : "";
+  }
 
   updateState(parsed) {
     this.setState({

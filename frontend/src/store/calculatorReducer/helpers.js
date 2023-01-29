@@ -20,13 +20,13 @@ export const evaluateExpression = (expression) => {
   function evaluate(a, operator, b) {
     switch (operator) {
       case "+":
-        return parseInt(a) + parseInt(b);
+        return +a + +b;
       case "-":
-        return parseInt(a) - parseInt(b);
+        return +a - +b;
       case "/":
-        return parseInt(a) / parseInt(b);
+        return b === "0" ? "Cannot divide by zero" : +a / +b;
       case "*":
-        return parseInt(a) * parseInt(b);
+        return +a * +b;
       default:
         return undefined;
     }
