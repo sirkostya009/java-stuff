@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import History from "./History.jsx";
-import InputArea from "./InputArea.jsx";
 import Numpad from "./Numpad.jsx";
 import {connect} from "react-redux";
 import {evaluate} from "../store/calculatorReducer/actions";
 import {mapDispatchToProps, mapReduxStateToProps} from "../store/mappers";
 import {evaluateExpression, join} from "../store/calculatorReducer/helpers";
-import {Button} from "@material-ui/core";
+import {Button, InputLabel} from "@material-ui/core";
 import {fetchExpressions} from "../store/calculatorReducer/actions";
 
 class Calculator extends Component {
@@ -71,16 +70,18 @@ class Calculator extends Component {
   }
 
   render() {
-    const {dispatch} = this.props;
-
     return (
-      <div style={{display: "flex", flexDirection: "row"}}>
+      <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
         <div style={{display: "flex", flexDirection: "column"}}>
-          <InputArea value={join(this.state.expressionValue)} />
-          <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
+          <InputLabel style={{color: "black"}}>{join(this.state.expressionValue)}</InputLabel>
+          <Numpad onNumClick={this.onNumClick} onOperatorClick={this.onOperatorClick} />
         </div>
-        <History style={{width: 180}} />
-        <Button variant="outlined" onClick={() => dispatch(fetchExpressions(5))} style={{width: 200, height: 100}}>
+        <History style={{minWidth: 180}} firstItemStyle={{color: "red"}} />
+        <Button
+          variant="outlined"
+          onClick={() => this.props.dispatch(fetchExpressions(5))}
+          style={{width: 200, height: 100}}
+        >
           FETCH THAT BE DOE
         </Button>
       </div>
