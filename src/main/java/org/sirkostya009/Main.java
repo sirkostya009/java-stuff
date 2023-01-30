@@ -2,13 +2,8 @@ package org.sirkostya009;
 
 import org.sirkostya009.shapes.Shape;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class Main {
 
@@ -16,30 +11,24 @@ public class Main {
      * @param integers a list of integers, null-insecure
      * @return a sorted list without negative integers
      */
-    public static List<Integer> filterNegativesOut(int[] integers) {
-        return Arrays.stream(integers).filter(integer -> integer >= 0).sorted().boxed().toList();
+    public static int[] filterNegativesOut(int[] integers) {
+        return Arrays.stream(integers).filter(value -> value >= 0).sorted().toArray();
     }
 
     /**
      * @param strings a list of strings with numerous #hashtags
-     * @return a list of 5 most popular tags
+     * @return a Map of 5 most popular tags
      */
     public static Map<String, Integer> top5Hashtags(List<String> strings) {
         var result = new HashMap<String, Integer>();
 
-        strings.forEach(string -> {
-            var parsed = List.of(string.split(" "));
-
-            var tags = new HashSet<String>();
-            parsed.forEach(word -> {
-                if (word.startsWith("#")) tags.add(word.toLowerCase());
-            });
-
-            tags.forEach(tag -> {
-                result.putIfAbsent(tag, 0);
-                result.put(tag, result.get(tag) + 1);
-            });
-        });
+        strings.stream()
+                .flatMap(string -> Arrays.stream(string.split(" ")).distinct())
+                .filter(word -> word.startsWith("#"))
+                .forEach(hashtag -> {
+                    result.putIfAbsent(hashtag, 0);
+                    result.put(hashtag, result.get(hashtag) + 1);
+                });
 
         return result
                 .entrySet()
@@ -53,10 +42,8 @@ public class Main {
      * @param shapes a list of shapes
      * @return sorted list of shapes
      */
-    public static List<Shape> sortShapes(List<Shape> shapes) {
-        return shapes.stream()
-                .sorted()
-                .toList();
+    public static List<Shape> sortShapes(Collection<Shape> shapes) {
+        return shapes.stream().sorted().toList();
     }
 
 }

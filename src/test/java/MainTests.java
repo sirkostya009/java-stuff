@@ -17,7 +17,7 @@ public class MainTests {
 
         var result = Main.filterNegativesOut(given);
 
-        assertThat(result).isEqualTo(List.of(2, 4, 6, 8, 10));
+        assertThat(result).containsExactly(2, 4, 6, 8, 10);
     }
 
     @Test
