@@ -1,22 +1,25 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {mapReduxStateToProps} from "../store/mappers";
+import {List, ListItem, ListItemText} from "@material-ui/core";
 
 class History extends Component {
   render() {
     const copy = [...this.props.history];
 
     return (
-      <ul style={this.props.style}>
+      <List style={this.props.style} disablePadding>
         {copy[0] && (
-          <li key={0} style={{color: "red"}}>
-            {copy.shift()}
-          </li>
+          <ListItem key={0}>
+            <ListItemText primary={copy.shift()} style={this.props.firstItemStyle} />
+          </ListItem>
         )}
         {copy.map((expression, index) => (
-          <li key={index + 1}>{expression}</li>
+          <ListItem key={index + 1}>
+            <ListItemText primary={expression} />
+          </ListItem>
         ))}
-      </ul>
+      </List>
     );
   }
 }
