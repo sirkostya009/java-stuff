@@ -49,17 +49,12 @@ class Calculator extends Component {
       this.props.dispatch(evaluate(expression));
 
       const evaluatedArray = evaluateExpression(expression);
-      const result = this.resolveResult(evaluatedArray[4]);
-      copy = [result];
+      copy = isFinite(evaluatedArray[4]) ? [evaluatedArray[4]] : [];
 
-      if (buttonOperator !== "=" && result !== "") copy.push(buttonOperator);
+      if (buttonOperator !== "=" && copy.length) copy.push(buttonOperator);
     }
 
     this.updateState(copy);
-  }
-
-  resolveResult(result) {
-    return isFinite(result) ? result : "";
   }
 
   updateState(newValue) {
