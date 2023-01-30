@@ -3,7 +3,7 @@ import {Button} from "@material-ui/core";
 
 class Numpad extends Component {
   render() {
-    const {onNumClick, onButtonClick} = this.props;
+    const {onNumClick, onOperatorClick} = this.props;
 
     return (
       <table>
@@ -25,7 +25,7 @@ class Numpad extends Component {
               </Button>
             </td>
             <td>
-              <Button onClick={onButtonClick} variant="outlined">
+              <Button onClick={onOperatorClick} variant="contained">
                 /
               </Button>
             </td>
@@ -47,7 +47,7 @@ class Numpad extends Component {
               </Button>
             </td>
             <td>
-              <Button onClick={onButtonClick} variant="outlined">
+              <Button onClick={onOperatorClick} variant="contained">
                 *
               </Button>
             </td>
@@ -69,7 +69,7 @@ class Numpad extends Component {
               </Button>
             </td>
             <td>
-              <Button onClick={onButtonClick} variant="outlined">
+              <Button onClick={onOperatorClick} variant="contained">
                 -
               </Button>
             </td>
@@ -82,12 +82,12 @@ class Numpad extends Component {
               </Button>
             </td>
             <td>
-              <Button onClick={onButtonClick} variant="outlined">
+              <Button onClick={onOperatorClick} variant="contained">
                 =
               </Button>
             </td>
             <td>
-              <Button onClick={onButtonClick} variant="outlined">
+              <Button onClick={onOperatorClick} variant="contained">
                 +
               </Button>
             </td>
