@@ -13,7 +13,7 @@ class Calculator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expressionValue: "",
+      expressionValue: [],
     };
 
     this.onNumClick = this.onNumClick.bind(this);
@@ -21,58 +21,53 @@ class Calculator extends Component {
   }
 
   onNumClick(event) {
-    const parsed = this.parseExpression();
+    const copy = [...this.state.expressionValue];
     const buttonNumber = event.target.outerText;
 
-    if (parsed.length === 0) {
-      parsed.push(buttonNumber);
-    } else if (parsed.length === 1) {
-      parsed[0] += buttonNumber;
-    } else if (parsed.length === 2) {
-      parsed.push(buttonNumber);
-    } else if (parsed.length === 3) {
-      parsed[2] += buttonNumber;
+    if (copy.length === 0) {
+      copy.push(buttonNumber);
+    } else if (copy.length === 1) {
+      copy[0] += buttonNumber;
+    } else if (copy.length === 2) {
+      copy.push(buttonNumber);
+    } else if (copy.length === 3) {
+      copy[2] += buttonNumber;
     }
 
-    this.updateState(parsed);
+    this.updateState(copy);
   }
 
   onOperatorClick(event) {
-    let parsed = this.parseExpression();
+    let copy = [...this.state.expressionValue];
     const buttonOperator = event.target.outerText;
 
-    if (parsed.length === 1 && buttonOperator !== "=") {
-      parsed.push(buttonOperator);
-    } else if (parsed.length === 2 && buttonOperator !== "=") {
-      parsed[1] = buttonOperator;
-    } else if (parsed.length === 3) {
-      // warning: approaching shitty code segment
-      const expression = join(parsed);
+    if (copy.length === 1 && buttonOperator !== "=") {
+      copy.push(buttonOperator);
+    } else if (copy.length === 2 && buttonOperator !== "=") {
+      copy[1] = buttonOperator;
+    } else if (copy.length === 3) {
+      const expression = join(copy);
       this.props.dispatch(evaluate(expression));
 
       const evaluatedArray = evaluateExpression(expression);
       const result = this.resolveResult(evaluatedArray[4]);
-      parsed = [result];
+      copy = [result];
 
-      if (buttonOperator !== "=" && result !== "") parsed.push(buttonOperator);
+      if (buttonOperator !== "=" && result !== "") copy.push(buttonOperator);
     }
 
-    this.updateState(parsed);
+    this.updateState(copy);
   }
 
   resolveResult(result) {
     return isFinite(result) ? result : "";
   }
 
-  updateState(parsed) {
+  updateState(newValue) {
     this.setState({
       ...this.state,
-      expressionValue: join(parsed),
+      expressionValue: newValue,
     });
-  }
-
-  parseExpression(expression = this.state.expressionValue) {
-    return expression.split(" ").filter((element) => element !== "");
   }
 
   render() {
@@ -81,7 +76,7 @@ class Calculator extends Component {
     return (
       <div style={{display: "flex", flexDirection: "row"}}>
         <div style={{display: "flex", flexDirection: "column"}}>
-          <InputArea value={this.state.expressionValue} />
+          <InputArea value={join(this.state.expressionValue)} />
           <Numpad onNumClick={this.onNumClick} onButtonClick={this.onOperatorClick} />
         </div>
         <History style={{width: 180}} />

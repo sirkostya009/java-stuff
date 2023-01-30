@@ -24,7 +24,7 @@ export const evaluateExpression = (expression) => {
       case "-":
         return +a - +b;
       case "/":
-        return b === "0" ? "Cannot divide by zero" : +a / +b;
+        return +b === 0 ? "Cannot divide by zero" : +a / +b;
       case "*":
         return +a * +b;
       default:
