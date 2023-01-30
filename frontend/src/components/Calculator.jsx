@@ -48,8 +48,8 @@ class Calculator extends Component {
       const expression = join(copy);
       this.props.dispatch(evaluate(expression));
 
-      const evaluatedArray = evaluateExpression(expression);
-      copy = isFinite(evaluatedArray[4]) ? [evaluatedArray[4]] : [];
+      const evaluated = evaluateExpression(expression)[4];
+      copy = isFinite(evaluated) ? [evaluated] : [];
 
       if (buttonOperator !== "=" && copy.length) copy.push(buttonOperator);
     }
