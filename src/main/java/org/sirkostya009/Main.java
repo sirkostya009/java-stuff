@@ -20,17 +20,14 @@ public class Main {
      * @return a Map of 5 most popular tags
      */
     public static Map<String, Integer> top5Hashtags(List<String> strings) {
-        var result = new HashMap<String, Integer>();
-
-        strings.stream()
+        return strings.stream()
                 .flatMap(string -> Arrays.stream(string.split(" ")).distinct())
                 .filter(word -> word.startsWith("#"))
-                .forEach(hashtag -> {
-                    result.putIfAbsent(hashtag, 0);
-                    result.put(hashtag, result.get(hashtag) + 1);
-                });
-
-        return result
+                .reduce(new HashMap<String, Integer>(), (map, hashTag) -> {
+                    map.putIfAbsent(hashTag, 0);
+                    map.put(hashTag, map.get(hashTag) + 1);
+                    return map;
+                }, (map, ignored) -> map)
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
