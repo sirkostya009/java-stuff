@@ -1,4 +1,4 @@
-package ua.sirkostya009.javastuff.dao;
+package ua.sirkostya009.javastuff.model;
 
 import lombok.*;
 
@@ -11,26 +11,23 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Book {
+public class NamedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String title, author;
-
-    @ManyToOne
-    private Genre genre;
+    private String name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Book book)) return false;
-        return id.equals(book.id) && title.equals(book.title) && author.equals(book.author) && Objects.equals(genre, book.genre);
+        if (!(o instanceof NamedEntity entity)) return false;
+        return id.equals(entity.id) && name.equals(entity.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, author, genre);
+        return Objects.hash(id, name);
     }
 }
