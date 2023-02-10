@@ -20,7 +20,7 @@ export const fetchEntity = (id) => (dispatch) => {
     .catch(() => {
       dispatch({
         type: FETCH_ENTITY,
-        payload: { id, name: 'nigger' }
+        payload: { id, name: 'cool' }
       });
     });
 };
