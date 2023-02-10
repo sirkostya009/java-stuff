@@ -29,8 +29,8 @@ public class EntityController {
     }
 
     @PutMapping("/{id}")
-    public NamedEntity update(@RequestBody NamedEntity entity,
-                              @PathVariable Long id) {
+    public NamedEntity update(@PathVariable Long id,
+                              @RequestBody NamedEntity entity) {
         return service.update(id, entity);
     }
 
