@@ -16,33 +16,26 @@ function Edit() {
 
   useEffect(() => {
     if (id !== null)
-      dispatch(fetchEntity(id))
-    else dispatch(clearEntity())
-  }, [id]);
+      dispatch(fetchEntity(id));
+    else
+      dispatch(clearEntity());
+  }, []);
 
   const { entity } = useSelector((store) => store.editReducer);
 
-  const [idState, setId] = useState(entity?.id);
-  const [nameState, setName] = useState(entity?.name);
+  const [name, setName] = useState(entity?.name);
 
-  const idField = <TextField value={idState} onChange={({target}) => setId(target.value)} />
-  const nameField = <TextField value={nameState} onChange={({target}) => setName(target.value)} />
-
-  const makeEntity = () => ({
-    id: idState,
-    name: nameState,
-  });
-
-  const finalizeButtonAction = id ? putEntity : postEntity;
+  const onSave = () => {
+    dispatch((id ? putEntity : postEntity)({ id, name }));
+  };
 
   return (
-      <div style={{display: 'flex', flexDirection: 'column', width: 150}}>
-        {id !== null && 'id:'}
-        {id !== null && idField}
-        name: {nameField}
+      <div style={{display: 'flex', flexDirection: 'column', width: 200}}>
+        {(id && `new name for ${id} `) || 'create name '}
+        <TextField value={name} onChange={({target}) => setName(target.value)} />
         <div style={{display: 'flex', flexDirection: 'row'}}>
           <Link to={`/${PAGES.ENTITIES}`}>Cancel</Link>
-          <Button onClick={() => dispatch(finalizeButtonAction(makeEntity()))}>Save</Button>
+          <Button onClick={onSave}>Save</Button>
         </div>
       </div>
   );
