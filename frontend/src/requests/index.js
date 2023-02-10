@@ -69,10 +69,9 @@ export const postJson = ({
 export const deleteId = (url) => {
   return fetch(url, {method: 'DELETE', headers: getHeaders()})
     .then((response) => {
-      if (response.ok || response.statusCode === 204) {
-        return response.json();
+      if (!response.ok) {
+        throw response
       }
-      throw response;
     });
 };
 

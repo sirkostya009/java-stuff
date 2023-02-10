@@ -26,8 +26,8 @@ export const fetchEntity = (id) => (dispatch) => {
 };
 
 export const postEntity = (entity) => (dispatch) => {
+  entity.id = undefined;
   console.log("posting entity" + entity);
-  entity = JSON.stringify(entity);
   postJson({ body: entity, url })
     .then((json) => {
       dispatch({
