@@ -31,7 +31,6 @@ export const fetchEntities = () => (dispatch) => {
 };
 
 export const deleteEntity = (id) => (dispatch) => {
-  console.log("delete called");
   deleteId(`${BASE_URL}${ENTITY_SERVICE}/${id}`)
     .then(() => {
       dispatch({

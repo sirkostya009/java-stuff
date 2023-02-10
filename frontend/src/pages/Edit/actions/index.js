@@ -27,7 +27,6 @@ export const fetchEntity = (id) => (dispatch) => {
 
 export const postEntity = (entity) => (dispatch) => {
   entity.id = undefined;
-  console.log("posting entity" + entity);
   postJson({ body: entity, url })
     .then((json) => {
       dispatch({
@@ -40,7 +39,6 @@ export const postEntity = (entity) => (dispatch) => {
 export const putEntity = (entity) => (dispatch) => {
   const id = entity.id;
   entity = JSON.stringify(entity);
-  console.log("updating entity" + entity);
   putJson({body: entity, url: `${url}/${id}`})
     .then((json) => {
       dispatch({

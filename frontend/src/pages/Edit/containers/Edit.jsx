@@ -14,7 +14,6 @@ function Edit() {
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
 
-  console.log(id);
   useEffect(() => {
     if (id !== null)
       dispatch(fetchEntity(id))
@@ -35,7 +34,6 @@ function Edit() {
   });
 
   const finalizeButtonAction = id ? putEntity : postEntity;
-  console.log(id ? 'putEntity' : 'postEntity');
 
   return (
       <div style={{display: 'flex', flexDirection: 'column', width: 150}}>
