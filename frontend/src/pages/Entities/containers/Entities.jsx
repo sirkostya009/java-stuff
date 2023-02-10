@@ -33,6 +33,8 @@ function Entities() {
                 <td>{name}</td>
                 <td>
                   <Link to={`/${PAGES.EDIT}?id=${id}`}>Edit</Link>
+                </td>
+                <td>
                   <Button onClick={() => dispatch(deleteEntity(id))}>Delete</Button>
                 </td>
               </tr>

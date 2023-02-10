@@ -25,9 +25,7 @@ function Edit() {
 
   const [name, setName] = useState(entity?.name);
 
-  const onSave = () => {
-    dispatch((id ? putEntity : postEntity)({ id, name }));
-  };
+  const onSave = () => dispatch((id ? putEntity : postEntity)({ id, name }));
 
   return (
       <div style={{display: 'flex', flexDirection: 'column', width: 200}}>
