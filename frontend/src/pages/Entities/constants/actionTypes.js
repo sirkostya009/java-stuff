@@ -1,0 +1,2 @@
+export const FETCH_ENTITIES = 'FETCH_ENTITIES';
+export const REMOVE_ENTITY = 'REMOVE_ENTITY';
