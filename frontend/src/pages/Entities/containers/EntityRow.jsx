@@ -6,7 +6,10 @@ import {useState} from "react";
 function EntityRow({ id, name, dispatch }) {
   const [shouldShowButtons, setShouldShow] = useState(false);
 
-  const toggleButtons = () => setShouldShow((state) => !state);
+  const toggleButtons = () => setTimeout(
+      () => setShouldShow((state) => !state),
+      shouldShowButtons ? 1000 : 0
+  );
 
   return (
       <tr key={id} onMouseEnter={toggleButtons} onMouseLeave={toggleButtons} style={{height: 40}}>
