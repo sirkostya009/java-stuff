@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {fetchEntity, postEntity, putEntity} from "../actions";
 import TextField from "components/TextField";
 import * as PAGES from "constants/pages";
-import {Button} from "@material-ui/core";
+import Button from "components/Button";
 import useChangePage from "hooks/useChangePage";
 import useLocationSearch from "hooks/useLocationSearch";
 
