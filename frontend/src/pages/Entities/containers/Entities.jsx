@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteEntity, fetchEntities} from "../actions";
+import {fetchEntities} from "../actions";
 import Button from "components/Button";
 import * as PAGES from 'constants/pages';
+import EntityRow from "./EntityRow";
 
 function Entities() {
   const dispatch = useDispatch();
@@ -29,18 +30,8 @@ function Entities() {
         </tr>
         </thead>
         <tbody>
-        {!state.isEmpty && state.map(({id, name}) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{name}</td>
-              <td>
-                <Button href={`/${PAGES.EDIT}?id=${id}`}>Edit</Button>
-              </td>
-              <td>
-                <Button onClick={() => dispatch(deleteEntity(id))}>Delete</Button>
-              </td>
-            </tr>
-        ))}
+        {state.length > 0 && state.map(({id, name}) =>
+            <EntityRow id={id} name={name} dispatch={dispatch} />)}
         </tbody>
       </table>
   );
