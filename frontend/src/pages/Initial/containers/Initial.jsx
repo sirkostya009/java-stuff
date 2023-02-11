@@ -21,7 +21,7 @@ const Initial = ({
   } = useSelector(({ reducer }) => reducer);
   const canSeeList = useAccessValidate({
     ownedAuthorities: authorities,
-    neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
+    neededAuthorities: ['ROLE_THIS'],
   });
 
   return (

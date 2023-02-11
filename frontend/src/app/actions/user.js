@@ -40,14 +40,14 @@ const getUser = () => {
     const storage = {
       '123123': {
         authorities: [
-          'МОЖНО_ВОТ_ЭТУ_ШТУКУ',
-          'МОЖНО_ДРУГУЮ_ШТУКУ',
+          'ROLE_THIS',
+          'ROLE_THAT',
         ],
         name: 'Мужик',
       },
       '456456': {
         authorities: [
-          'МОЖНО_ДРУГУЮ_ШТУКУ',
+          'ROLE_THAT',
         ],
         name: 'Другой мужик',
       }
@@ -108,17 +108,17 @@ const signIn = ({
     const storage = {
       'admin_123': {
         authorities: [
-          'МОЖНО_ВОТ_ЭТУ_ШТУКУ',
-          'МОЖНО_ДРУГУЮ_ШТУКУ',
+          'ROLE_THIS',
+          'ROLE_THAT',
         ],
-        name: 'Мужик',
+        name: 'admin',
         token: '123123',
       },
       'user_456': {
         authorities: [
-          'МОЖНО_ДРУГУЮ_ШТУКУ',
+          'ROLE_THAT',
         ],
-        name: 'Другой мужик',
+        name: 'user',
         token: '456456',
       }
     };
