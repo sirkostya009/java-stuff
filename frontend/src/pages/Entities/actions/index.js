@@ -1,6 +1,6 @@
 import {FETCH_ENTITIES, REMOVE_ENTITY} from "../constants/actionTypes";
-import {deleteId, getJson} from "../../../requests";
-import config from "../../../config";
+import {deleteId, getJson} from "requests";
+import config from "config";
 
 const {
   BASE_URL,
