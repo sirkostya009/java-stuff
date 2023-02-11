@@ -16,7 +16,7 @@ function Entities() {
   const [state, setState] = useState(entities);
 
   useEffect(() => { // another crutch.
-    if (!entities.isEmpty) setState(entities);
+    if (entities.length > 0) setState(entities);
   }, [entities]);
 
   return (

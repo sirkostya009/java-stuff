@@ -22,7 +22,7 @@ function Edit() {
 
   const [name, setName] = useState('');
 
-  useEffect(() => { // this is a crutch, but I don't know how to resolve this issue the right way.
+  useEffect(() => { // this is a crutch, and I don't know how to resolve this issue the right way.
     if (entity) setName(entity?.name);
   }, [entity]);
 
