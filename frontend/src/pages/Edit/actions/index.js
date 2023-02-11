@@ -10,25 +10,26 @@ const {
 const url = `${BASE_URL}${ENTITY_SERVICE}`;
 
 export const fetchEntity = (id) => (dispatch) => {
-  if (id === null)
+  if (id === undefined) {
     dispatch({
       type: FETCH_ENTITY,
       payload: {},
     });
-  else
+  } else {
     getJson({url: `${url}/${id}`})
-      .then((json) => {
-        dispatch({
-          type: FETCH_ENTITY,
-          payload: json,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: FETCH_ENTITY,
-          payload: { id, name: 'cool' }
-        });
+    .then((json) => {
+      dispatch({
+        type: FETCH_ENTITY,
+        payload: json,
       });
+    })
+    .catch(() => {
+      dispatch({
+        type: FETCH_ENTITY,
+        payload: {id, name: 'cool'}
+      });
+    });
+  }
 };
 
 export const postEntity = (entity) => (dispatch) => {
