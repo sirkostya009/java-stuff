@@ -17,9 +17,10 @@ function Edit() {
   useEffect(() => {
     if (id !== null)
       dispatch(fetchEntity(id));
-    else
+    return () => {
       dispatch(clearEntity());
-  }, []);
+    };
+  }, [id, dispatch]);
 
   const { entity } = useSelector((store) => store.editReducer);
 
@@ -28,10 +29,10 @@ function Edit() {
   const onSave = () => dispatch((id ? putEntity : postEntity)({ id, name }));
 
   return (
-      <div style={{display: 'flex', flexDirection: 'column', width: 200}}>
+      <div>
         {(id && `new name for ${id} `) || 'create name '}
         <TextField value={name} onChange={({target}) => setName(target.value)} />
-        <div style={{display: 'flex', flexDirection: 'row'}}>
+        <div>
           <Link to={`/${PAGES.ENTITIES}`}>Cancel</Link>
           <Button onClick={onSave}>Save</Button>
         </div>
