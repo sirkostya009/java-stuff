@@ -3,7 +3,7 @@ import PageAccessValidator from 'components/PageAccessValidator';
 import EntitiesPage from 'pages/Entities';
 import PageContainer from 'components/PageContainer';
 
-const PageEntities = () => (
+const Entities = () => (
   <PageAccessValidator>
     <PageContainer>
       <EntitiesPage />
@@ -11,4 +11,4 @@ const PageEntities = () => (
   </PageAccessValidator>
 );
 
-export default PageEntities;
+export default Entities;

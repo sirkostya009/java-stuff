@@ -10,8 +10,8 @@ import IntlProvider from 'components/IntlProvider';
 import Header from 'components/Header';
 import PageInitial from 'pageProviders/Initial';
 import PageLogin from 'pageProviders/Login';
-import PageEntities from "pageProviders/PageEntities";
-import PageEdit from "pageProviders/PageEdit";
+import PageEntities from "pageProviders/Entities";
+import PageEdit from "pageProviders/Edit";
 import * as PAGES from 'constants/pages';
 import {
   fetchUser,

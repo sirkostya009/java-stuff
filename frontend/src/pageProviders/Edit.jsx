@@ -3,7 +3,7 @@ import PageAccessValidator from 'components/PageAccessValidator';
 import EditPage from 'pages/Edit';
 import PageContainer from 'components/PageContainer';
 
-const PageEdit = () => (
+const Edit = () => (
     <PageAccessValidator>
       <PageContainer>
         <EditPage />
@@ -11,4 +11,4 @@ const PageEdit = () => (
     </PageAccessValidator>
 );
 
-export default PageEdit;
+export default Edit;
