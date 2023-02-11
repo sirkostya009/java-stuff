@@ -1,5 +1,5 @@
 import {getJson, postJson, putJson} from "requests";
-import {CLEAR_ENTITY, FETCH_ENTITY, POST_ENTITY, PUT_ENTITY} from "../constants/actionTypes";
+import {FETCH_ENTITY, POST_ENTITY, PUT_ENTITY} from "../constants/actionTypes";
 import config from "config";
 
 const {
@@ -10,7 +10,13 @@ const {
 const url = `${BASE_URL}${ENTITY_SERVICE}`;
 
 export const fetchEntity = (id) => (dispatch) => {
-  getJson({url: `${url}/${id}`})
+  if (id === null)
+    dispatch({
+      type: FETCH_ENTITY,
+      payload: {},
+    });
+  else
+    getJson({url: `${url}/${id}`})
     .then((json) => {
       dispatch({
         type: FETCH_ENTITY,
@@ -47,8 +53,3 @@ export const putEntity = (entity) => (dispatch) => {
       });
     });
 };
-
-export const clearEntity = () => ({
-  type: CLEAR_ENTITY,
-  payload: {},
-});

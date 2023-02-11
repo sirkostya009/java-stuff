@@ -1,8 +1,7 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteEntity, fetchEntities} from "../actions";
 import Button from "components/Button";
-import Link from "components/Link";
 import * as PAGES from 'constants/pages';
 
 function Entities() {
@@ -12,9 +11,13 @@ function Entities() {
     dispatch(fetchEntities());
   }, []);
 
-  const {
-    entities
-  } = useSelector((store) => store.entityReducer);
+  const { entities } = useSelector((store) => store.entityReducer);
+
+  const [state, setState] = useState(entities);
+
+  useEffect(() => { // another crutch.
+    if (!entities.isEmpty) setState(entities);
+  }, [entities]);
 
   return (
       <table>
@@ -22,11 +25,11 @@ function Entities() {
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th><Link to={`/${PAGES.EDIT}`}>Create</Link></th>
+          <th><Button href={`/${PAGES.EDIT}`}>Create</Button></th>
         </tr>
         </thead>
         <tbody>
-        {!entities.isEmpty && entities.map(({id, name}) => (
+        {!state.isEmpty && state.map(({id, name}) => (
             <tr key={id}>
               <td>{id}</td>
               <td>{name}</td>

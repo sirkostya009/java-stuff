@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {clearEntity, fetchEntity, postEntity, putEntity} from "../actions";
+import {fetchEntity, postEntity, putEntity} from "../actions";
 import TextField from "components/TextField";
-import Link from "components/Link";
 import * as PAGES from "constants/pages";
 import {Button} from "@material-ui/core";
 import {useLocation} from "react-router-dom";
+import useChangePage from "../../../hooks/useChangePage";
 
 function Edit() {
   const dispatch = useDispatch();
@@ -14,27 +14,36 @@ function Edit() {
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
 
+  const changePage = useChangePage();
+
   useEffect(() => {
-    if (id !== null)
-      dispatch(fetchEntity(id));
-    return () => {
-      dispatch(clearEntity());
-    };
-  }, [id, dispatch]);
+    dispatch(fetchEntity(id));
+  }, [id]);
 
   const { entity } = useSelector((store) => store.editReducer);
 
-  const [name, setName] = useState(entity?.name);
+  const [name, setName] = useState('');
 
-  const onSave = () => dispatch((id ? putEntity : postEntity)({ id, name }));
+  useEffect(() => { // this is a crutch, but I don't know how to resolve this issue the right way.
+    if (entity) setName(entity?.name);
+  }, [entity]);
 
   return (
       <div>
         {(id && `new name for ${id} `) || 'create name '}
-        <TextField value={name} onChange={({target}) => setName(target.value)} />
         <div>
-          <Link to={`/${PAGES.ENTITIES}`}>Cancel</Link>
-          <Button onClick={onSave}>Save</Button>
+          <TextField value={name} onChange={({target}) => setName(target.value)} />
+          <div>
+            <Button href={`/${PAGES.ENTITIES}`}>Cancel</Button>
+            <Button
+                onClick={() => {
+                  dispatch((id ? putEntity : postEntity)({id, name}));
+                  changePage({path: `/${PAGES.ENTITIES}`});
+                }}
+            >
+              Save
+            </Button>
+          </div>
         </div>
       </div>
   );
