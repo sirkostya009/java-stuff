@@ -17,31 +17,29 @@ function Entities() {
   } = useSelector((store) => store.entityReducer);
 
   return (
-      <>
-        <Link to={`/${PAGES.EDIT}`}>Create</Link>
-        <table>
-          <thead>
-          <tr>
-            <td>Id</td>
-            <td>Name</td>
-          </tr>
-          </thead>
-          <tbody>
-          {entities && entities.map(({id, name}) => (
-              <tr>
-                <td>{id}</td>
-                <td>{name}</td>
-                <td>
-                  <Link to={`/${PAGES.EDIT}?id=${id}`}>Edit</Link>
-                </td>
-                <td>
-                  <Button onClick={() => dispatch(deleteEntity(id))}>Delete</Button>
-                </td>
-              </tr>
-          ))}
-          </tbody>
-        </table>
-      </>
+      <table>
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th><Link to={`/${PAGES.EDIT}`}>Create</Link></th>
+        </tr>
+        </thead>
+        <tbody>
+        {!entities.isEmpty && entities.map(({id, name}) => (
+            <tr key={id}>
+              <td>{id}</td>
+              <td>{name}</td>
+              <td>
+                <Button href={`/${PAGES.EDIT}?id=${id}`}>Edit</Button>
+              </td>
+              <td>
+                <Button onClick={() => dispatch(deleteEntity(id))}>Delete</Button>
+              </td>
+            </tr>
+        ))}
+        </tbody>
+      </table>
   );
 }
 
