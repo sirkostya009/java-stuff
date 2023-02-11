@@ -17,18 +17,18 @@ export const fetchEntity = (id) => (dispatch) => {
     });
   else
     getJson({url: `${url}/${id}`})
-    .then((json) => {
-      dispatch({
-        type: FETCH_ENTITY,
-        payload: json,
+      .then((json) => {
+        dispatch({
+          type: FETCH_ENTITY,
+          payload: json,
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: FETCH_ENTITY,
+          payload: { id, name: 'cool' }
+        });
       });
-    })
-    .catch(() => {
-      dispatch({
-        type: FETCH_ENTITY,
-        payload: { id, name: 'cool' }
-      });
-    });
 };
 
 export const postEntity = (entity) => (dispatch) => {
