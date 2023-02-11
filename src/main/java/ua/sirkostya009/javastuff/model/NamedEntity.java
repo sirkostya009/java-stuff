@@ -3,6 +3,8 @@ package ua.sirkostya009.javastuff.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Getter
@@ -16,6 +18,8 @@ public class NamedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "name cannot be null")
+    @NotBlank(message = "name cannot be blank")
     @Column(nullable = false)
     private String name;
 
