@@ -4,15 +4,13 @@ import {fetchEntity, postEntity, putEntity} from "../actions";
 import TextField from "components/TextField";
 import * as PAGES from "constants/pages";
 import {Button} from "@material-ui/core";
-import {useLocation} from "react-router-dom";
-import useChangePage from "../../../hooks/useChangePage";
+import useChangePage from "hooks/useChangePage";
+import useLocationSearch from "hooks/useLocationSearch";
 
 function Edit() {
   const dispatch = useDispatch();
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const id = params.get('id');
+  const { id } = useLocationSearch();
 
   const changePage = useChangePage();
 
