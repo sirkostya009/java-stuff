@@ -6,9 +6,9 @@ import {useState} from "react";
 function EntityRow({ id, name, dispatch }) {
   const [shouldShowButtons, setShouldShow] = useState(false);
 
-  const toggleButtons = () => setTimeout(
+  const toggleButtons = () => setTimeout( // clicking on a delete potentially causes a leak?
       () => setShouldShow((state) => !state),
-      shouldShowButtons ? 1000 : 0
+      shouldShowButtons ? 100 : 0
   );
 
   return (

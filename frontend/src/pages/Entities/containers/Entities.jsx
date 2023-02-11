@@ -30,8 +30,7 @@ function Entities() {
         </tr>
         </thead>
         <tbody>
-        {state.length > 0 && state.map(({id, name}) =>
-            <EntityRow id={id} name={name} dispatch={dispatch} />)}
+        {state.map(({id, name}) => <EntityRow id={id} name={name} dispatch={dispatch} />)}
         </tbody>
       </table>
   );
