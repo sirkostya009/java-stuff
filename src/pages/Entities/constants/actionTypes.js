@@ -1,2 +1,3 @@
 export const FETCH_ENTITIES = 'FETCH_ENTITIES';
 export const REMOVE_ENTITY = 'REMOVE_ENTITY';
+export const CLEAR_ENTITIES = 'CLEAR_ENTITIES';
