@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import useChangePage from 'hooks/useChangePage';
 import LoginPage from 'pages/Login';
 import PageContainer from 'components/PageContainer';

@@ -1,7 +1,0 @@
-# dependencies
-.idea
-/node_modules
-package-lock.json
-
-# vulnerable stuff
-/src/config/index.js
