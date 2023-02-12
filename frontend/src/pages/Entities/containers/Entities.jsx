@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchEntities} from "../actions";
+import {clearEntities, fetchEntities} from "../actions";
 import Button from "components/Button";
 import * as PAGES from 'constants/pages';
 import EntityRow from "./EntityRow";
@@ -10,6 +10,9 @@ function Entities() {
 
   useEffect(() => {
     dispatch(fetchEntities());
+    return () => {
+      dispatch(clearEntities());
+    }
   }, []);
 
   const { entities } = useSelector((store) => store.entityReducer);

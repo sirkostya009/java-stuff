@@ -1,4 +1,4 @@
-import {FETCH_ENTITIES, REMOVE_ENTITY} from "../constants/actionTypes";
+import {CLEAR_ENTITIES, FETCH_ENTITIES, REMOVE_ENTITY} from "../constants/actionTypes";
 
 const initialState = {
   entities: []
@@ -6,6 +6,7 @@ const initialState = {
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
+    case CLEAR_ENTITIES:
     case FETCH_ENTITIES: return {
       ...state,
       entities: payload,

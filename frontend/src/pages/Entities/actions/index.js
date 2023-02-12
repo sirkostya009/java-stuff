@@ -1,4 +1,4 @@
-import {FETCH_ENTITIES, REMOVE_ENTITY} from "../constants/actionTypes";
+import {CLEAR_ENTITIES, FETCH_ENTITIES, REMOVE_ENTITY} from "../constants/actionTypes";
 import {deleteId, getJson} from "requests";
 import config from "config";
 
@@ -39,3 +39,8 @@ export const deleteEntity = (id) => (dispatch) => {
       });
     });
 };
+
+export const clearEntities = () => ({
+  type: CLEAR_ENTITIES,
+  payload: [],
+})
