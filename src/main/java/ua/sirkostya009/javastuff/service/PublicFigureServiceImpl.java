@@ -20,6 +20,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -81,9 +82,9 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     }
 
     private void parseJson(InputStream in) {
-        try (var jsonParser = mapper.getFactory().createParser(in)) {
+        try(var jsonParser = mapper.getFactory().createParser(in)) {
             if (jsonParser.nextToken() != JsonToken.START_ARRAY)
-                throw new CouldNotBeParsed("json file must be one big array");
+                throw new CouldNotBeParsed("json file must begin with an array");
 
             while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
                 var figure = mapper.readValue(jsonParser, PublicFigure.class);
@@ -115,8 +116,13 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     private int parseAge(PublicFigure figure) {
         var birthDate = figure.getDateOfBirth();
         try {
-            var year = LocalDate.parse(birthDate).getYear();
-            return LocalDate.now().getYear() - year;
+            log.info(birthDate);
+            var date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            return LocalDate.now()
+                    .minusYears(date.getYear())
+                    .minusMonths(date.getMonthValue())
+                    .minusDays(date.getDayOfMonth())
+                    .getYear();
         } catch (DateTimeParseException ignored) {
             return -1;
         }
