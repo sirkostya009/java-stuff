@@ -2,6 +2,7 @@ package ua.sirkostya009.javastuff.repository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +17,6 @@ import ua.sirkostya009.javastuff.dto.PepSearchDto;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.apache.logging.log4j.util.Strings.isNotBlank;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
@@ -54,11 +54,11 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
         );
         var query = new Query().with(pageRequest);
 
-        if (isNotBlank(searchDto.getFirstName()))
+        if (StringUtils.isNotBlank(searchDto.getFirstName()))
             query.addCriteria(where(PublicFigure.Fields.firstName).is(searchDto.getFirstName()));
-        if (isNotBlank(searchDto.getLastName()))
+        if (StringUtils.isNotBlank(searchDto.getLastName()))
             query.addCriteria(where(PublicFigure.Fields.lastName).is(searchDto.getLastName()));
-        if (isNotBlank(searchDto.getPatronymic()))
+        if (StringUtils.isNotBlank(searchDto.getPatronymic()))
             query.addCriteria(where(PublicFigure.Fields.patronymic).is(searchDto.getPatronymic()));
 
         var figures = template.find(query, PublicFigure.class);

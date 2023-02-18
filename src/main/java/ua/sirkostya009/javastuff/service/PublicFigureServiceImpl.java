@@ -19,6 +19,8 @@ import ua.sirkostya009.javastuff.repository.PublicFigureRepository;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -104,9 +106,20 @@ public class PublicFigureServiceImpl implements PublicFigureService {
                 figure.getId(),
                 inEnglish ? figure.getFirstNameEn() : figure.getFirstName(),
                 inEnglish ? figure.getLastNameEn() : figure.getLastName(),
+                inEnglish ? figure.getPatronymicEn() : figure.getPatronymic(),
                 figure.isDied(),
-                0
+                parseAge(figure)
         );
+    }
+
+    private int parseAge(PublicFigure figure) {
+        var birthDate = figure.getDateOfBirth();
+        try {
+            var year = LocalDate.parse(birthDate).getYear();
+            return LocalDate.now().getYear() - year;
+        } catch (DateTimeParseException ignored) {
+            return -1;
+        }
     }
 
 }
