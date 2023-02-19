@@ -109,6 +109,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
                 inEnglish ? figure.getLastNameEn() : figure.getLastName(),
                 inEnglish ? figure.getPatronymicEn() : figure.getPatronymic(),
                 figure.isDied(),
+                figure.isPep(),
                 parseAge(figure)
         );
     }

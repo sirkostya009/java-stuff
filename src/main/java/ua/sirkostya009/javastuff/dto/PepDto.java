@@ -13,5 +13,6 @@ public class PepDto {
     private String lastName;
     private String patronymic;
     private boolean dead;
+    private boolean isPep;
     private int age;
 }
