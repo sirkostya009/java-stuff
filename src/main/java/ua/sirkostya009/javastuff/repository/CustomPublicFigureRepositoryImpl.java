@@ -32,9 +32,9 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
     @Override
     public Map<String, Integer> findTop10Names() {
         var groupOperation = group(PublicFigure.Fields.firstName).count().as(COUNT);
-        var filterOperation = match(where("isPep").is(true));
+        var filterOperation = match(where(PublicFigure.Fields.isPep).is(true));
         var sortOperation = sort(Sort.Direction.DESC, COUNT);
-        var aggregation = newAggregation(groupOperation, filterOperation, sortOperation, limit(10));
+        var aggregation = newAggregation(filterOperation, groupOperation, sortOperation, limit(10));
 
         try(var stream = template.aggregateStream(aggregation, PublicFigure.class, Document.class)) {
             // we're using LinkedHashMap here because documents
