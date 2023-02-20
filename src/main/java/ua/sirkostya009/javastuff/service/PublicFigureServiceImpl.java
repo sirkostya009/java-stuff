@@ -5,28 +5,25 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
-import ua.sirkostya009.javastuff.dto.PepDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureDto;
 import ua.sirkostya009.javastuff.dto.PepSearchDto;
 import ua.sirkostya009.javastuff.exception.CouldNotBeParsed;
+import ua.sirkostya009.javastuff.mapper.PublicFigureMapper;
 import ua.sirkostya009.javastuff.repository.PublicFigureRepository;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PublicFigureServiceImpl implements PublicFigureService {
@@ -34,12 +31,13 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     private final static int PUBLIC_FIGURES_PER_PAGE = 10;
 
     private final PublicFigureRepository repository;
+    private final PublicFigureMapper publicFigureMapper;
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     {
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        objectMapper.registerModule(new JavaTimeModule());
     }
 
     @Override
@@ -55,43 +53,46 @@ public class PublicFigureServiceImpl implements PublicFigureService {
                 zip.closeEntry();
             }
         } catch (IOException e) {
-            // an exception is thrown whenever try block tries to close the zip stream,
-            // that's why we need this crutch here
+            // an exception is thrown whenever try block tries to close the zip stream
+            // that's why we need this crutch here. could closeEntry() be closing stream too?
             if (!e.getMessage().contains("Stream closed"))
                 throw new CouldNotBeParsed("Exception thrown while parsing archive");
         }
     }
 
     @Override
-    public Map<String, Integer> mostPopularNames() {
-        return repository.findTop10Names();
+    public Map<String, Integer> top10PepNames() {
+        return repository.findTop10PepNames()
+                .collect(LinkedHashMap::new,
+                        (map, nameCount) -> map.put(nameCount.get_id(), nameCount.getCount()),
+                        (map1, map2) -> {});
     }
 
     @Override
-    public Page<PepDto> searchBySingleString(String query, String lang, int page) {
+    public Page<PublicFigureDto> searchBySingleString(String query, String lang, int page) {
         var inEnglish = shouldBeInEnglish(lang);
         return repository
-                .findPublicFigureByNamesContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
-                .map(figure -> convert(figure, inEnglish));
+                .findPublicFigureByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
+                .map(figure -> publicFigureMapper.convert(figure, inEnglish));
     }
 
     @Override
-    public Page<PepDto> search(PepSearchDto searchDto) {
+    public Page<PublicFigureDto> search(PepSearchDto searchDto) {
         var inEnglish = shouldBeInEnglish(searchDto.getLang());
-        return repository.search(searchDto).map(figure -> convert(figure, inEnglish));
+        return repository.search(searchDto).map(figure -> publicFigureMapper.convert(figure, inEnglish));
     }
 
     private void parseJson(InputStream in) {
-        try(var jsonParser = mapper.getFactory().createParser(in)) {
+        try(var jsonParser = objectMapper.getFactory().createParser(in)) {
             if (jsonParser.nextToken() != JsonToken.START_ARRAY)
                 throw new CouldNotBeParsed("json file must begin with an array");
 
             while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
-                var figure = mapper.readValue(jsonParser, PublicFigure.class);
+                var figure = objectMapper.readValue(jsonParser, PublicFigure.class);
 
-                repository.save(figure); // saving an instance per parse takes slightly more time
-                                         // but is far more memory efficient unlike bulk ops
-                                         // that, for some reason, don't clean up leaving about 600mb leaked.
+                repository.save(figure); // saving an instance per parse takes on avg 75% more time to complete,
+                                         // however it is far more memory efficient compared to saving into a list,
+                                         // for some reason, don't clean up leaving about 600mb leaked.
             }
         } catch (IOException e) {
             throw new CouldNotBeParsed(e.getMessage(), e);
@@ -100,33 +101,6 @@ public class PublicFigureServiceImpl implements PublicFigureService {
 
     private boolean shouldBeInEnglish(String lang) {
         return "en".equalsIgnoreCase(lang);
-    }
-
-    private PepDto convert(PublicFigure figure, boolean inEnglish) {
-        return new PepDto(
-                figure.getId(),
-                inEnglish ? figure.getFirstNameEn() : figure.getFirstName(),
-                inEnglish ? figure.getLastNameEn() : figure.getLastName(),
-                inEnglish ? figure.getPatronymicEn() : figure.getPatronymic(),
-                figure.isDied(),
-                figure.isPep(),
-                parseAge(figure)
-        );
-    }
-
-    private int parseAge(PublicFigure figure) {
-        var birthDate = figure.getDateOfBirth();
-        try {
-            log.info(birthDate);
-            var date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            return LocalDate.now()
-                    .minusYears(date.getYear())
-                    .minusMonths(date.getMonthValue())
-                    .minusDays(date.getDayOfMonth())
-                    .getYear();
-        } catch (DateTimeParseException ignored) {
-            return -1;
-        }
     }
 
 }

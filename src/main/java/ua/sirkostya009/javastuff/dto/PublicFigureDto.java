@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PepDto {
+public class PublicFigureDto {
     private String id;
     private String firstName;
     private String lastName;
     private String patronymic;
     private boolean dead;
     private boolean isPep;
-    private int age;
+    private Integer age;
 }

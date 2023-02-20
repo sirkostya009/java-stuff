@@ -1,0 +1,41 @@
+package ua.sirkostya009.javastuff.mapper;
+
+import org.springframework.stereotype.Component;
+import ua.sirkostya009.javastuff.dao.PublicFigure;
+import ua.sirkostya009.javastuff.dto.PublicFigureDto;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+@Component
+public class PublicFigureMapper {
+
+    private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    public PublicFigureDto convert(PublicFigure figure, boolean inEnglish) {
+        return new PublicFigureDto(
+                figure.getId(),
+                inEnglish ? figure.getFirstNameEn() : figure.getFirstName(),
+                inEnglish ? figure.getLastNameEn() : figure.getLastName(),
+                inEnglish ? figure.getPatronymicEn() : figure.getPatronymic(),
+                figure.isDied(),
+                figure.isPep(),
+                parseAge(figure.getDateOfBirth())
+        );
+    }
+
+    private Integer parseAge(String birthDate) {
+        try {
+            var date = LocalDate.parse(birthDate, FORMATTER);
+            return LocalDate.now()
+                    .minusYears(date.getYear())
+                    .minusMonths(date.getMonthValue())
+                    .minusDays(date.getDayOfMonth())
+                    .getYear();
+        } catch (DateTimeParseException ignored) {
+            return null;
+        }
+    }
+
+}
