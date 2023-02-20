@@ -32,7 +32,7 @@ public class PepController {
     public Page<PublicFigureDto> search(@RequestParam(name = "query") String query,
                                         @RequestParam(name = "lang", defaultValue = "uk") String lang,
                                         @RequestParam(name = "page", defaultValue = "0") int page) {
-        return service.searchBySingleString(query, lang, page);
+        return service.search(query, lang, page);
     }
 
     @PostMapping("/search")

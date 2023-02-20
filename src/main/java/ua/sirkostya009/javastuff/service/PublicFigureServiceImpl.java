@@ -69,17 +69,17 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     }
 
     @Override
-    public Page<PublicFigureDto> searchBySingleString(String query, String lang, int page) {
+    public Page<PublicFigureDto> search(String query, String lang, int page) {
         var inEnglish = shouldBeInEnglish(lang);
         return repository
                 .findPublicFigureByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
-                .map(figure -> publicFigureMapper.convert(figure, inEnglish));
+                .map(publicFigureMapper.mapLambda(inEnglish));
     }
 
     @Override
     public Page<PublicFigureDto> search(PepSearchDto searchDto) {
         var inEnglish = shouldBeInEnglish(searchDto.getLang());
-        return repository.search(searchDto).map(figure -> publicFigureMapper.convert(figure, inEnglish));
+        return repository.search(searchDto).map(publicFigureMapper.mapLambda(inEnglish));
     }
 
     private void parseJson(InputStream in) {

@@ -12,9 +12,9 @@ public interface PublicFigureService {
 
     Map<String, Integer> top10PepNames();
 
-    Page<PublicFigureDto> searchBySingleString(String query,
-                                               String lang,
-                                               int page);
+    Page<PublicFigureDto> search(String query,
+                                 String lang,
+                                 int page);
 
     Page<PublicFigureDto> search(PepSearchDto searchDto);
 }

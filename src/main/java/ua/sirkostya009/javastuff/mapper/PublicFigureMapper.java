@@ -7,11 +7,16 @@ import ua.sirkostya009.javastuff.dto.PublicFigureDto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.function.Function;
 
 @Component
 public class PublicFigureMapper {
 
     private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    public Function<PublicFigure, PublicFigureDto> mapLambda(boolean inEnglish) {
+        return figure -> convert(figure, inEnglish);
+    }
 
     public PublicFigureDto convert(PublicFigure figure, boolean inEnglish) {
         return new PublicFigureDto(
