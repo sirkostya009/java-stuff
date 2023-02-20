@@ -19,6 +19,7 @@ public class PublicFigureMapper {
                 inEnglish ? figure.getFirstNameEn() : figure.getFirstName(),
                 inEnglish ? figure.getLastNameEn() : figure.getLastName(),
                 inEnglish ? figure.getPatronymicEn() : figure.getPatronymic(),
+                inEnglish ? figure.getFullNameEn() : figure.getFullName(),
                 figure.isDied(),
                 figure.isPep(),
                 parseAge(figure.getDateOfBirth())

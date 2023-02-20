@@ -12,6 +12,7 @@ public class PublicFigureDto {
     private String firstName;
     private String lastName;
     private String patronymic;
+    private String fullName;
     private boolean dead;
     private boolean isPep;
     private Integer age;
