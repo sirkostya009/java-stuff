@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public interface PublicFigureRepository extends MongoRepository<PublicFigure, String>, CustomPublicFigureRepository {
 
     @Query("{$or: [{'fullName': {$regex: ?0, $options: 'i'}}, {'fullNameEn': {$regex: ?0, $options: 'i'}}]}")
-    Page<PublicFigure> findPublicFigureByNameContains(String names, Pageable pageable);
+    Page<PublicFigure> findPublicFigureByNameContains(String string, Pageable pageable);
 
     @Aggregation(pipeline = {
             "{$match: {'isPep': true}}",
@@ -22,20 +22,5 @@ public interface PublicFigureRepository extends MongoRepository<PublicFigure, St
             "{$limit: 10}",
     })
     Stream<NameCount> findTop10PepNames();
-
-    @Query("""
-        {$or: [
-            {'firstName': {$regex: ?0, $options: 'i'}},
-            {'lastName': {$regex: ?1, $options: 'i'}},
-            {'patronymic': {$regex: ?2, $options: 'i'}},
-            {'firstNameEn': {$regex: ?0, $options: 'i'}},
-            {'lastNameEn': {$regex: ?1, $options: 'i'}},
-            {'patronymicEn': {$regex: ?2, $options: 'i'}},
-        ]}
-        """)
-    Page<PublicFigure> findByFirstNameOrLastNameOrPatronymic(String fullName,
-                                                             String lastName,
-                                                             String patronymic,
-                                                             Pageable pageable);
 
 }
