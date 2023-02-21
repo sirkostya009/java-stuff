@@ -1,17 +1,15 @@
 package ua.sirkostya009.javastuff.service;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
-import ua.sirkostya009.javastuff.dto.PublicFigureDto;
 import ua.sirkostya009.javastuff.dto.PepSearchDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureDto;
 import ua.sirkostya009.javastuff.exception.CouldNotBeParsed;
 import ua.sirkostya009.javastuff.mapper.PublicFigureMapper;
 import ua.sirkostya009.javastuff.repository.PublicFigureRepository;
@@ -32,13 +30,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
 
     private final PublicFigureRepository repository;
     private final PublicFigureMapper publicFigureMapper;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    {
-        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        objectMapper.registerModule(new JavaTimeModule());
-    }
+    private final ObjectMapper objectMapper;
 
     @Override
     public void fillFromArchive(MultipartFile archive) {
