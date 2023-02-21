@@ -17,7 +17,9 @@ import ua.sirkostya009.javastuff.repository.PublicFigureRepository;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -39,8 +41,11 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         try(var zip = new ZipInputStream(new BufferedInputStream(archive.getInputStream()))) {
             ZipEntry entry;
             while ((entry = zip.getNextEntry()) != null) {
-                if(!entry.isDirectory() && entry.getName().endsWith(".json"))
-                    parseJson(zip);
+                if(!entry.isDirectory() && entry.getName().endsWith(".json")) {
+                    var figures = parseJson(zip);
+
+                    repository.saveAll(figures);
+                }
 
                 zip.closeEntry();
             }
@@ -74,18 +79,23 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         return repository.search(searchDto).map(publicFigureMapper.mapLambda(inEnglish));
     }
 
-    private void parseJson(InputStream in) {
+    private List<PublicFigure> parseJson(InputStream in) {
         try(var jsonParser = objectMapper.getFactory().createParser(in)) {
             if (jsonParser.nextToken() != JsonToken.START_ARRAY)
                 throw new CouldNotBeParsed("json file must begin with an array");
 
+            var figures = new ArrayList<PublicFigure>();
+
             while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
                 var figure = objectMapper.readValue(jsonParser, PublicFigure.class);
 
-                repository.save(figure); // saving an instance per parse takes on avg 75% more time to complete,
-                                         // however it is far more memory efficient compared to saving into a list,
-                                         // for some reason, don't clean up leaving about 600mb leaked.
+                figures.add(figure); // accumulating all instances into a List could be as twice as
+                                     // efficient time-wise than saving figure one-by-one, however,
+                                     // it does consume a lot of memory which isn't cleaned up by
+                                     // garbage collector after finishing execution, for some reason
             }
+
+            return figures;
         } catch (IOException e) {
             throw new CouldNotBeParsed(e.getMessage(), e);
         }
