@@ -89,10 +89,11 @@ public class PublicFigureServiceImpl implements PublicFigureService {
             while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
                 var figure = objectMapper.readValue(jsonParser, PublicFigure.class);
 
-                figures.add(figure); // accumulating all instances into a List could be as twice as
-                                     // efficient time-wise than saving figure one-by-one, however,
-                                     // it does consume a lot of memory which isn't cleaned up by
-                                     // garbage collector after finishing execution, for some reason
+                figures.add(figure); // accumulating all instances into a List cn be two times
+                                     // faster than saving figures one-by-one, however,
+                                     // it consumes a hundred times more memory, that doesn't get cleaned up.
+                                     // additionally, cpu usage seem to spike more frequently,
+                                     // and is just used more of.
             }
 
             return figures;
