@@ -91,9 +91,10 @@ public class PublicFigureServiceImpl implements PublicFigureService {
 
                 figures.add(figure); // accumulating all instances into a List cn be two times
                                      // faster than saving figures one-by-one, however,
-                                     // it consumes a hundred times more memory, that doesn't get cleaned up.
+                                     // it consumes a hundred times more memory,
+                                     // that doesn't get cleaned up, for some reason.
                                      // additionally, cpu usage seem to spike more frequently,
-                                     // and is just used more of.
+                                     // and is just higher on average.
             }
 
             return figures;
