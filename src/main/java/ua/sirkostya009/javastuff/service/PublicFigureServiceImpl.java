@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
-import ua.sirkostya009.javastuff.dto.PepSearchDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 import ua.sirkostya009.javastuff.dto.PublicFigureDto;
 import ua.sirkostya009.javastuff.exception.CouldNotBeParsed;
 import ua.sirkostya009.javastuff.mapper.PublicFigureMapper;
@@ -74,7 +74,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     }
 
     @Override
-    public Page<PublicFigureDto> search(PepSearchDto searchDto) {
+    public Page<PublicFigureDto> search(PublicFigureSearchDto searchDto) {
         var inEnglish = shouldBeInEnglish(searchDto.getLang());
         return repository.search(searchDto).map(publicFigureMapper.mapLambda(inEnglish));
     }

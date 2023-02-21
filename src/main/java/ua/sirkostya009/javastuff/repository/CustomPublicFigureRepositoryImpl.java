@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
-import ua.sirkostya009.javastuff.dto.PepSearchDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
@@ -20,7 +20,7 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
     private final MongoTemplate template;
 
     @Override
-    public Page<PublicFigure> search(PepSearchDto searchDto) {
+    public Page<PublicFigure> search(PublicFigureSearchDto searchDto) {
         var pageRequest = PageRequest.of(
                 searchDto.getPage(),
                 searchDto.getSize()

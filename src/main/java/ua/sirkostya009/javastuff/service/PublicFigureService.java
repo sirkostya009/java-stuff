@@ -3,7 +3,7 @@ package ua.sirkostya009.javastuff.service;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 import ua.sirkostya009.javastuff.dto.PublicFigureDto;
-import ua.sirkostya009.javastuff.dto.PepSearchDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 
 import java.util.Map;
 
@@ -16,5 +16,5 @@ public interface PublicFigureService {
                                  String lang,
                                  int page);
 
-    Page<PublicFigureDto> search(PepSearchDto searchDto);
+    Page<PublicFigureDto> search(PublicFigureSearchDto searchDto);
 }

@@ -6,7 +6,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 @Data
-public class PepSearchDto {
+public class PublicFigureSearchDto {
     private String firstName;
     private String lastName;
     private String patronymic;

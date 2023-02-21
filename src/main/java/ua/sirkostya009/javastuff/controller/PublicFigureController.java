@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.sirkostya009.javastuff.dto.PublicFigureDto;
-import ua.sirkostya009.javastuff.dto.PepSearchDto;
+import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 import ua.sirkostya009.javastuff.service.PublicFigureService;
 
 import javax.validation.Valid;
@@ -36,7 +36,7 @@ public class PublicFigureController {
     }
 
     @PostMapping("/search")
-    public Page<PublicFigureDto> search(@RequestBody @Valid PepSearchDto searchDto) {
+    public Page<PublicFigureDto> search(@RequestBody @Valid PublicFigureSearchDto searchDto) {
         return service.search(searchDto);
     }
 
