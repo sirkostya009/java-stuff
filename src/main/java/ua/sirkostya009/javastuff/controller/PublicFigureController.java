@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/pep")
+@RequestMapping("/api/public-figures")
 public class PublicFigureController {
 
     private final PublicFigureService service;
