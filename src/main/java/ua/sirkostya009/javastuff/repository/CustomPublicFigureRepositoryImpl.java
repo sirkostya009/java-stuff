@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
+import ua.sirkostya009.javastuff.dao.PublicFigure.Fields;
 import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
@@ -28,11 +29,11 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
         var query = new Query().with(pageRequest);
 
         if (StringUtils.isNotBlank(searchDto.getFirstName()))
-            query.addCriteria(where(PublicFigure.Fields.firstName).regex(searchDto.getFirstName(), "i"));
+            query.addCriteria(where(Fields.firstName).regex(searchDto.getFirstName(), "i"));
         if (StringUtils.isNotBlank(searchDto.getLastName()))
-            query.addCriteria(where(PublicFigure.Fields.lastName).regex(searchDto.getLastName(), "i"));
+            query.addCriteria(where(Fields.lastName).regex(searchDto.getLastName(), "i"));
         if (StringUtils.isNotBlank(searchDto.getPatronymic()))
-            query.addCriteria(where(PublicFigure.Fields.patronymic).regex(searchDto.getPatronymic(), "i"));
+            query.addCriteria(where(Fields.patronymic).regex(searchDto.getPatronymic(), "i"));
 
         var figures = template.find(query, PublicFigure.class);
 
