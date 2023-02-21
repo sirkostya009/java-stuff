@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/pep")
-public class PepController {
+public class PublicFigureController {
 
     private final PublicFigureService service;
 
