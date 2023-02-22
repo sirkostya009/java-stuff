@@ -3,10 +3,10 @@ package ua.sirkostya009.javastuff.repository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
 import ua.sirkostya009.javastuff.dao.PublicFigure.Fields;
@@ -22,12 +22,8 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
 
     @Override
     public Page<PublicFigure> search(PublicFigureSearchDto searchDto) {
-        var pageRequest = PageRequest.of(
-                searchDto.getPage(),
-                searchDto.getSize()
-        );
+        var pageRequest = PageRequest.of(searchDto.getPage(), searchDto.getSize());
         var query = new Query().with(pageRequest);
-
         var options = "i";
 
         if (StringUtils.isNotBlank(searchDto.getFirstName()))
@@ -39,11 +35,9 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
 
         var figures = template.find(query, PublicFigure.class);
 
-        return PageableExecutionUtils.getPage(
-                figures,
-                pageRequest,
-                () -> template.count(query.limit(-1).skip(-1), PublicFigure.class)
-        );
+        return new PageImpl<>(figures,
+                              pageRequest,
+                              template.count(query.limit(-1).skip(-1), PublicFigure.class));
     }
 
 }

@@ -20,7 +20,7 @@ public class PublicFigureController {
 
     @PostMapping("/upload-archive")
     public void uploadArchive(@RequestParam("archive") MultipartFile archive) {
-        service.fillFromArchive(archive);
+        service.importArchive(archive);
     }
 
     @GetMapping("/top-10-pep-names")

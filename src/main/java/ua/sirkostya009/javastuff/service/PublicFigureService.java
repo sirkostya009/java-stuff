@@ -8,7 +8,7 @@ import ua.sirkostya009.javastuff.dto.PublicFigureSearchDto;
 import java.util.Map;
 
 public interface PublicFigureService {
-    void fillFromArchive(MultipartFile archive);
+    void importArchive(MultipartFile archive);
 
     Map<String, Integer> top10PepNames();
 
