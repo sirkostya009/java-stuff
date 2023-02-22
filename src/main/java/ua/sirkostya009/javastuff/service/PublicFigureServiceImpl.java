@@ -39,12 +39,9 @@ public class PublicFigureServiceImpl implements PublicFigureService {
             var figures = new ArrayList<PublicFigure>();
 
             ZipEntry entry;
-            while ((entry = zip.getNextEntry()) != null) {
+            while ((entry = zip.getNextEntry()) != null)
                 if (!entry.isDirectory() && entry.getName().endsWith(".json"))
                     figures.addAll(parseJson(zip));
-
-                zip.closeEntry();
-            }
 
             repository.deleteAll();
             repository.saveAll(figures);
@@ -67,7 +64,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         var inEnglish = shouldBeInEnglish(lang);
         return repository
                 .findByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
-                .map(publicFigureMapper.mapLambda(inEnglish));
+                .map(publicFigureMapper.dtoLambda(inEnglish));
     }
 
     @Override
@@ -75,7 +72,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         var inEnglish = shouldBeInEnglish(searchDto.getLang());
         return repository
                 .search(searchDto)
-                .map(publicFigureMapper.mapLambda(inEnglish));
+                .map(publicFigureMapper.dtoLambda(inEnglish));
     }
 
     private List<PublicFigure> parseJson(InputStream in) throws IOException {

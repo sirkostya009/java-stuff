@@ -1,5 +1,6 @@
 package ua.sirkostya009.javastuff.mapper;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ua.sirkostya009.javastuff.dao.PublicFigure;
 import ua.sirkostya009.javastuff.dto.PublicFigureDto;
@@ -10,15 +11,16 @@ import java.time.format.DateTimeParseException;
 import java.util.function.Function;
 
 @Component
+@RequiredArgsConstructor
 public class PublicFigureMapper {
 
     private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public Function<PublicFigure, PublicFigureDto> mapLambda(boolean inEnglish) {
-        return figure -> convert(figure, inEnglish);
+    public Function<PublicFigure, PublicFigureDto> dtoLambda(boolean inEnglish) {
+        return figure -> toDto(figure, inEnglish);
     }
 
-    public PublicFigureDto convert(PublicFigure figure, boolean inEnglish) {
+    public PublicFigureDto toDto(PublicFigure figure, boolean inEnglish) {
         return new PublicFigureDto(
                 figure.getId(),
                 inEnglish ? figure.getFirstNameEn() : figure.getFirstName(),
