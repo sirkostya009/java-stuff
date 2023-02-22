@@ -64,7 +64,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         var inEnglish = shouldBeInEnglish(lang);
         return repository
                 .findByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
-                .map(publicFigureMapper.dtoLambda(inEnglish));
+                .map(publicFigureMapper.dtoFunction(inEnglish));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
         var inEnglish = shouldBeInEnglish(searchDto.getLang());
         return repository
                 .search(searchDto)
-                .map(publicFigureMapper.dtoLambda(inEnglish));
+                .map(publicFigureMapper.dtoFunction(inEnglish));
     }
 
     private List<PublicFigure> parseJson(InputStream in) throws IOException {

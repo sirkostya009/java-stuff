@@ -16,7 +16,7 @@ public class PublicFigureMapper {
 
     private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public Function<PublicFigure, PublicFigureDto> dtoLambda(boolean inEnglish) {
+    public Function<PublicFigure, PublicFigureDto> dtoFunction(boolean inEnglish) {
         return figure -> toDto(figure, inEnglish);
     }
 
