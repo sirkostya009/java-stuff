@@ -28,19 +28,21 @@ public class CustomPublicFigureRepositoryImpl implements CustomPublicFigureRepos
         );
         var query = new Query().with(pageRequest);
 
+        var options = "i";
+
         if (StringUtils.isNotBlank(searchDto.getFirstName()))
-            query.addCriteria(where(Fields.firstName).regex(searchDto.getFirstName(), "i"));
+            query.addCriteria(where(Fields.firstName).regex(searchDto.getFirstName(), options));
         if (StringUtils.isNotBlank(searchDto.getLastName()))
-            query.addCriteria(where(Fields.lastName).regex(searchDto.getLastName(), "i"));
+            query.addCriteria(where(Fields.lastName).regex(searchDto.getLastName(), options));
         if (StringUtils.isNotBlank(searchDto.getPatronymic()))
-            query.addCriteria(where(Fields.patronymic).regex(searchDto.getPatronymic(), "i"));
+            query.addCriteria(where(Fields.patronymic).regex(searchDto.getPatronymic(), options));
 
         var figures = template.find(query, PublicFigure.class);
 
         return PageableExecutionUtils.getPage(
                 figures,
                 pageRequest,
-                () -> template.count((Query.of(query).limit(-1).skip(-1)), PublicFigure.class)
+                () -> template.count(query.limit(-1).skip(-1), PublicFigure.class)
         );
     }
 
