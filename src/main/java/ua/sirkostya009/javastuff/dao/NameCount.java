@@ -1,8 +1,10 @@
 package ua.sirkostya009.javastuff.dao;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class NameCount {
     private String _id;
     private Integer count;

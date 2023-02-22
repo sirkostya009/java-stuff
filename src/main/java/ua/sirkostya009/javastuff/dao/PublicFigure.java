@@ -1,7 +1,8 @@
 package ua.sirkostya009.javastuff.dao;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldNameConstants;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,11 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @Document("public_figures")
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @FieldNameConstants
 public class PublicFigure {
     @Id
