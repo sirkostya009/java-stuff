@@ -69,7 +69,7 @@ public class PublicFigureServiceImpl implements PublicFigureService {
     public Page<PublicFigureDto> search(String query, String lang, int page) {
         var inEnglish = shouldBeInEnglish(lang);
         return repository
-                .findPublicFigureByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
+                .findByNameContains(query, PageRequest.of(page, PUBLIC_FIGURES_PER_PAGE))
                 .map(publicFigureMapper.mapLambda(inEnglish));
     }
 

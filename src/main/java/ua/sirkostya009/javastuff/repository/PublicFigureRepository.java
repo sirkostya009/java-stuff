@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public interface PublicFigureRepository extends MongoRepository<PublicFigure, String>, CustomPublicFigureRepository {
 
     @Query("{$or: [{'fullName': {$regex: ?0, $options: 'i'}}, {'fullNameEn': {$regex: ?0, $options: 'i'}}]}")
-    Page<PublicFigure> findPublicFigureByNameContains(String string, Pageable pageable);
+    Page<PublicFigure> findByNameContains(String string, Pageable pageable);
 
     @Aggregation(pipeline = {
             "{$match: {'isPep': true}}",
