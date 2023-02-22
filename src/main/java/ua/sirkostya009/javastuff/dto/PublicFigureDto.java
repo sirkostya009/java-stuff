@@ -1,12 +1,15 @@
 package ua.sirkostya009.javastuff.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Setter
+@Getter
+@AllArgsConstructor // I refrain from using @Builder here
+                    // because I do not want my project to compile
+                    // whenever I add a new field to the dto and
+                    // forget to modify mapper accordingly
 public class PublicFigureDto {
     private String id;
     private String firstName;
