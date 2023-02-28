@@ -16,8 +16,8 @@ public interface PublicFigureRepository extends MongoRepository<PublicFigure, St
     Page<PublicFigure> findByNameContains(String string, Pageable pageable);
 
     @Aggregation(pipeline = {
-            "{$match: {'isPep': true}}",
-            "{$group: {'_id': '$firstName', count: {$sum: 1}}}",
+            "{$match: {isPep: true}}",
+            "{$group: {_id: '$firstName', count: {$sum: 1}}}",
             "{$sort: {count: -1}}",
             "{$limit: 10}",
     })
