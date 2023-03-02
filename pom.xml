@@ -45,9 +45,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.jslsolucoes</groupId>
-            <artifactId>elasticsearch-se</artifactId>
-            <version>1.0.32</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
     </dependencies>
 
