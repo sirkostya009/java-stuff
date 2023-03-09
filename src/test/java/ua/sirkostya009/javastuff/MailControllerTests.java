@@ -1,6 +1,7 @@
 package ua.sirkostya009.javastuff;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class MailControllerTests {
 
     @Autowired
     private Scheduler scheduler;
+
+    @AfterEach
+    void clear() {
+        repository.deleteAll();
+    }
 
     @Test
     void postSuccessful() throws Exception {
