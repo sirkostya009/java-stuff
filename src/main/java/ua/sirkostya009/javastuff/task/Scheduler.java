@@ -25,7 +25,7 @@ public class Scheduler {
             fixedRateString = "${kafka.processing.fixed-rate:300000}",
             initialDelayString = "${kafka.processing.initial-delay:60000}"
     )
-    public void task() {
+    public void tryResendMail() {
         var pageNo = 0;
         Page<Mail> page;
 
