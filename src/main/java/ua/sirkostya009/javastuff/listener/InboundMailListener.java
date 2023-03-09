@@ -1,6 +1,7 @@
 package ua.sirkostya009.javastuff.listener;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,10 +16,11 @@ import ua.sirkostya009.javastuff.service.MailService;
 @RequiredArgsConstructor
 public class InboundMailListener {
 
-    private final static int MAIL_PER_PAGE = 300;
-
     private final MailService service;
     private final MailRepository repository;
+
+    @Value("${kafka.processing.mail-per-page}")
+    private int mailPerPage = 300;
 
     @KafkaListener(topics = "${kafka.topics.mail-topic}")
     public void listen(Mail mail) {
@@ -41,7 +43,7 @@ public class InboundMailListener {
     }
 
     private PageRequest pageRequest(int page) {
-        return PageRequest.of(page, MAIL_PER_PAGE);
+        return PageRequest.of(page, mailPerPage);
     }
 
 }
