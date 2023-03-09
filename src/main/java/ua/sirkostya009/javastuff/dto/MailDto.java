@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ua.sirkostya009.javastuff.constraint.EmailAddress;
 import ua.sirkostya009.javastuff.dao.Mail;
 import ua.sirkostya009.javastuff.dao.MailStatus;
 
@@ -20,10 +21,11 @@ public class MailDto {
     private String id;
     @NotBlank
     @NotNull
+    @EmailAddress
     private String from;
     @NotEmpty
     @NotNull
-    private List<String> to;
+    private List<@EmailAddress String> to;
     @NotBlank
     @NotNull
     private String subject;
