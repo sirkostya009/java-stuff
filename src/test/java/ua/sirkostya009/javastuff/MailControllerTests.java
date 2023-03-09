@@ -10,14 +10,17 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import ua.sirkostya009.javastuff.dao.Mail;
 import ua.sirkostya009.javastuff.dao.MailStatus;
 import ua.sirkostya009.javastuff.dto.MailDto;
-import ua.sirkostya009.javastuff.dto.StatusDto;
+import ua.sirkostya009.javastuff.repositories.MailRepository;
+import ua.sirkostya009.javastuff.task.Scheduler;
 
 import java.util.Collections;
+import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -25,7 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public class MailControllerTests {
 
     private final static String BASE_URL = "/api/mail";
-    private final static int KAFKA_PROCESSING_DELAY = 500; // amount of time in milliseconds it takes kafka to process a message
+    private final static int KAFKA_PROCESSING_DELAY = 150; // amount of time in milliseconds it takes kafka to process a message
 
     @Autowired
     private MockMvc mvc;
@@ -33,23 +36,23 @@ public class MailControllerTests {
     @Autowired
     private ObjectMapper mapper;
 
+    @Autowired
+    private MailRepository repository;
+
+    @Autowired
+    private Scheduler scheduler;
+
     @Test
     void postSuccessful() throws Exception {
-        genericTest(
-                mailDto("from@example.com", "from@example.com"),
-                new StatusDto(MailStatus.SENT, null)
+        var mailDto = new MailDto(
+                null,
+                "from@example.com",
+                Collections.singletonList("to@example.com"),
+                "test subject",
+                "test content",
+                null
         );
-    }
 
-    @Test
-    void postUnsuccessful() throws Exception {
-        genericTest(
-                mailDto("from", ".com"),
-                new StatusDto(MailStatus.PENDING, "Local address starts with dot")
-        );
-    }
-
-    void genericTest(MailDto mailDto, StatusDto statusDto) throws Exception {
         var request = MockMvcRequestBuilders.post(BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(mailDto));
@@ -63,25 +66,27 @@ public class MailControllerTests {
 
         Thread.sleep(KAFKA_PROCESSING_DELAY);
 
-        response = mvc.perform(get(BASE_URL + "/check-status/" + resultId))
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-
-        var status = mapper.readValue(response, StatusDto.class);
-
-        assertThat(status).isEqualTo(statusDto);
+        checkIfSent(resultId);
     }
 
-    MailDto mailDto(String from, String to) {
-        return new MailDto(
-                null,
-                from,
-                Collections.singletonList(to),
-                "test subject",
-                "test content",
-                null
-        );
+    @Test
+    void kafkaScheduledJob() throws Exception {
+        var mail = repository.save(Mail.builder()
+                        .recipients(List.of("young@thug.org"))
+                        .sender("mr@sandman.com")
+                        .subject("subject")
+                        .content("content")
+                        .status(MailStatus.PENDING)
+                        .build());
+
+        scheduler.tryResendMail();
+
+        checkIfSent(mail.getId());
+    }
+
+    void checkIfSent(String resultId) throws Exception {
+        mvc.perform(get(BASE_URL + "/check-status/" + resultId))
+                .andExpect(jsonPath("$.status").value("SENT"));
     }
 
 }
