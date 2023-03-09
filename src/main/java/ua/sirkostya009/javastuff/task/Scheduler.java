@@ -18,12 +18,12 @@ public class Scheduler {
     private final MailRepository repository;
     private final MailService service;
 
-    @Value("${kafka.processing.mail-per-page}")
-    private int mailPerPage = 300;
+    @Value("${kafka.processing.mail-per-page:300}")
+    private int mailPerPage;
 
     @Scheduled(
-            fixedRateString = "${kafka.processing.fixed-rate}",
-            initialDelayString = "${kafka.processing.initial-delay}"
+            fixedRateString = "${kafka.processing.fixed-rate:300000}",
+            initialDelayString = "${kafka.processing.initial-delay:60000}"
     )
     public void task() {
         var pageNo = 0;
