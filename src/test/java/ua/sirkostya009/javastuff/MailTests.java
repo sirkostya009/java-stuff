@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -27,8 +28,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 public class MailTests {
 
-    private final static String BASE_URL = "/api/mail";
-    private final static int KAFKA_PROCESSING_DELAY = 150; // amount of time in milliseconds it takes kafka to process a message
+    @Value("${mail-tests.base-url}")
+    private String baseUrl;
+    @Value("${mail.tests.kafka-delay}")
+    private int delay; // amount of time in milliseconds it takes kafka to process a message
 
     @Autowired
     private MockMvc mvc;
@@ -58,7 +61,7 @@ public class MailTests {
                 null
         );
 
-        var request = post(BASE_URL)
+        var request = post(baseUrl)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(mailDto));
 
@@ -69,7 +72,7 @@ public class MailTests {
 
         var resultId = mapper.readValue(response, MailDto.class).getId();
 
-        Thread.sleep(KAFKA_PROCESSING_DELAY);
+        Thread.sleep(delay);
 
         checkIfSent(resultId);
     }
@@ -90,7 +93,7 @@ public class MailTests {
     }
 
     void checkIfSent(String resultId) throws Exception {
-        mvc.perform(get(BASE_URL + "/check-status/" + resultId))
+        mvc.perform(get(baseUrl + "/check-status/" + resultId))
                 .andExpect(jsonPath("$.status").value("SENT"));
     }
 
