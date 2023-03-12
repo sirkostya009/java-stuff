@@ -24,7 +24,7 @@ public class Mail {
     private String subject;
     @Field(type = FieldType.Text)
     private String content;
-    @Field(type = FieldType.Boolean)
+    @Field(type = FieldType.Auto)
     private MailStatus status;
     @Field(type = FieldType.Text)
     private String errorMessage;
