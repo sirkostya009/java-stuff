@@ -51,7 +51,7 @@ public class MailTests {
     }
 
     @Test
-    void postSuccessful() throws Exception {
+    void testSuccessfulPost() throws Exception {
         var mailDto = new MailDto(
                 null,
                 "from@example.com",
@@ -78,7 +78,7 @@ public class MailTests {
     }
 
     @Test
-    void kafkaScheduledJob() throws Exception {
+    void testScheduledJob() throws Exception {
         var mail = repository.save(Mail.builder()
                         .recipients(List.of("young@thug.org"))
                         .sender("mr@sandman.com")
