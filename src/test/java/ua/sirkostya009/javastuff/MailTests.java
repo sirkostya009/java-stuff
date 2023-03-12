@@ -10,23 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.sirkostya009.javastuff.dao.Mail;
 import ua.sirkostya009.javastuff.dao.MailStatus;
 import ua.sirkostya009.javastuff.dto.MailDto;
 import ua.sirkostya009.javastuff.repositories.MailRepository;
 import ua.sirkostya009.javastuff.task.Scheduler;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
-public class MailControllerTests {
+public class MailTests {
 
     private final static String BASE_URL = "/api/mail";
     private final static int KAFKA_PROCESSING_DELAY = 150; // amount of time in milliseconds it takes kafka to process a message
@@ -53,13 +52,13 @@ public class MailControllerTests {
         var mailDto = new MailDto(
                 null,
                 "from@example.com",
-                Collections.singletonList("to@example.com"),
+                List.of("to@example.com"),
                 "test subject",
                 "test content",
                 null
         );
 
-        var request = MockMvcRequestBuilders.post(BASE_URL)
+        var request = post(BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(mailDto));
 
