@@ -30,14 +30,10 @@ public class Scheduler {
         Page<Mail> page;
 
         do {
-            page = repository.findByStatus(MailStatus.PENDING, pageRequest(pageNo++));
+            page = repository.findByStatus(MailStatus.PENDING, PageRequest.of(pageNo++, mailPerPage));
 
             page.forEach(service::send);
         } while (page.hasNext());
-    }
-
-    private PageRequest pageRequest(int page) {
-        return PageRequest.of(page, mailPerPage);
     }
 
 }
