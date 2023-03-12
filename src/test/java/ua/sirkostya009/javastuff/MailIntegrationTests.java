@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MailTests {
+public class MailIntegrationTests {
 
     @Value("${mail-tests.base-url}")
     private String baseUrl;
