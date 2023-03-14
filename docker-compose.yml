@@ -1,0 +1,72 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - service_network
+    restart: always
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: ${KAFKA_HOSTNAME}:9092
+      KAFKA_ZOOKEEPER_CONNECT: ${ZOOKEEPER_HOSTNAME}:2181
+      KAFKA_CREATE_TOPICS: ${KAFKA_TOPIC_NAME}:2:1
+    depends_on:
+      - zookeeper
+    networks:
+      - service_network
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2
+    container_name: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - service_network
+    restart: always
+
+  maildev:
+    image: maildev/maildev
+    container_name: maildev
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+    networks:
+      - service_network
+    restart: always
+
+  javastuff:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: ${KAFKA_HOSTNAME}:9092
+      SPRING_ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOSTNAME}
+    depends_on:
+      - kafka
+      - elasticsearch
+      - maildev
+    ports:
+      - "8080:8080"
+    networks:
+      - service_network
+    restart: always
+
+networks:
+  service_network:
+    driver: bridge
+
+volumes:
+  esdata:
+    driver: local
