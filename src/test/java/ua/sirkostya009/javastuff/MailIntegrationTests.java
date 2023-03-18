@@ -25,9 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class MailIntegrationTests {
 
-    @Value("${mail-tests.base-url}")
+    @Value("${tests.mail.base-url}")
     private String baseUrl;
-    @Value("${mail.tests.kafka-delay}")
+    @Value("${tests.mail.kafka-delay}")
     private int delay; // amount of time in milliseconds it takes kafka to process a message
 
     @Autowired
@@ -48,7 +48,6 @@ public class MailIntegrationTests {
     void testSuccessfulPost() throws Exception {
         var mailDto = new MailDto(
                 null,
-                "from@example.com",
                 List.of("to@example.com"),
                 "test subject",
                 "test content",
@@ -75,7 +74,6 @@ public class MailIntegrationTests {
     void testScheduledJob() throws Exception {
         var mail = repository.save(Mail.builder()
                         .recipients(List.of("young@thug.org"))
-                        .sender("mr@sandman.com")
                         .subject("subject")
                         .content("content")
                         .status(MailStatus.PENDING)

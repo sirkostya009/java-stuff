@@ -1,6 +1,7 @@
 package ua.sirkostya009.javastuff.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class MailServiceImpl implements MailService {
     private final KafkaTopics topics;
     private final KafkaTemplate<String, Mail> template;
 
+    @Value("${mail.sender-address}")
+    private String senderAddress;
+
     @Override
     public void send(Mail mail) {
         var status = trySendMail(mail);
@@ -35,7 +39,6 @@ public class MailServiceImpl implements MailService {
     @Override
     public Mail post(MailDto dto) {
         var mail = repository.save(Mail.builder()
-                .sender(dto.getFrom())
                 .recipients(dto.getTo())
                 .subject(dto.getSubject())
                 .content(dto.getContent())
@@ -65,7 +68,7 @@ public class MailServiceImpl implements MailService {
         var message = sender.createMimeMessage();
 
         try {
-            message.setFrom(mail.getSender());
+            message.setFrom(senderAddress);
             message.setRecipients(Message.RecipientType.TO, String.join(", ", mail.getRecipients()));
             message.setSubject(mail.getSubject());
             message.setContent(mail.getContent(), "text/html");

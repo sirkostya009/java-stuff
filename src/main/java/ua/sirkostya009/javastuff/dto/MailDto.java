@@ -19,10 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 public class MailDto {
     private String id;
-    @NotBlank
-    @NotNull
-    @EmailAddress
-    private String from;
     @NotEmpty
     @NotNull
     private List<@EmailAddress String> to;
@@ -37,7 +33,6 @@ public class MailDto {
     public static MailDto of(Mail mail) {
         return new MailDto(
                 mail.getId(),
-                mail.getSender(),
                 mail.getRecipients(),
                 mail.getSubject(),
                 mail.getContent(),

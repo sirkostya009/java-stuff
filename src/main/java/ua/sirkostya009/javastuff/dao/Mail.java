@@ -16,8 +16,6 @@ import java.util.List;
 public class Mail {
     @Id
     private String id;
-    @Field(type = FieldType.Keyword)
-    private String sender;
     @Field(type = FieldType.Auto)
     private List<String> recipients;
     @Field(type = FieldType.Keyword)
